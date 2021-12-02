@@ -1,0 +1,40 @@
+{
+  "name": "advent-of-code",
+  "version": "2021.01.0",
+  "description": "Advent of Code",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint '{src,test-utils,packages}/{**,}/*.ts'",
+    "lint-fix": "eslint '{src,test-utils,packages}/{,**}/*.ts' --fix",
+    "format": "prettier --check '{src,test-utils,packages,}{*,**/*}.{ts,js,json,md}' --write",
+    "day": "ts-node src/index.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kotlinski/advent-of-code.git"
+  },
+  "author": "Simon Kotlinski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kotlinski/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/kotlinski/advent-of-code#readme",
+  "devDependencies": {
+    "@springworks/eslint-config-typescript": "^3005.77.0",
+    "@springworks/prettier-config": "^3005.77.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "@types/node-fetch": "^2.0.0",
+    "eslint": "^7.21.0",
+    "jest": "^27.2.0",
+    "prettier": "2.5.0",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "prettier": "@springworks/prettier-config",
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  }
+}
