@@ -21,5 +21,5 @@ async function createTaskSolver(day: number) {
     case TaskType.SECOND:
       answer = task.second();
   }
-  console.log(`The answer is ${ answer}`);
+  console.log(`The answer is ${answer}`);
 })();
