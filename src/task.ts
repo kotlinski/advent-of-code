@@ -10,8 +10,8 @@ export enum TaskType {
  */
 export default abstract class Task {
   public abstract parse(): number[];
-  public abstract first(): number;
-  public abstract second(): number;
+  public abstract first(input: number[]): number;
+  public abstract second(input: number[]): number;
 }
 
 export function taskFactory(constructor: new (input: string) => Task, input: string): Task {
