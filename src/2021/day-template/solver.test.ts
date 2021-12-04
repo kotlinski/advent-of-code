@@ -1,7 +1,7 @@
 import Solver from '../../solver';
 import TemplateSolver from './solver';
 
-describe('day 2', () => {
+describe('day X', () => {
   let day: Solver<number>;
   beforeEach(() => {
     const raw_input = '1\n';
