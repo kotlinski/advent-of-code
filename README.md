@@ -1,7 +1,11 @@
-# advent-of-code
+# Advent of Code
 
 Advent of code: https://adventofcode.com/
 
+## Progress
+
+- [Day 1](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-01) 🌟 🌟
+
 ## Cred
 
-Used @atme's [advent-of-code](https://github.com/atme/advent-of-code-2021) repo as a boilerplate
+Was inspired by @atme's [advent-of-code](https://github.com/atme/advent-of-code-2021) repo for fetching the input data.
