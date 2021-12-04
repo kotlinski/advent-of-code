@@ -14,7 +14,7 @@ describe('day 2', () => {
   });
   describe('part two', () => {
     it('should be 4711', () => {
-      expect(day.solvePartOne()).toEqual(4711);
+      expect(day.solvePartTwo()).toEqual(4711);
     });
   });
 });
