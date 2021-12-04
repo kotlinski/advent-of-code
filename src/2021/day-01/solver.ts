@@ -1,6 +1,6 @@
 import Solver from '../../solver';
 
-export default class Day01Solver extends Solver {
+export default class Day01Solver extends Solver<number> {
   constructor(raw_input: string) {
     super(raw_input);
   }

@@ -1,8 +1,8 @@
-import Day02Solver from './solver';
+import Day02Solver, { Movement } from './solver';
 import Solver from '../../solver';
 
 describe('day 2', () => {
-  let day: Solver;
+  let day: Solver<Movement>;
   beforeEach(() => {
     const raw_input = 'forward 5\n' + 'down 5\n' + 'forward 8\n' + 'up 3\n' + 'down 8\n' + 'forward 2';
     day = new Day02Solver(raw_input);
