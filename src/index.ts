@@ -16,10 +16,10 @@ async function createTaskSolver(day: number) {
   let answer: number;
   switch (task_type) {
     case TaskType.FIRST:
-      answer = task.first();
+      answer = task.first(task.parse());
       break;
     case TaskType.SECOND:
-      answer = task.second();
+      answer = task.second(task.parse());
   }
   console.log(`The answer is ${answer}`);
 })();

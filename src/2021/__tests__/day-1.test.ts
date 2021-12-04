@@ -18,12 +18,12 @@ describe('day 1', () => {
   });
   describe('first', () => {
     it('should be 7', () => {
-      expect(day.first()).toEqual(7);
+      expect(day.first(day.parse())).toEqual(7);
     });
   });
   describe('second', () => {
     it('should be 5', () => {
-      expect(day.first()).toEqual(5);
+      expect(day.first(day.parse())).toEqual(5);
     });
   });
 });

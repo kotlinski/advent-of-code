@@ -5,10 +5,11 @@ export default class Day01 implements Task {
   parse(): number[] {
     return this.input.split('\n').map((number) => parseInt(number, 10));
   }
-  first(): number {
-    return 1000;
+  first(input: number[]): number {
+    let prev = Number.MAX_VALUE;
+    return input.filter((value:number) => (prev < (prev = value))).length
   }
-  second(): number {
+  second(_input: number[]): number {
     return 2;
   }
 }
