@@ -9,6 +9,27 @@ export interface Movement {
   direction: Direction;
   steps: number;
 }
+class UnderWaterVector {
+  constructor(private depth: number, private horizontal_position: number, private aim: number) {}
+  public push(coordinate: UnderWaterVector): UnderWaterVector {
+    this.depth += coordinate.depth;
+    this.horizontal_position += coordinate.horizontal_position;
+    this.aim += coordinate.aim;
+    return this;
+  }
+  getUnderWaterValue() {
+    return this.depth * this.horizontal_position;
+  }
+
+  increaseDepthByAim(steps: number): UnderWaterVector {
+    console.log(`this: ${JSON.stringify(this, null, 2)}`);
+    this.depth += this.aim * steps;
+    console.log(`this: ${JSON.stringify(this, null, 2)}`);
+    return this;
+  }
+}
+
+type PerformMovement = (coordinate: UnderWaterVector, steps: number) => UnderWaterVector;
 
 export default class DiveProblemSolver extends Solver<Movement> {
   constructor(raw_input: string) {
@@ -27,30 +48,47 @@ export default class DiveProblemSolver extends Solver<Movement> {
   }
 
   solvePartOne(): number {
-    const { depth, horizontal_position } = this.calculatePosition(this.input);
-    return depth * horizontal_position;
-  }
-
-  private calculatePosition(movements: Movement[]): { horizontal_position: number; depth: number } {
-    let horizontal_position = 0;
-    let depth = 0;
-    movements.forEach((movement) => {
-      switch (movement.direction) {
-        case Direction.FORWARD:
-          horizontal_position += movement.steps;
-          break;
-        case Direction.DOWN:
-          depth += movement.steps;
-          break;
-        case Direction.UP:
-          depth -= movement.steps;
-          break;
-      }
-    });
-    return { horizontal_position, depth };
+    const under_water_coordinate = this.calculateUnderWaterCoordinate(
+      this.input,
+      (coordinate, steps) => coordinate.push(new UnderWaterVector(0, steps, 0)),
+      (coordinate, steps) => coordinate.push(new UnderWaterVector(steps, 0, 0)),
+      (coordinate, steps) => coordinate.push(new UnderWaterVector(-steps, 0, 0)),
+    );
+    return under_water_coordinate.getUnderWaterValue();
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const under_water_coordinate = this.calculateUnderWaterCoordinate(
+      this.input,
+      (coordinate: UnderWaterVector, steps: number) =>
+        coordinate.push(new UnderWaterVector(0, steps, 0)).increaseDepthByAim(steps),
+      (coordinate: UnderWaterVector, steps: number) => coordinate.push(new UnderWaterVector(0, 0, steps)),
+      (coordinate: UnderWaterVector, steps: number) => coordinate.push(new UnderWaterVector(0, 0, -steps)),
+    );
+    console.log(`under_water_coordinate: ${JSON.stringify(under_water_coordinate, null, 2)}`);
+    return under_water_coordinate.getUnderWaterValue();
+  }
+
+  private calculateUnderWaterCoordinate(
+    movements: Movement[],
+    move_forward: PerformMovement,
+    move_down: PerformMovement,
+    move_up: PerformMovement,
+  ): UnderWaterVector {
+    const coordinate = new UnderWaterVector(0, 0, 0);
+    movements.forEach((movement) => {
+      switch (movement.direction) {
+        case Direction.FORWARD:
+          move_forward(coordinate, movement.steps);
+          break;
+        case Direction.DOWN:
+          move_down(coordinate, movement.steps);
+          break;
+        case Direction.UP:
+          move_up(coordinate, movement.steps);
+          break;
+      }
+    });
+    return coordinate;
   }
 }
