@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint '{src,test-utils,packages}/{**,}/*.ts'",
     "lint-fix": "eslint '{src,test-utils,packages}/{,**}/*.ts' --fix",
+    "format-check": "prettier --check '{src,test-utils,packages,}{*,**/*}.{ts,js,json,md}'",
     "format": "prettier --check '{src,test-utils,packages,}{*,**/*}.{ts,js,json,md}' --write",
     "day": "ts-node src/index.ts",
     "test": "jest"
