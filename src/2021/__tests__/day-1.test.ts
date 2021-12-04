@@ -23,7 +23,7 @@ describe('day 1', () => {
   });
   describe('second', () => {
     it('should be 5', () => {
-      expect(day.first(day.parse())).toEqual(5);
+      expect(day.second(day.parse())).toEqual(5);
     });
   });
 });
