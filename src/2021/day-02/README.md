@@ -32,3 +32,7 @@ Your horizontal position and depth both start at `0`. The steps above would then
 After following these instructions, you would have a horizontal position of `15` and a depth of `10`. (Multiplying these together produces **_150_**.)
 
 Calculate the horizontal position and depth you would have after following the planned course. **_What do you get if you multiply your final horizontal position by your final depth?_**
+
+---
+
+https://adventofcode.com/2021/day/2
