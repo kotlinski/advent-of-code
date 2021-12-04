@@ -10,7 +10,7 @@ function getHeaders(): HeadersInit {
   return { cookie };
 }
 
-export async function fetchInputData(day: number): Promise<string> {
+export async function fetchTaskInputData(day: number): Promise<string> {
   const result = await fetch(`https://adventofcode.com/2021/day/${day}/input`, {
     method: 'GET',
     headers: getHeaders(),
