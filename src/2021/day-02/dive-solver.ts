@@ -10,7 +10,7 @@ export interface Movement {
   steps: number;
 }
 
-export default class Day02Solver extends Solver<Movement> {
+export default class DiveProblemSolver extends Solver<Movement> {
   constructor(raw_input: string) {
     super(raw_input);
   }
@@ -23,7 +23,7 @@ export default class Day02Solver extends Solver<Movement> {
   }
 
   parse(raw_input: string): Movement[] {
-    return raw_input.split('\n').map(Day02Solver.formatMovement);
+    return raw_input.split('\n').map(DiveProblemSolver.formatMovement);
   }
 
   solvePartOne(): number {
