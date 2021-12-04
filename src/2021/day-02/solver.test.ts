@@ -1,4 +1,4 @@
-import DiveProblemSolver, { Movement } from './dive-solver';
+import DiveProblemSolver, { Movement } from './solver';
 import Solver from '../../solver';
 
 describe('day 2', () => {

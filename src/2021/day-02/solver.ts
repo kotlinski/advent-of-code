@@ -22,9 +22,7 @@ class UnderWaterVector {
   }
 
   increaseDepthByAim(steps: number): UnderWaterVector {
-    console.log(`this: ${JSON.stringify(this, null, 2)}`);
     this.depth += this.aim * steps;
-    console.log(`this: ${JSON.stringify(this, null, 2)}`);
     return this;
   }
 }
@@ -65,7 +63,6 @@ export default class DiveProblemSolver extends Solver<Movement> {
       (coordinate: UnderWaterVector, steps: number) => coordinate.push(new UnderWaterVector(0, 0, steps)),
       (coordinate: UnderWaterVector, steps: number) => coordinate.push(new UnderWaterVector(0, 0, -steps)),
     );
-    console.log(`under_water_coordinate: ${JSON.stringify(under_water_coordinate, null, 2)}`);
     return under_water_coordinate.getUnderWaterValue();
   }
 
