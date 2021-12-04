@@ -17,8 +17,8 @@ export default class Day01Solver extends Solver<number> {
     return this.countNumberOfIncreases(values);
   }
 
-  private countNumberOfIncreases(numbers: number[]): number {
+  private readonly countNumberOfIncreases = (numbers: number[]): number => {
     let prev = Number.MAX_VALUE;
     return numbers.filter((value: number) => prev < (prev = value)).length;
-  }
+  };
 }
