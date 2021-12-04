@@ -2,7 +2,7 @@ import Solver from '../../solver';
 import BinaryDiagnosticSolver from './solver';
 
 describe('day 3', () => {
-  let day: Solver<number>;
+  let day: Solver<number[]>;
   beforeEach(() => {
     const raw_input =
       '00100\n' +
