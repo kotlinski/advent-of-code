@@ -10,13 +10,7 @@ export default class Day01 implements Task {
     return input.filter((value:number) => (prev < (prev = value))).length
   }
   second(input: number[]): number {
-    console.log(`input: ${JSON.stringify(input, null, 2)}`);
-    const values = input.map((value:number, index:number, numbers: number[])=>{
-      for (let i = index+1; i < numbers.length && i<index+3; i++) {
-        value += numbers[i]
-      }
-      return value;
-    })
+    const values = input.map((value:number, index:number, numbers: number[])=>value + numbers[index+1] + numbers[index+2])
     return this.first(values)
   }
 }
