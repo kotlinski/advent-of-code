@@ -24,4 +24,9 @@ describe('day 3', () => {
       expect(day.solvePartOne()).toEqual(198);
     });
   });
+  describe('part two', () => {
+    it('should have a life support rating of 230', () => {
+      expect(day.solvePartTwo()).toEqual(230);
+    });
+  });
 });
