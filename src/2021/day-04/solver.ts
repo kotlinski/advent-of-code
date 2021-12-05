@@ -10,9 +10,10 @@ class Tile {
 
 class BingoBoard {
   protected board: Tile[][] = [];
+  score: number | undefined;
   hasWon(): boolean {
+    if (this.score) return true;
     const hasWinningRow = (row: Tile[]) => row.filter((tile) => tile.check).length === 5;
-
     // winning column
     for (let i = 0; i < 5; i++) {
       const column = [];
@@ -26,6 +27,7 @@ class BingoBoard {
   }
 
   checkNumber(number: number): void {
+    if (this.hasWon()) return;
     for (const row of this.board) {
       for (const tile of row) {
         if (number === tile.number) {
@@ -33,6 +35,7 @@ class BingoBoard {
         }
       }
     }
+    if (!this.score && this.hasWon()) this.score = this.calculateScore(number);
     return;
   }
 
@@ -98,25 +101,27 @@ export default class GiantSquidSolver extends Solver<BingoGame> {
 
   solvePartOne(): number {
     const bingo_game = this.input;
-    const winners: BingoBoard[] = [];
-    let winning_score = -1;
-
-    for (const number of bingo_game.numbers) {
-      for (const bingo_board of bingo_game.bingo_boards) {
-        bingo_board.checkNumber(number);
-        if (bingo_board.hasWon()) {
-          winners.push(bingo_board);
-        }
-      }
-      if (winners.length > 0) {
-        winning_score = winners[0].calculateScore(number);
-        break;
-      }
-    }
-    return winning_score;
+    return GiantSquidSolver.getWinners(bingo_game)[0].score!;
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const bingo_game = this.input;
+    const last_winner = GiantSquidSolver.getWinners(bingo_game).pop();
+    return last_winner!.score!;
+  }
+
+  private static getWinners(bingo_game: BingoGame): BingoBoard[] {
+    const winners: BingoBoard[] = [];
+    for (const number of bingo_game.numbers) {
+      for (const bingo_board of bingo_game.bingo_boards) {
+        if (!winners.includes(bingo_board)) {
+          bingo_board.checkNumber(number);
+          if (bingo_board.hasWon()) {
+            winners.push(bingo_board);
+          }
+        }
+      }
+    }
+    return winners;
   }
 }

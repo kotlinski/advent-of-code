@@ -32,8 +32,8 @@ describe('day 4', () => {
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
-      expect(day.solvePartTwo()).toEqual(4711);
+    it('should have a final score of 1924', () => {
+      expect(day.solvePartTwo()).toEqual(1924);
     });
   });
 });
