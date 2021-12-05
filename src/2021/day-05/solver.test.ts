@@ -18,13 +18,13 @@ describe('day 5', () => {
     day = new HydrothermalVentureSolver(raw_input);
   });
   describe('part one', () => {
-    it('should have a total number of 5 points', () => {
+    it('should have a total number of 5 overlapping points', () => {
       expect(day.solvePartOne()).toEqual(5);
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
-      expect(day.solvePartTwo()).toEqual(4711);
+    it('should have a total number of 12 overlapping points', () => {
+      expect(day.solvePartTwo()).toEqual(12);
     });
   });
 });
