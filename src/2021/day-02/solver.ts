@@ -29,7 +29,7 @@ class UnderWaterVector {
 
 type PerformMovement = (coordinate: UnderWaterVector, steps: number) => UnderWaterVector;
 
-export default class DiveProblemSolver extends Solver<Movement> {
+export default class DiveProblemSolver extends Solver<Movement[]> {
   constructor(raw_input: string) {
     super(raw_input);
   }

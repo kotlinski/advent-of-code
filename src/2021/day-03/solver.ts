@@ -24,7 +24,7 @@ function binaryArrayToDecimal(binary_array: number[]): number {
 
 type RateAggregator = (any: number[][]) => number[];
 
-export default class BinaryDiagnosticSolver extends Solver<number[]> {
+export default class BinaryDiagnosticSolver extends Solver<number[][]> {
   constructor(raw_input: string) {
     super(raw_input);
   }

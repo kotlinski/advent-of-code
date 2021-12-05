@@ -1,6 +1,6 @@
 import Solver from '../../solver';
 
-export default class TemplateSolver extends Solver<number> {
+export default class TemplateSolver extends Solver<number[]> {
   constructor(raw_input: string) {
     super(raw_input);
   }
