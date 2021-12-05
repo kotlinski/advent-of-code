@@ -6,7 +6,7 @@ Advent of code: https://adventofcode.com/
 
 - [Day 1](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-01) 🌟 🌟
 - [Day 2](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-02) 🌟 🌟
-- [Day 3](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-03) 🌟
+- [Day 3](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-03) 🌟 🌟
 
 ## How to run
 
