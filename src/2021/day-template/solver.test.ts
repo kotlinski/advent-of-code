@@ -2,7 +2,7 @@ import Solver from '../../solver';
 import TemplateSolver from './solver';
 
 describe('day X', () => {
-  let day: Solver<number>;
+  let day: Solver<number[]>;
   beforeEach(() => {
     const raw_input = '1\n';
     day = new TemplateSolver(raw_input);

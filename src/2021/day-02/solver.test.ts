@@ -2,7 +2,7 @@ import DiveProblemSolver, { Movement } from './solver';
 import Solver from '../../solver';
 
 describe('day 2', () => {
-  let day: Solver<Movement>;
+  let day: Solver<Movement[]>;
   beforeEach(() => {
     const raw_input = 'forward 5\n' + 'down 5\n' + 'forward 8\n' + 'up 3\n' + 'down 8\n' + 'forward 2';
     day = new DiveProblemSolver(raw_input);
