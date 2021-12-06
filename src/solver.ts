@@ -9,7 +9,7 @@ export default abstract class Solver<T> {
     this.input = this.parse(raw_input);
   }
   protected abstract parse(raw_input: string): T;
-  public abstract solvePartOne(): number;
+  public abstract solvePartOne(optional_param?: { input?: T; iterations?: number }): number;
   public abstract solvePartTwo(): number;
 }
 
