@@ -1,14 +1,13 @@
 import Solver from '../../solver';
-
-const map = new Map<string, number>();
+import { cache } from '../../helpers/cache';
 
 function getNumberOfOffsprings(days_until_birth: number, in_days: number): number {
   in_days -= days_until_birth; // fast-forward to the next birth
   if (in_days <= 0) {
     return 0;
   }
-  if (map.has(`${days_until_birth},${in_days}`)) {
-    return map.get(`${days_until_birth},${in_days}`)!;
+  if (cache.has(`${days_until_birth},${in_days}`)) {
+    return cache.get(`${days_until_birth},${in_days}`)!;
   }
   let offsprings = 0;
   for (let total_days = in_days; total_days > 0; total_days -= 7) {
@@ -16,7 +15,7 @@ function getNumberOfOffsprings(days_until_birth: number, in_days: number): numbe
     offsprings += getNumberOfOffsprings(9, total_days);
   }
 
-  map.set(`${days_until_birth},${in_days}`, offsprings);
+  cache.set(`${days_until_birth},${in_days}`, offsprings);
   return offsprings;
 }
 
