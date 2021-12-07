@@ -27,7 +27,6 @@ class BingoBoard {
   }
 
   checkNumber(number: number): void {
-    if (this.hasWon()) return;
     for (const row of this.board) {
       for (const tile of row) {
         if (number === tile.number) {
