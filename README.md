@@ -10,6 +10,7 @@ Advent of code: https://adventofcode.com/
 - [Day 4](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-04) 🌟 🌟
 - [Day 5](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-05) 🌟 🌟
 - [Day 6](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-06) 🌟 🌟
+- [Day 7](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-07) 🌟 🌟
 
 ## How to run
 
