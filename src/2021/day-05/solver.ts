@@ -69,14 +69,12 @@ export default class HydrothermalVentureSolver extends Solver<Vector[]> {
 
   solvePartOne(): number {
     const hydrothermal_vents = this.input.filter((vent) => vent.isHorizontal() || vent.isVertical());
-    console.log(`hydrothermal_vents: ${JSON.stringify(hydrothermal_vents.length, null, 2)}`);
     const diagram = this.getDiagram(hydrothermal_vents);
     HydrothermalVentureSolver.visualizeDiagram(diagram);
     return HydrothermalVentureSolver.countOverlappingPoints(diagram);
   }
   solvePartTwo(): number {
     const hydrothermal_vents = this.input.filter((vent) => vent.isHorizontal() || vent.isVertical() || vent.isDiagonal());
-    console.log(`hydrothermal_vents.length: ${JSON.stringify(hydrothermal_vents.length, null, 2)}`);
     const diagram = this.getDiagram(hydrothermal_vents);
     HydrothermalVentureSolver.visualizeDiagram(diagram);
     return HydrothermalVentureSolver.countOverlappingPoints(diagram);
