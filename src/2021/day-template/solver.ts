@@ -6,7 +6,10 @@ export default class TemplateSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split('\n').map((number) => parseInt(number, 10));
+    return raw_input
+      .split('\n')
+      .filter((line: string) => line.length > 0)
+      .map((number) => parseInt(number, 10));
   }
 
   solvePartOne(): number {
