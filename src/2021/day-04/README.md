@@ -1,12 +1,17 @@
---- Day 4: Giant Squid ---
+# --- Day 4: Giant Squid ---
 
-You're already almost 1.5km (almost a mile) below the surface of the ocean, already so deep that you can't see any sunlight. What you **_can_** see, however, is a giant squid that has attached itself to the outside of your submarine.
+You're already almost 1.5km (almost a mile) below the surface of the ocean, already so deep that you can't see any
+sunlight. What you **_can_** see, however, is a giant squid that has attached itself to the outside of your submarine.
 
 Maybe it wants to play [bingo](<https://en.wikipedia.org/wiki/Bingo_(American_version)>)?
 
-Bingo is played on a set of boards each consisting of a 5x5 grid of numbers. Numbers are chosen at random, and the chosen number is **_marked_** on all boards on which it appears. (Numbers may not appear on all boards.) If all numbers in any row or any column of a board are marked, that board **_wins_**. (Diagonals don't count.)
+Bingo is played on a set of boards each consisting of a 5x5 grid of numbers. Numbers are chosen at random, and the
+chosen number is **_marked_** on all boards on which it appears. (Numbers may not appear on all boards.) If all numbers
+in any row or any column of a board are marked, that board **_wins_**. (Diagonals don't count.)
 
-The submarine has a **_bingo subsystem_** to help passengers (currently, you and the giant squid) pass the time. It automatically generates a random order in which to draw numbers and a random set of boards (your puzzle input). For example:
+The submarine has a **_bingo subsystem_** to help passengers (currently, you and the giant squid) pass the time. It
+automatically generates a random order in which to draw numbers and a random set of boards (your puzzle input). For
+example:
 
 ```
 7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
@@ -30,7 +35,8 @@ The submarine has a **_bingo subsystem_** to help passengers (currently, you and
  2  0 12  3  7
 ```
 
-After the first five numbers are drawn (`7`, `4`, `9`, `5`, and `11`), there are no winners, but the boards are marked as follows (shown here adjacent to each other to save space):
+After the first five numbers are drawn (`7`, `4`, `9`, `5`, and `11`), there are no winners, but the boards are marked
+as follows (shown here adjacent to each other to save space):
 
 ```
 22 13 17 11  0         3 15  0  2 22        14 21 17 24  4
@@ -60,18 +66,26 @@ Finally, `24` is drawn:
 1  12 20 15 19        14 21 16 12  6         2  0 12  3  7
 ```
 
-At this point, the third board wins because it has at least one complete row or column of marked numbers (in this case, the entire top row is marked: `14 21 17 24 4`).
+At this point, the third board wins because it has at least one complete row or column of marked numbers (in this case,
+the entire top row is marked: `14 21 17 24 4`).
 
-The **_score_** of the winning board can now be calculated. Start by finding the **_sum of all unmarked numbers_** on that board; in this case, the sum is `188`. Then, multiply that sum by **_the number that was just called_** when the board won, `24`, to get the final score, `188 * 24 = 4512`.
+The **_score_** of the winning board can now be calculated. Start by finding the **_sum of all unmarked numbers_** on
+that board; in this case, the sum is `188`. Then, multiply that sum by **_the number that was just called_** when the
+board won, `24`, to get the final score, `188 * 24 = 4512`.
 
-To guarantee victory against the giant squid, figure out which board will win first. **_What will your final score be if you choose that board?_**
+To guarantee victory against the giant squid, figure out which board will win first. **_What will your final score be if
+you choose that board?_**
 
---- Part Two ---
+## --- Part Two ---
 
 On the other hand, it might be wise to try a different strategy: let the giant squid win.
 
-You aren't sure how many bingo boards a giant squid could play at once, so rather than waste time counting its arms, the safe thing to do is to **_figure out which board will win last_** and choose that one. That way, no matter which boards it picks, it will win for sure.
+You aren't sure how many bingo boards a giant squid could play at once, so rather than waste time counting its arms, the
+safe thing to do is to **_figure out which board will win last_** and choose that one. That way, no matter which boards
+it picks, it will win for sure.
 
-In the above example, the second board is the last to win, which happens after `13` is eventually called and its middle column is completely marked. If you were to keep playing until this point, the second board would have a sum of unmarked numbers equal to `148` for a final score of `148 * 13 = 1924`.
+In the above example, the second board is the last to win, which happens after `13` is eventually called and its middle
+column is completely marked. If you were to keep playing until this point, the second board would have a sum of unmarked
+numbers equal to `148` for a final score of `148 * 13 = 1924`.
 
 Figure out which board will win last. **_Once it wins, what would its final score be?_**
