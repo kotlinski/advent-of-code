@@ -36,6 +36,6 @@
   },
   "prettier": "@springworks/prettier-config",
   "dependencies": {
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.7"
   }
 }
