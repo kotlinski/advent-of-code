@@ -5,7 +5,9 @@ import { fetchTaskInputData } from './helpers/adventofcode-client';
 export async function xmasFactory(day: number): Promise<Solver<any>> {
   const input = await fetchTaskInputData(day);
   const file = `./2021/day-${day.toString().padStart(2, '0')}/solver.ts`;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { default: solver } = await import(file);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return solverFactory(solver, input);
 }
 
