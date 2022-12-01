@@ -11,7 +11,7 @@ describe('day 6', () => {
     describe('day-by-day', () => {
       describe('run a pick', () => {
         test.each([[5, 10]])('After day %s, there should be a fish population of %s', (day, population) => {
-          expect(lanternfish_solver.solvePartOne({ iterations: day, input: [3, 4, 3, 1, 2] })).toEqual(population);
+          expect(lanternfish_solver.solvePartOne({ iterations: day })).toEqual(population);
         });
       });
       describe('a fish with 1 day to birth', () => {
@@ -29,7 +29,8 @@ describe('day 6', () => {
           [11, 4],
         ];
         test.each(table)('After day %s, there should be a fish population of %s', (day, population) => {
-          expect(lanternfish_solver.solvePartOne({ iterations: day, input: [1] })).toEqual(population);
+          lanternfish_solver = new LanternfishSolver('1');
+          expect(lanternfish_solver.solvePartOne({ iterations: day })).toEqual(population);
         });
       });
       describe('the original 5 fishes', () => {
