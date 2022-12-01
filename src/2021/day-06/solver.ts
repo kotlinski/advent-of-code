@@ -28,9 +28,9 @@ export default class LanternfishSolver extends Solver<number[]> {
     return raw_input.split(',').map((number) => parseInt(number, 10));
   }
 
-  solvePartOne(optional_param?: { iterations: number; input: number[] }): number {
-    const lanternfish = optional_param?.input ?? this.input;
-    const DAYS = optional_param?.iterations ?? 80;
+  solvePartOne(optional_params?: { iterations: number }): number {
+    const lanternfish = this.input;
+    const DAYS = optional_params?.iterations ?? 80;
     let offsprings = lanternfish.length;
     lanternfish.forEach((days_until_birth) => {
       offsprings += getNumberOfOffsprings(days_until_birth, DAYS);
