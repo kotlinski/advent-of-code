@@ -2,9 +2,10 @@ import { parseInput, TaskType } from './helpers/input-validator';
 import Solver, { solverFactory } from './solver';
 import { fetchTaskInputData } from './helpers/adventofcode-client';
 
-export async function xmasFactory(day: number): Promise<Solver<any>> {
-  const input = await fetchTaskInputData(day);
-  const file = `./2021/day-${day.toString().padStart(2, '0')}/solver.ts`;
+export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
+  const input = await fetchTaskInputData(year, day);
+  const file = `./${year}/day-${day.toString().padStart(2, '0')}/solver.ts`;
+  console.log(`file: ${JSON.stringify(file, null, 2)}`);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { default: solver } = await import(file);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -13,8 +14,8 @@ export async function xmasFactory(day: number): Promise<Solver<any>> {
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 (async () => {
-  const { task_type, day } = parseInput(process.argv[2]);
-  const solver = await xmasFactory(day);
+  const { task_type, year, day } = parseInput(process.argv[2], process.argv[3]);
+  const solver = await xmasFactory(year, day);
   let answer: number;
   switch (task_type) {
     case TaskType.PART_ONE:

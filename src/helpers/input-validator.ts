@@ -15,11 +15,13 @@ export function parseTaskType(input: string): TaskType {
   return input.slice(-1) === '+' ? TaskType.PART_TWO : TaskType.PART_ONE;
 }
 
-export function parseInput(input: string): { day: number; task_type: TaskType } {
-  const day = parseInt(input, 10);
+export function parseInput(input_1: string, input_2: string): { year: number; day: number; task_type: TaskType } {
+  const year = parseInt(input_2, 10);
+  const day = parseInt(input_1, 10);
   verifyInput(day);
   return {
+    year,
     day,
-    task_type: parseTaskType(input),
+    task_type: parseTaskType(input_1),
   };
 }

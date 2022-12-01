@@ -2,22 +2,6 @@
 
 Advent of code: https://adventofcode.com/
 
-## Progress
-
-| DAY                                                                             | TASK 1 | TASK 2 |
-| ------------------------------------------------------------------------------- | :----: | :----: |
-| [Day 1](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-01)  |   🌟   |   🌟   |
-| [Day 2](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-02)  |   🌟   |   🌟   |
-| [Day 3](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-03)  |   🌟   |   🌟   |
-| [Day 4](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-04)  |   🌟   |   🌟   |
-| [Day 5](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-05)  |   🌟   |   🌟   |
-| [Day 6](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-06)  |   🌟   |   🌟   |
-| [Day 7](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-07)  |   🌟   |   🌟   |
-| [Day 8](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-08)  |   🌟   |        |
-| [Day 9](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-09)  |   🌟   |        |
-| [Day 10](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-10) |   🌟   |
-| [Day 12](https://github.com/kotlinski/advent-of-code/tree/main/src/2021/day-12) |   🌟   |   🌟   |
-
 ## How to run
 
 1. Create a `cookie` file in the directory and put your session cookie from the site
@@ -25,8 +9,8 @@ Advent of code: https://adventofcode.com/
 
 ```sh
 $ echo your_session_cookie_token > cookie
-$ npm run day 1
-$ npm run day 1+
+$ npm run day 1 2022
+$ npm run day 1+ 2022
 ```
 
 ### Cred

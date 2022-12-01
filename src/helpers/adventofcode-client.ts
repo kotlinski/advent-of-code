@@ -10,10 +10,13 @@ function getHeaders(): HeadersInit {
   return { cookie };
 }
 
-export async function fetchTaskInputData(day: number): Promise<string> {
-  const result = await fetch(`https://adventofcode.com/2021/day/${day}/input`, {
+export async function fetchTaskInputData(year: number, day: number): Promise<string> {
+  const result = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
     method: 'GET',
     headers: getHeaders(),
   });
-  return result.text();
+  console.log(`https://adventofcode.com/${year}/day/${day}/input`);
+  const text = await result.text();
+  console.log(`result.text(): ${JSON.stringify(text, null, 2)}`);
+  return text;
 }
