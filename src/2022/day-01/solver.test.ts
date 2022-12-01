@@ -28,8 +28,8 @@ describe('day 1', () => {
     });
   });
   describe('part two', () => {
-    it('should be 42', () => {
-      expect(day.solvePartTwo()).toEqual(42);
+    it('should be 45000', () => {
+      expect(day.solvePartTwo()).toEqual(45000);
     });
   });
 });

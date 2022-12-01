@@ -20,16 +20,6 @@ export default class CalorieCounting extends Solver<number[]> {
         return carrier.split('\n');
       })
       .map((numbers: string[]) => numbers.reduce(this.summarize, 0));
-
-    /* .reduce((previous_value: number[], current_value: string) => {
-      if (current_value === undefined) {
-        previous_value.push(0)
-      } else {
-        const number = parseInt(current_value, 10);
-        previous_value[previous_value.length - 1] += number
-      }
-      return previous_value;
-    }, [])*/
   }
 
   solvePartOne(): number {
@@ -37,6 +27,11 @@ export default class CalorieCounting extends Solver<number[]> {
   }
 
   solvePartTwo(): number {
-    return 42;
+    const ordered_carriers = this.input.sort((a, b) => {
+      if (a > b) return -1;
+      if (a < b) return 1;
+      return 0;
+    });
+    return ordered_carriers[0] + ordered_carriers[1] + ordered_carriers[2];
   }
 }
