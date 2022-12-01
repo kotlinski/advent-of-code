@@ -16,3 +16,5 @@ $ npm run day 1+ 2022
 ### Cred
 
 Was inspired by @atme's [advent-of-code](https://github.com/atme/advent-of-code-2021) repo for fetching the input data.
+
+[![CodeQL](https://github.com/kotlinski/advent-of-code/actions/workflows/codeql.yml/badge.svg)](https://github.com/kotlinski/advent-of-code/actions/workflows/codeql.yml)
