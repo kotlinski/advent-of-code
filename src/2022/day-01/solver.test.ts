@@ -1,7 +1,7 @@
 import Solver from '../../solver';
 import CalorieCounting from './solver';
 
-describe('day 1', () => {
+describe('2022 day 1', () => {
   let day: Solver<number[]>;
   beforeEach(() => {
     const raw_input =

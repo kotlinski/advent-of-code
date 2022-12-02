@@ -1,4 +1,4 @@
-# --- Day 1: Sonar Sweep ---
+# --- Day 1: [Calorie Counting](https://adventofcode.com/2022/day/1) ---
 
 Santa's reindeer typically eat regular reindeer food, but they need a lot
 of [magical energy](https://adventofcode.com/2018/day/25) to deliver presents on
@@ -68,7 +68,3 @@ In the example above, the **_top three Elves_** are the fourth Elf (with `24000`
 Calories), then the fifth Elf (with `10000` Calories). The sum of the Calories carried by these three elves is `45000`.
 
 Find the top three Elves carrying the most Calories. **_How many Calories are those Elves carrying in total?_**
-
-## Your puzzle answer was 199357.
-
-https://adventofcode.com/2022/day/1
