@@ -9,8 +9,8 @@ Advent of code: https://adventofcode.com/
 
 ```sh
 $ echo your_session_cookie_token > cookie
-$ npm run day 1 2022
-$ npm run day 1+ 2022
+$ yarn run day 1 2022
+$ yarn run day 1+ 2022
 ```
 
 ### Cred
