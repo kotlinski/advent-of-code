@@ -1,25 +1,21 @@
 import Solver from '../../solver';
+import { summarize } from '../../array-operations/reduce';
 
 export default class CalorieCounting extends Solver<number[]> {
   constructor(raw_input: string) {
     super(raw_input);
   }
 
-  private summarize(accumulator: number, number: string) {
-    if (isNaN(parseInt(number, 10))) {
-      return accumulator;
-    }
-    return accumulator + parseInt(number, 10);
-  }
-
   parse(raw_input: string): number[] {
     return raw_input
       .split('\n\n')
-      .map((carrier: string) => {
-        console.log(`carrier: ${JSON.stringify(carrier, null, 2)}`);
-        return carrier.split('\n');
-      })
-      .map((numbers: string[]) => numbers.reduce(this.summarize, 0));
+      .map((carrier: string) =>
+        carrier
+          .split('\n')
+          .map((num: string) => parseInt(num, 10))
+          .filter((i) => !isNaN(i)),
+      )
+      .map((numbers: number[]) => numbers.reduce(summarize, 0));
   }
 
   solvePartOne(): number {
