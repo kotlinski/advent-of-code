@@ -1,5 +1,6 @@
 import Solver from '../../solver';
 import { summarize } from '../../array-operations/reduce';
+import { stringToNumber } from '../../array-operations/map';
 
 export default class CalorieCounting extends Solver<number[]> {
   constructor(raw_input: string) {
@@ -12,7 +13,7 @@ export default class CalorieCounting extends Solver<number[]> {
       .map((carrier: string) =>
         carrier
           .split('\n')
-          .map((num: string) => parseInt(num, 10))
+          .map(stringToNumber)
           .filter((i) => !isNaN(i)),
       )
       .map((numbers: number[]) => numbers.reduce(summarize, 0));

@@ -1,4 +1,6 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { splitStringOnChar } from '../../array-operations/map';
 
 function summarize(accumulator: number, number: number) {
   return accumulator + number;
@@ -19,10 +21,7 @@ export default class RockPaperScissors extends Solver<string[][]> {
   }
 
   parse(raw_input: string): string[][] {
-    return raw_input
-      .split('\n')
-      .filter((game) => game.length > 0)
-      .map((competition: string) => competition.split(' '));
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(splitStringOnChar(' '));
   }
 
   private calculateSignScore(sign: Sign): number {

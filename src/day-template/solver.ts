@@ -1,4 +1,6 @@
 import Solver from '../solver';
+import { removeEmptyLinesPredicate } from '../array-operations/filter';
+import { stringToNumber } from '../array-operations/map';
 
 export default class TemplateSolver extends Solver<number[]> {
   constructor(raw_input: string) {
@@ -6,10 +8,7 @@ export default class TemplateSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input
-      .split('\n')
-      .filter((line: string) => line.length > 0)
-      .map((number) => parseInt(number, 10));
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(stringToNumber);
   }
 
   solvePartOne(): number {
