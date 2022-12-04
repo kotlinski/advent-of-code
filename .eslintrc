@@ -1,6 +1,0 @@
-{
-  "extends": "@springworks/eslint-config-typescript",
-  "rules": {
-    "no-console": "off"
-  }
-}
