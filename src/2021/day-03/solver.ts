@@ -1,4 +1,6 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { stringToNumber } from '../../array-operations/map';
 
 function countBitsPerIndex(input: number[][]): number[] {
   const binary_count: number[] = [];
@@ -31,8 +33,8 @@ export default class BinaryDiagnosticSolver extends Solver<number[][]> {
   parse(raw_input: string): number[][] {
     return raw_input
       .split('\n')
-      .map((binary) => binary.split('').map((decimal) => parseInt(decimal, 10)))
-      .filter((binary_array) => binary_array.length > 0);
+      .map((binary) => binary.split('').map(stringToNumber))
+      .filter(removeEmptyLinesPredicate);
   }
 
   solvePartOne(): number {

@@ -1,5 +1,6 @@
 import Solver from '../../solver';
 import { cache } from '../../helpers/cache';
+import { stringToNumber } from '../../array-operations/map';
 
 function getConstantFuelCost(distance: number) {
   return distance;
@@ -22,7 +23,7 @@ export default class TheTreacheryOfWhalesSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split(',').map((number) => parseInt(number, 10));
+    return raw_input.split(',').map(stringToNumber);
   }
 
   solvePartOne(): number {
