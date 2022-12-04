@@ -1,5 +1,7 @@
 import Solver from '../../solver';
 import { summarize } from '../../array-operations/reduce';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { splitStringOnChar } from '../../array-operations/map';
 
 export default class RucksackReorganization extends Solver<string[][]> {
   constructor(raw_input: string) {
@@ -7,10 +9,7 @@ export default class RucksackReorganization extends Solver<string[][]> {
   }
 
   parse(raw_input: string): string[][] {
-    return raw_input
-      .split('\n')
-      .filter((rucksack) => rucksack.length > 0)
-      .map((rucksack) => rucksack.split(''));
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(splitStringOnChar(''));
   }
 
   solvePartOne(): number {

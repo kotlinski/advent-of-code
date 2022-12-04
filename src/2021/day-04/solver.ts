@@ -1,4 +1,6 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { stringToNumber } from '../../array-operations/map';
 
 class Tile {
   check = false;
@@ -70,21 +72,18 @@ export default class GiantSquidSolver extends Solver<BingoGame> {
   }
 
   parse(raw_input: string): BingoGame {
-    const numbers = raw_input
-      .split('\n')[0]
-      .split(',')
-      .map((number) => parseInt(number, 10));
+    const numbers = raw_input.split('\n')[0].split(',').map(stringToNumber);
     let bingo_board: BingoBoard = new BingoBoard();
     const bingo_boards: BingoBoard[] = [];
 
     raw_input
       .split('\n')
       .slice(1)
-      .filter((row) => row.length > 0)
+      .filter(removeEmptyLinesPredicate)
       .forEach((row) => {
         const parsed_row = row
           .split(' ')
-          .filter((num) => num.length > 0)
+          .filter(removeEmptyLinesPredicate)
           .map((number) => new Tile(parseInt(number, 10)));
         bingo_board.addRow(parsed_row);
         if (bingo_board.isComplete()) {

@@ -1,11 +1,12 @@
 import Solver from '../../solver';
+import { stringToNumber } from '../../array-operations/map';
 
 export default class SonarSweepSolver extends Solver<number[]> {
   constructor(raw_input: string) {
     super(raw_input);
   }
   parse(raw_input: string): number[] {
-    return raw_input.split('\n').map((number) => parseInt(number, 10));
+    return raw_input.split('\n').map(stringToNumber);
   }
   solvePartOne(): number {
     return this.countNumberOfIncreases(this.input);

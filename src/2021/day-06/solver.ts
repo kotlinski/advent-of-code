@@ -1,5 +1,6 @@
 import Solver from '../../solver';
 import { cache } from '../../helpers/cache';
+import { stringToNumber } from '../../array-operations/map';
 
 function getNumberOfOffsprings(days_until_birth: number, in_days: number): number {
   in_days -= days_until_birth; // fast-forward to the next birth
@@ -25,7 +26,7 @@ export default class LanternfishSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split(',').map((number) => parseInt(number, 10));
+    return raw_input.split(',').map(stringToNumber);
   }
 
   solvePartOne(optional_param?: { iterations: number; input: number[] }): number {
