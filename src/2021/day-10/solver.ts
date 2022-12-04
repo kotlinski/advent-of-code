@@ -1,4 +1,7 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { splitStringOnChar } from '../../array-operations/map';
+import { summarize } from '../../array-operations/reduce';
 
 const isClosingChar = (nav_char: string) => '>)]}'.split('').some((char) => char === nav_char);
 
@@ -58,10 +61,7 @@ export default class SyntaxScoringSolver extends Solver<string[][]> {
   }
 
   parse(raw_input: string): string[][] {
-    return raw_input
-      .split('\n')
-      .filter((line: string) => line.length > 0)
-      .map((line) => line.split(''));
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(splitStringOnChar(''));
   }
 
   solvePartOne(): number {
@@ -70,7 +70,7 @@ export default class SyntaxScoringSolver extends Solver<string[][]> {
     navigation_sub_system_line.forEach(reduceCompleteChunks);
     const corrupt_lines = navigation_sub_system_line.filter(isCorrupt);
     const scores = corrupt_lines.map(getSyntaxErrorScore);
-    return scores.reduce((sum, score) => sum + score, 0);
+    return scores.reduce(summarize, 0);
   }
 
   solvePartTwo(): number {

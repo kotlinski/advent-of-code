@@ -1,4 +1,5 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 
 export default class SevenSegmentSearchSolver extends Solver<string[][]> {
   constructor(raw_input: string) {
@@ -8,13 +9,8 @@ export default class SevenSegmentSearchSolver extends Solver<string[][]> {
   parse(raw_input: string): string[][] {
     const notes = raw_input.split('\n');
     return notes
-      .map((note) =>
-        note
-          ?.split('|')[1]
-          ?.split(' ')
-          .filter((number) => number?.length > 0),
-      )
-      .filter((numbers) => numbers?.length > 0);
+      .map((note) => note?.split('|')[1]?.split(' ').filter(removeEmptyLinesPredicate))
+      .filter(removeEmptyLinesPredicate);
   }
 
   solvePartOne(): number {
