@@ -1,3 +1,1 @@
-export function summarize(accumulator: number, number: number) {
-  return accumulator + number;
-}
+export const summarize = (accumulator: number, number: number) => accumulator + number;

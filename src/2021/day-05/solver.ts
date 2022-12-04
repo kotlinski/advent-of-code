@@ -1,4 +1,6 @@
 import Solver from '../../solver';
+import { stringToNumber } from '../../array-operations/map';
+import { mustBeEqualOrHigherThanPredicate, removeEmptyLinesPredicate } from '../../array-operations/filter';
 
 class Point {
   x: number;
@@ -15,9 +17,7 @@ class Point {
 export class Vector {
   private readonly points: Point[];
   constructor(raw_vector: string) {
-    this.points = raw_vector
-      .split(' -> ')
-      .map((raw_point) => new Point(raw_point.split(',').map((number) => parseInt(number, 10))));
+    this.points = raw_vector.split(' -> ').map((raw_point) => new Point(raw_point.split(',').map(stringToNumber)));
   }
 
   isHorizontal = (): boolean => this.points[0].y === this.points[1].y;
@@ -63,7 +63,7 @@ export default class HydrothermalVentureSolver extends Solver<Vector[]> {
   parse(raw_input: string): Vector[] {
     return raw_input
       .split('\n')
-      .filter((v) => v !== '')
+      .filter(removeEmptyLinesPredicate)
       .map((raw_vector) => new Vector(raw_vector));
   }
 
@@ -92,7 +92,7 @@ export default class HydrothermalVentureSolver extends Solver<Vector[]> {
   }
 
   private static countOverlappingPoints(diagram: Map<string, number>) {
-    return [...diagram.values()].filter((number) => number >= 2).length;
+    return [...diagram.values()].filter(mustBeEqualOrHigherThanPredicate(2)).length;
   }
 
   private getDiagram(hydrothermal_vents: Vector[]) {

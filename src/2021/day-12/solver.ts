@@ -1,6 +1,7 @@
 import Solver from '../../solver';
 import { Graph } from './graph';
 import { Node } from './node';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 
 export default class PassagePathingSolver extends Solver<Graph> {
   constructor(raw_input: string) {
@@ -10,7 +11,7 @@ export default class PassagePathingSolver extends Solver<Graph> {
   parse(raw_input: string): Graph {
     const paths = raw_input
       .split('\n')
-      .filter((line: string) => line.length > 0)
+      .filter(removeEmptyLinesPredicate)
       .map((path) => path.split('-').map((key) => new Node(key)));
     return new Graph(paths);
   }

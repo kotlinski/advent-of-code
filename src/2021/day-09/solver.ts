@@ -1,4 +1,6 @@
 import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { stringToNumber } from '../../array-operations/map';
 
 function findNeighbours(heightmap: number[][], x: number, y: number) {
   const neighbours: number[] = [];
@@ -29,8 +31,8 @@ export default class SmokeBasinSolver extends Solver<number[][]> {
   parse(raw_input: string): number[][] {
     return raw_input
       .split('\n')
-      .filter((line: string) => line.length > 0)
-      .map((line) => line.split('').map((height) => parseInt(height, 10)));
+      .filter(removeEmptyLinesPredicate)
+      .map((line) => line.split('').map(stringToNumber));
   }
 
   solvePartOne(): number {
