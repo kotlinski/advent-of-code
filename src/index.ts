@@ -15,7 +15,7 @@ export async function xmasFactory(year: number, day: number): Promise<Solver<any
 (async () => {
   const { task_type, year, day } = parseInput(process.argv[2], process.argv[3]);
   const solver = await xmasFactory(year, day);
-  let answer: number;
+  let answer: number | string;
   switch (task_type) {
     case TaskType.PART_ONE:
       answer = solver.solvePartOne();
