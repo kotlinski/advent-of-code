@@ -12,9 +12,9 @@ export default abstract class Solver<T> {
 
   protected abstract parse(raw_input: string): T;
 
-  public abstract solvePartOne(optional_param?: { input?: T; iterations?: number }): number;
+  public abstract solvePartOne(optional_param?: { input?: T; iterations?: number }): number | string;
 
-  public abstract solvePartTwo(): number;
+  public abstract solvePartTwo(): number | string;
 }
 
 export function solverFactory(constructor: new (input: string) => Solver<any>, in_data: string): Solver<any> {

@@ -4,5 +4,6 @@ export function print<T>(a: T): T {
 }
 
 export const removeEmptyLinesPredicate = (line: string | any[]) => line.length > 0;
+export const removeUndefinedPredicate = (line: any | undefined) => line !== undefined;
 
 export const mustBeEqualOrHigherThanPredicate = (compare: number) => (n: number) => n >= compare;
