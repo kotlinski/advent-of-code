@@ -1,6 +1,7 @@
 import Solver from '../../solver';
 import { summarize } from '../../array-operations/reduce';
 import { stringToNumber } from '../../array-operations/map';
+import { highToLowCompareFunction } from '../../array-operations/sort';
 
 export default class CalorieCounting extends Solver<number[]> {
   constructor(raw_input: string) {
@@ -24,11 +25,7 @@ export default class CalorieCounting extends Solver<number[]> {
   }
 
   solvePartTwo(): number {
-    const ordered_carriers = this.input.sort((a, b) => {
-      if (a > b) return -1;
-      if (a < b) return 1;
-      return 0;
-    });
+    const ordered_carriers = this.input.sort(highToLowCompareFunction());
     return ordered_carriers[0] + ordered_carriers[1] + ordered_carriers[2];
   }
 }
