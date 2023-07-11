@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import { stringToNumber } from '../../array-operations/map';
 import { mustBeEqualOrHigherThanPredicate, removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { stringToNumber } from '../../array-operations/map';
+import Solver from '../../solver';
 
 class Point {
   x: number;

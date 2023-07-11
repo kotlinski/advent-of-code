@@ -1,11 +1,11 @@
-import Solver from '../../solver';
+import { parseLinesToFileSystem } from './filesystem/command-line-parser';
+import Dir from './filesystem/dir';
+import { folderSizesVisitor } from './filesystem/visitors';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 
-import Dir from './filesystem/dir';
 import { summarize } from '../../array-operations/reduce';
-import { folderSizesVisitor } from './filesystem/visitors';
-import { parseLinesToFileSystem } from './filesystem/command-line-parser';
 import { highToLowCompareFunction } from '../../array-operations/sort';
+import Solver from '../../solver';
 
 export default class NoSpaceLeftOnDevice extends Solver<Dir> {
   constructor(raw_input: string) {

@@ -1,7 +1,7 @@
-import Solver from '../../solver';
-import { summarize } from '../../array-operations/reduce';
-import { splitStringOnChar } from '../../array-operations/map';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { splitStringOnChar } from '../../array-operations/map';
+import { summarize } from '../../array-operations/reduce';
+import Solver from '../../solver';
 
 export default class RucksackReorganization extends Solver<string[][]> {
   constructor(raw_input: string) {

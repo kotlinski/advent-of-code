@@ -1,7 +1,7 @@
-import Solver from '../../solver';
-import { summarize } from '../../array-operations/reduce';
 import { stringToNumber } from '../../array-operations/map';
+import { summarize } from '../../array-operations/reduce';
 import { highToLowCompareFunction } from '../../array-operations/sort';
+import Solver from '../../solver';
 
 export default class CalorieCounting extends Solver<number[]> {
   constructor(raw_input: string) {

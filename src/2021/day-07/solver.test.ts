@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import TheTreacheryOfWhalesSolver, { getAcceleratingFuelCostForDistance } from './solver';
+import Solver from '../../solver';
 
 describe('day 7', () => {
   let day: Solver<number[]>;

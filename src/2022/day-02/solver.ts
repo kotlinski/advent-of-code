@@ -1,6 +1,6 @@
-import Solver from '../../solver';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 import { splitStringOnChar } from '../../array-operations/map';
+import Solver from '../../solver';
 
 function summarize(accumulator: number, number: number) {
   return accumulator + number;

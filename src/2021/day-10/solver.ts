@@ -1,7 +1,7 @@
-import Solver from '../../solver';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 import { splitStringOnChar } from '../../array-operations/map';
 import { summarize } from '../../array-operations/reduce';
+import Solver from '../../solver';
 
 const isClosingChar = (nav_char: string) => '>)]}'.split('').some((char) => char === nav_char);
 

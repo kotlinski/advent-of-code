@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import { fillInterval, stringToNumber } from '../../array-operations/map';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import { fillInterval, stringToNumber } from '../../array-operations/map';
+import Solver from '../../solver';
 
 export default class CampCleanup extends Solver<number[][][]> {
   constructor(raw_input: string) {

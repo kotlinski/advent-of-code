@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import TuningTrouble from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 6', () => {
   let day: Solver<string[]>;

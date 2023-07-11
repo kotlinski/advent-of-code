@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import { cache } from '../../helpers/cache';
 import { stringToNumber } from '../../array-operations/map';
+import { cache } from '../../helpers/cache';
+import Solver from '../../solver';
 
 function getConstantFuelCost(distance: number) {
   return distance;
