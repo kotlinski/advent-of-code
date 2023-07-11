@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import LanternfishSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 6', () => {
   let lanternfish_solver: Solver<number[]>;

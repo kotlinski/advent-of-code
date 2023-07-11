@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import HydrothermalVentureSolver, { Vector } from './solver';
+import Solver from '../../solver';
 
 describe('day 5', () => {
   let day: Solver<Vector[]>;

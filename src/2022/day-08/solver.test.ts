@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import TreetopTreeHouse from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 8', () => {
   let day: Solver<number[][]>;

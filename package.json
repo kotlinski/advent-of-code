@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/kotlinski/advent-of-code#readme",
   "devDependencies": {
-    "@springworks/eslint-config-typescript": "^3005.159.0",
+    "@springworks/eslint-config-typescript": "^3005.222.0",
     "@springworks/prettier-config": "^3005.77.0",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",

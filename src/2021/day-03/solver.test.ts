@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import BinaryDiagnosticSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 3', () => {
   let day: Solver<number[][]>;

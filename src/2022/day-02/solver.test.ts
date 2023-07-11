@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import RockPaperScissors from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 2', () => {
   let day: Solver<string[][]>;
