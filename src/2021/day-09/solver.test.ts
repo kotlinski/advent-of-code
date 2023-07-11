@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import SmokeBasinSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 9', () => {
   let day: Solver<number[][]>;

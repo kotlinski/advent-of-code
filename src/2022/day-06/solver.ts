@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import Solver from '../../solver';
 
 export default class TuningTrouble extends Solver<string[]> {
   constructor(raw_input: string) {

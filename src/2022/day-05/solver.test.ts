@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import SupplyStacks, { SupplyInstructions } from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 5', () => {
   let day: Solver<SupplyInstructions>;
