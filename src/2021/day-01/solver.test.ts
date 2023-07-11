@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import SonarSweepSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 1', () => {
   let day: Solver<number[]>;

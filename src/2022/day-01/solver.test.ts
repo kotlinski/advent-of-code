@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import CalorieCounting from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 1', () => {
   let day: Solver<number[]>;

@@ -1,5 +1,5 @@
-import { solverFactory } from './solver';
 import TheTreacheryOfWhalesSolver from './2021/day-07/solver';
+import { solverFactory } from './solver';
 
 describe('solverFactory', () => {
   it('should create a solver', () => {
