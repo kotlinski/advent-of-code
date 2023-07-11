@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import GiantSquidSolver, { BingoGame } from './solver';
+import Solver from '../../solver';
 
 describe('day 4', () => {
   let day: Solver<BingoGame>;

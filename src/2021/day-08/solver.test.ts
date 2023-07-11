@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import SevenSegmentSearchSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 8', () => {
   let day: Solver<string[][]>;

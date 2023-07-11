@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import { cache } from '../../helpers/cache';
 import { stringToNumber } from '../../array-operations/map';
+import { cache } from '../../helpers/cache';
+import Solver from '../../solver';
 
 function getNumberOfOffsprings(days_until_birth: number, in_days: number): number {
   in_days -= days_until_birth; // fast-forward to the next birth

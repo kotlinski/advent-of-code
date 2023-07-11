@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import CampCleanup from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 4', () => {
   let day: Solver<number[][][]>;

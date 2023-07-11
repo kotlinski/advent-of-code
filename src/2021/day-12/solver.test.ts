@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import PassagePathingSolver from './solver';
 import { Graph } from './graph';
+import PassagePathingSolver from './solver';
+import Solver from '../../solver';
 
 describe('day 12', () => {
   const tiny_input = 'start-A\n' + 'start-b\n' + 'A-c\n' + 'A-b\n' + 'b-d\n' + 'A-end\n' + 'b-end\n';
