@@ -1,6 +1,6 @@
-import Solver from '../../solver';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 import { stringToNumber } from '../../array-operations/map';
+import Solver from '../../solver';
 
 function findNeighbours(heightmap: number[][], x: number, y: number) {
   const neighbours: number[] = [];

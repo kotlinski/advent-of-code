@@ -1,5 +1,5 @@
-import Solver from '../../solver';
 import { stringToNumber } from '../../array-operations/map';
+import Solver from '../../solver';
 
 export default class SonarSweepSolver extends Solver<number[]> {
   constructor(raw_input: string) {

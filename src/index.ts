@@ -1,6 +1,6 @@
+import { fetchTaskInputData } from './helpers/adventofcode-client';
 import { parseInput, TaskType } from './helpers/input-validator';
 import Solver, { solverFactory } from './solver';
-import { fetchTaskInputData } from './helpers/adventofcode-client';
 
 export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
   const input = await fetchTaskInputData(year, day);

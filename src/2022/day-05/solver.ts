@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import { stringToNumber } from '../../array-operations/map';
 import { removeEmptyLinesPredicate, removeUndefinedPredicate } from '../../array-operations/filter';
+import { stringToNumber } from '../../array-operations/map';
+import Solver from '../../solver';
 
 export class SupplyInstructions {
   constructor(private readonly crates: string[][], private readonly instructions: number[][]) {}

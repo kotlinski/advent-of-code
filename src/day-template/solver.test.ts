@@ -1,5 +1,5 @@
-import Solver from '../solver';
 import TemplateSolver from './solver';
+import Solver from '../solver';
 
 describe('day X', () => {
   let day: Solver<number[]>;

@@ -1,7 +1,7 @@
-import Solver from '../../solver';
 import { Graph } from './graph';
 import { Node } from './node';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
+import Solver from '../../solver';
 
 export default class PassagePathingSolver extends Solver<Graph> {
   constructor(raw_input: string) {

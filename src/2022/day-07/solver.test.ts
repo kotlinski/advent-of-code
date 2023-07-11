@@ -1,6 +1,6 @@
-import Solver from '../../solver';
-import NoSpaceLeftOnDevice from './solver';
 import Dir from './filesystem/dir';
+import NoSpaceLeftOnDevice from './solver';
+import Solver from '../../solver';
 
 describe('2022 day 7', () => {
   let day: Solver<Dir>;
