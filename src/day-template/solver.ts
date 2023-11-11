@@ -1,6 +1,6 @@
-import { removeEmptyLinesPredicate } from '../array-operations/filter';
-import { stringToNumber } from '../array-operations/map';
-import Solver from '../solver';
+import { removeEmptyLinesPredicate } from '../advent-of-code-solver/common-operations/array-operations/filter';
+import { stringToNumber } from '../advent-of-code-solver/common-operations/array-operations/map';
+import Solver from '../advent-of-code-solver/solver';
 
 export default class TemplateSolver extends Solver<number[]> {
   constructor(raw_input: string) {
