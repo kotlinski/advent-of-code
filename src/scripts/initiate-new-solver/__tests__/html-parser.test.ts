@@ -9,6 +9,7 @@ describe('html-parser', () => {
       { input: '--- Day 9: Rope Bridge ---', output: 'RopeBridge' },
       { input: '--- Day 25: Sea Cucumber ---', output: 'SeaCucumber' },
       { input: '--- Day 1: Not Quite Lisp ---', output: 'NotQuiteLisp' },
+      { input: '--- Day 1: The Tyranny of the Rocket Equation ---\n', output: 'TheTyrannyOfTheRocketEquation' },
     ];
     describe.each(cases)('$description', ({ input, output }: TestCase) => {
       it('should format to PascalCase', () => {
