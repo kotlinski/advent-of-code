@@ -13,8 +13,8 @@ describe('day 1', () => {
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
-      expect(solver.solvePartTwo()).toEqual(4711);
+    it('should be 241861950', () => {
+      expect(solver.solvePartTwo()).toEqual(241861950);
     });
   });
 });
