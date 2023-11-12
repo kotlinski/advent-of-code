@@ -11,7 +11,12 @@ export function parseProblemDescription(html: string): string {
 }
 
 export function pascalName(verbose_header: string) {
-  return verbose_header.replaceAll(' ', '').split(':')[1].split('-')[0];
+  const words_in_header = verbose_header
+    .split(':')[1]
+    .split('-')[0]
+    .split(' ')
+    .map((word: string) => word.charAt(0).toUpperCase() + word.substring(1));
+  return words_in_header.join('');
 }
 
 export function parseSolverName(html: string): string {
