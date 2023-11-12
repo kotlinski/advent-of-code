@@ -1,14 +1,16 @@
+import path from 'path';
 import Solver, { solverFactory } from '../../advent-of-code-solver/solver';
 import { fetchTaskInputData } from '../../api-client/advent-of-code-client';
 import { TaskType } from '../input-validator';
 
 export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
   const input = await fetchTaskInputData(year, day);
-  const file = `./${year}/day-${day.toString().padStart(2, '0')}/solver.ts`;
+  // const file = `./src/advent-of-code-solver/${year}/day-${day.toString().padStart(2, '0')}/solver.ts`;
+  const day_path = path.resolve(`./src/advent-of-code-solver/${year}/day-${String(day).padStart(2, '0')}/solver.ts`);
 
-  type SolverConstructor = new (data_input: typeof input) => Solver<any>;
+  type SolverConstructor = new (data_input: any) => Solver<any>;
   type SolverFileImport = { default: SolverConstructor };
-  const { default: constructor } = (await import(file)) as SolverFileImport;
+  const { default: constructor } = (await import(day_path)) as SolverFileImport;
   return solverFactory(constructor, input);
 }
 
