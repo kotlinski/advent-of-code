@@ -27,6 +27,15 @@
       "no-console": "off"
     }
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testRegex": ".*\\.test\\.ts$",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "node_modules"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:kotlinski/advent-of-code.git"
