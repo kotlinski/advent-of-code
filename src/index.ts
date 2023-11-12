@@ -1,27 +1,20 @@
-import Solver, { solverFactory } from './advent-of-code-solver/solver';
-import { fetchTaskInputData } from './helpers/advent-of-code-client';
-import { parseInput, TaskType } from './helpers/input-validator';
+import { initiateNewSolver } from './scripts/initiate-new-solver/initiate-new-solver-script';
+import { parseInput } from './scripts/input-validator';
+import { solveProblem } from './scripts/run-solver/solve-problem-script';
 
-export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
-  const input = await fetchTaskInputData(year, day);
-  const file = `./${year}/day-${day.toString().padStart(2, '0')}/solver.ts`;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { default: solver } = await import(file);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  return solverFactory(solver, input);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-(async () => {
-  const { task_type, year, day } = parseInput(process.argv[2], process.argv[3]);
-  const solver = await xmasFactory(year, day);
-  let answer: number | string;
-  switch (task_type) {
-    case TaskType.PART_ONE:
-      answer = solver.solvePartOne();
+export async function main() {
+  const { script, task_type, year, day } = parseInput(process.argv[1], process.argv[2], process.argv[3]);
+  switch (script) {
+    case 'solve':
+      console.log('Will solve problem');
+      await solveProblem({ year, day, task_type });
       break;
-    case TaskType.PART_TWO:
-      answer = solver.solvePartTwo();
+    case 'init-solver':
+      console.log('will initiate new solver');
+      await initiateNewSolver({ year, day });
+      break;
+    default:
+      throw new Error('unknown script');
   }
-  console.log(`The answer is ${answer}`);
-})();
+  process.exit(0);
+}
