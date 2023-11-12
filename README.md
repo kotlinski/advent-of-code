@@ -2,15 +2,46 @@
 
 Advent of code: https://adventofcode.com/
 
-## How to run
+Each day from first to 25th of December has a new problem to solve, with an additional part 2 problem as a bonus.
+Every problem has example data, but the problem should be solved with a personal set of data. The output will typically be a number or a sequence of numbers/characters.
 
-1. Create a `cookie` file in the directory and put your session cookie from the site
-2. Run in a terminal `npm run day [day]` or `npm run day [day]+` for part two
+## Prerequisite
+
+1. Sign in on [advent of code](https://adventofcode.com/).
+2. Find where the browser stores your session cookie.
+   a. In Chrome: press F12 -> Application -> Cookies -> session -> find a value of 128 hexadecimals
+3. Create a file named `cookie` in the project root dir and put your session cookie from the site
 
 ```sh
 $ echo your_session_cookie_token > cookie
-$ yarn run day 1 2022
-$ yarn run day 1+ 2022
+```
+
+## Run scripts
+
+The two scripts in this project _creates a new solver for the new task_ and _runs the task solver with the proper input_.
+
+### create a new solver from boilerplate
+
+This script will create a folder and a solver with template code for the given year and date.
+
+```sh
+$ yarn run init-solver 2022 1
+> https://adventofcode.com/2022/day/9
+> ✨ Done in 1.19s.
+```
+
+### run the solver with personal puzzle input
+
+The script will use your session cookie and fetch your personal input data for the given year and day.
+
+Run in a terminal `npm run day [year] [day]` or add a `+` sign in the end for part two.
+
+```sh
+$ yarn run solve 2022 1
+> The answer is 7746
+
+$ yarn run solve 2022 1+
+> The answer is 2604
 ```
 
 ### Cred

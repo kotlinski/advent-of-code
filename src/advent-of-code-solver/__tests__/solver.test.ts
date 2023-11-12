@@ -1,5 +1,5 @@
-import TheTreacheryOfWhalesSolver from './advent-of-code-solver/2021/day-07/solver';
-import { solverFactory } from './advent-of-code-solver/solver';
+import TheTreacheryOfWhalesSolver from '../2021/day-07/solver';
+import { solverFactory } from '../solver';
 
 describe('solverFactory', () => {
   it('should create a solver', () => {
