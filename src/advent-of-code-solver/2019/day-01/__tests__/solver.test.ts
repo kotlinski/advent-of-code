@@ -13,8 +13,17 @@ describe('day 1', () => {
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
-      expect(solver.solvePartTwo()).toEqual(4711);
+    type TestCase = { input: string; output: number };
+    const cases: TestCase[] = [
+      { input: '14', output: 2 },
+      { input: '1969', output: 966 },
+      { input: '100756', output: 50346 },
+    ];
+    describe.each(cases)('input', ({ input, output }: TestCase) => {
+      it('should', () => {
+        solver = new TheTyrannyOfTheRocketEquationSolver(input);
+        expect(solver.solvePartTwo()).toEqual(output);
+      });
     });
   });
 });
