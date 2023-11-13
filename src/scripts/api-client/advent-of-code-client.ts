@@ -3,7 +3,7 @@ import path from 'path';
 import HeadersInit = NodeJS.fetch.HeadersInit;
 
 function getHeaders(): HeadersInit {
-  const cookie_path = path.resolve(__dirname, './../../cookie');
+  const cookie_path = path.resolve(__dirname, './../../../cookie');
   const session_value = readFileSync(cookie_path)
     .toString()
     .replace(/(\r\n|\n|\r)/gm, '');
