@@ -1,6 +1,7 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
 import { stringToNumber } from '../../common-operations/array-operations/map';
+import { summarize } from '../../common-operations/array-operations/reduce';
 
 const calculateFuelNeeded = (mass: number) => Math.floor(mass / 3) - 2;
 
@@ -24,12 +25,12 @@ export default class TheTyrannyOfTheRocketEquationSolver extends Solver<number[]
   solvePartOne(): number {
     const mass_list = this.input;
     const fuel_requirements = mass_list.map(calculateFuelNeeded);
-    return fuel_requirements.reduce((sum: number, current: number) => sum + current, 0);
+    return fuel_requirements.reduce(summarize);
   }
 
   solvePartTwo(): number {
     const mass_list = this.input;
     const fuel_requirements = mass_list.map(recursiveMassNeeded);
-    return fuel_requirements.reduce((sum: number, current: number) => sum + current, 0);
+    return fuel_requirements.reduce(summarize);
   }
 }
