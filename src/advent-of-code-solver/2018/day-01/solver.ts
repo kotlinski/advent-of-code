@@ -19,18 +19,10 @@ export default class ChronalCalibrationSolver extends Solver<number[]> {
   solvePartTwo(): number {
     const set = new Set<number>();
     let frequency = 0;
-    let final_frequency: number | undefined;
-    set.add(0);
-    do {
-      for (const change of this.input) {
-        frequency += change;
-        if (set.has(frequency)) {
-          final_frequency = frequency;
-          break;
-        }
-        set.add(frequency);
-      }
-    } while (final_frequency === undefined);
-    return final_frequency;
+    for (let i = 0; !set.has(frequency); i = (i + 1) % this.input.length) {
+      set.add(frequency);
+      frequency += this.input[i];
+    }
+    return frequency;
   }
 }
