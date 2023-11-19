@@ -1,5 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
+import { removeEmptyLinesPredicate, removeNonNumbers } from '../../common-operations/array-operations/filter';
 import { stringToNumber } from '../../common-operations/array-operations/map';
 
 export default class InverseCaptchaSolver extends Solver<number[]> {
@@ -7,10 +7,13 @@ export default class InverseCaptchaSolver extends Solver<number[]> {
     super(raw_input);
   }
   parse(raw_input: string): number[] {
-    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(stringToNumber);
+    return raw_input.split('').filter(removeEmptyLinesPredicate).map(stringToNumber).filter(removeNonNumbers);
   }
   solvePartOne(): number {
-    return 47;
+    return this.input.reduce((previous, current, index) => {
+      const next_number: number = this.input[!this.input[index + 1] ? 0 : index + 1];
+      return next_number === current ? previous + current : previous;
+    }, 0);
   }
   solvePartTwo(): number {
     return 4711;
