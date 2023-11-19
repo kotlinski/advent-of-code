@@ -16,6 +16,11 @@ export default class InverseCaptchaSolver extends Solver<number[]> {
     }, 0);
   }
   solvePartTwo(): number {
-    return 4711;
+    const step_length = this.input.length / 2;
+    return this.input.reduce((previous, current, index) => {
+      const compare_index = (index + step_length) % this.input.length;
+      const next_number: number = this.input[compare_index];
+      return next_number === current ? previous + current : previous;
+    }, 0);
   }
 }
