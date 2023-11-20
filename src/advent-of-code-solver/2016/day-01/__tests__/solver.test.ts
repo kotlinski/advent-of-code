@@ -21,7 +21,8 @@ describe('day 1', () => {
   });
   describe('part two', () => {
     it('should be 4711', () => {
-      expect(solver.solvePartTwo()).toEqual(4711);
+      solver = new NoTimeForATaxicabSolver('R8, R4, R4, R8\n');
+      expect(solver.solvePartTwo()).toEqual(4);
     });
   });
 });

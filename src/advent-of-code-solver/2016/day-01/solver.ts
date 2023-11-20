@@ -33,7 +33,52 @@ export default class NoTimeForATaxicabSolver extends Solver<CoordinatedStep[]> {
   }
 
   solvePartOne(): number {
-    const vectors: Vector[] = this.input.reduce((previous_vectors: Vector[], coordinated_step: CoordinatedStep) => {
+    const vectors = this.turnStepsToVectors(this.input);
+    const end_coordinate: Coordinate = vectors.pop()!.to;
+    return this.calculateDistanceToCoordinate(end_coordinate);
+  }
+
+  solvePartTwo(): number {
+    const vectors = this.turnStepsToVectors(this.input);
+    for (let i = 0; i < vectors.length; i++) {
+      // don't compare two adjacent vectors (j + 1)
+      for (let j = 0; j + 1 < i; j++) {
+        const intersection = this.hasIntersection(vectors[i], vectors[j]);
+        if (intersection) {
+          return this.calculateDistanceToCoordinate(intersection);
+        }
+      }
+    }
+    return 0;
+  }
+  private subtractCoordinates(v1: Coordinate, v2: Coordinate): Coordinate {
+    return { x: v1.x - v2.x, y: v1.y - v2.y };
+  }
+  private hasIntersection(vector_1: Vector, vector_2: Vector): Coordinate | undefined {
+    const v1 = this.subtractCoordinates(vector_1.to, vector_1.from);
+    const v2 = this.subtractCoordinates(vector_2.to, vector_2.from);
+
+    const det = v1.x * v2.y - v1.y * v2.x;
+
+    if (det === 0) {
+      // Vectors are parallel, no intersection
+      return undefined;
+    }
+
+    const t = ((vector_2.from.x - vector_1.from.x) * v2.y - (vector_2.from.y - vector_1.from.y) * v2.x) / det;
+    const u = ((vector_2.from.x - vector_1.from.x) * v1.y - (vector_2.from.y - vector_1.from.y) * v1.x) / det;
+
+    if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
+      return { x: vector_1.from.x + t * v1.x, y: vector_1.from.y + t * v1.y };
+    }
+    return undefined;
+  }
+
+  private calculateDistanceToCoordinate(end_coordinate: Coordinate) {
+    return Math.abs(end_coordinate.x) + Math.abs(end_coordinate.y);
+  }
+  private turnStepsToVectors(coordinated_steps: CoordinatedStep[]) {
+    return coordinated_steps.reduce((previous_vectors: Vector[], coordinated_step: CoordinatedStep) => {
       const recent_vector: Vector | undefined = previous_vectors[previous_vectors.length - 1];
       const from = recent_vector?.to ?? { x: 0, y: 0 };
 
@@ -44,11 +89,8 @@ export default class NoTimeForATaxicabSolver extends Solver<CoordinatedStep[]> {
         y: from.y + new_direction.y * coordinated_step.distance,
       };
       previous_vectors.push({ from, to });
-      /* console.log(`${JSON.stringify(to)}; ${JSON.stringify(coordinated_step)}`);*/
       return previous_vectors;
     }, []);
-    const end_coordinate: Coordinate = vectors.pop()!.to;
-    return Math.abs(end_coordinate.x) + Math.abs(end_coordinate.y);
   }
 
   private rotateDirection(coordinated_step: CoordinatedStep, direction: Coordinate): Coordinate {
@@ -65,9 +107,5 @@ export default class NoTimeForATaxicabSolver extends Solver<CoordinatedStep[]> {
       x: x_dir === 0 ? 0 : x_dir / Math.abs(x_dir),
       y: y_dir === 0 ? 0 : y_dir / Math.abs(y_dir),
     };
-  }
-
-  solvePartTwo(): number {
-    return 4711;
   }
 }
