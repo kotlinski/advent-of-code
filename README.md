@@ -5,6 +5,17 @@ Advent of code: https://adventofcode.com/
 Each day from first to 25th of December has a new problem to solve, with an additional part 2 problem as a bonus.
 Every problem has example data, but the problem should be solved with a personal set of data. The output will typically be a number or a sequence of numbers/characters.
 
+| YEAR                                                                                         | 🌟  |
+| -------------------------------------------------------------------------------------------- | :-: |
+| [2015](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2015) |  2  |
+| [2016](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2016) |  2  |
+| [2017](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2017) |  2  |
+| [2018](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2018) |  2  |
+| [2019](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2019) |  2  |
+| [2020](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2020) |  2  |
+| [2021](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2021) | 20  |
+| [2022](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2022) | 16  |
+
 ## Prerequisite
 
 1. Sign in on [advent of code](https://adventofcode.com/).
