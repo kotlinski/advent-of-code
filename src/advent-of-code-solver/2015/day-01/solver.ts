@@ -17,6 +17,11 @@ export default class NotQuiteLispSolver extends Solver<('(' | ')')[]> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    let floor = 0;
+    for (const [index, change] of this.input.entries()) {
+      if (floor === -1) return index;
+      floor += change === '(' ? 1 : -1;
+    }
+    return 0;
   }
 }

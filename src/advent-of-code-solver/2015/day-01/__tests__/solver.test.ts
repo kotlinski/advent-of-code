@@ -26,8 +26,17 @@ describe('2015 day 1', () => {
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
-      expect(solver.solvePartTwo()).toEqual(4711);
+    type TestCase = { input: string; output: number };
+    const cases: TestCase[] = [
+      { input: ')\n', output: 1 },
+      { input: '()())\n', output: 5 },
+    ];
+    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+      it(`should equal to ${output}`, () => {
+        solver = new NotQuiteLispSolver(input);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(output);
+      });
     });
   });
 });
