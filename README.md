@@ -7,7 +7,7 @@ Every problem has example data, but the problem should be solved with a personal
 
 | YEAR                                                                                         | 🌟  |
 | -------------------------------------------------------------------------------------------- | :-: |
-| [2015](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2015) |  2  |
+| [2015](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2015) |  4  |
 | [2016](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2016) |  2  |
 | [2017](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2017) |  2  |
 | [2018](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2018) |  2  |
