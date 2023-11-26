@@ -14,7 +14,7 @@ function getHeaders(): HeadersInit {
 
 async function fetchUrl(url: string, skip_cache = false): Promise<string> {
   const cache_file = path.resolve(__dirname, `./cache/${filenamifyUrl(url)}`);
-  if (existsSync(cache_file) && skip_cache) {
+  if (existsSync(cache_file) && !skip_cache) {
     console.log(`Found cache: ${url}`);
     return readFileSync(cache_file).toString();
   }

@@ -35,7 +35,25 @@ export default class InventoryManagementSystemSolver extends Solver<string[][]> 
     };
   }
 
-  solvePartTwo(): number {
-    return 4711;
+  solvePartTwo(): string {
+    for (let i = 0; i < this.input.length; i++) {
+      for (let j = i; j < this.input.length; j++) {
+        const non_equal_indexes = this.countNonEqualChars(this.input[i], this.input[j]);
+        if (non_equal_indexes.length === 1) {
+          this.input[i].splice(non_equal_indexes[0], 1);
+          return this.input[i].join('');
+        }
+      }
+    }
+
+    return '';
+  }
+  private countNonEqualChars(row_a: string[], row_b: string[]): number[] {
+    return row_a.reduce((non_equal_indexes: number[], current, index) => {
+      if (current !== row_b[index]) {
+        non_equal_indexes.push(index);
+      }
+      return non_equal_indexes;
+    }, []);
   }
 }
