@@ -1,10 +1,10 @@
 import path from 'path';
 import Solver, { solverFactory } from '../../advent-of-code-solver/solver';
-import { fetchTaskInputData } from '../api-client/advent-of-code-client';
+import { getTaskInputData } from '../api-client/advent-of-code-client';
 import { TaskType } from '../input-validator';
 
 export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
-  const input = await fetchTaskInputData(year, day);
+  const input = await getTaskInputData(year, day);
   const day_path = path.resolve(`./src/advent-of-code-solver/${year}/day-${String(day).padStart(2, '0')}/solver.ts`);
 
   type SolverConstructor = new (data_input: any) => Solver<any>;

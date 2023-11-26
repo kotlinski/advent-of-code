@@ -22,8 +22,8 @@ describe('day 2', () => {
   describe('part two', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [
-      { input: ')\n', output: 1 },
-      { input: '()())\n', output: 5 },
+      { input: ')\n', output: 4711 },
+      { input: '()())\n', output: 4711 },
     ];
     describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
       it(`should equal to ${output}`, () => {

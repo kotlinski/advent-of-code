@@ -1,10 +1,10 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { parseProblemDescription, parseSolverName } from './html-parser';
-import { fetchHtmlTaskDescription } from '../api-client/advent-of-code-client';
+import { getHtmlTaskDescription } from '../api-client/advent-of-code-client';
 
 export async function initiateNewSolver({ year, day }: { year: number; day: number }) {
-  const html = await fetchHtmlTaskDescription(year, day);
+  const html = await getHtmlTaskDescription(year, day);
   const task_description = parseProblemDescription(html);
   const solver_name = parseSolverName(html);
 
