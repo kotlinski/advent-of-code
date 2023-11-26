@@ -22,6 +22,18 @@ export default class CorruptionChecksumSolver extends Solver<number[][]> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const check_sums = this.input.map((row) => {
+      for (let i = 0; i < row.length; i++) {
+        for (let j = i + 1; j < row.length; j++) {
+          if (row[j] % row[i] === 0) {
+            return row[j] / row[i];
+          } else if (row[i] % row[j] === 0) {
+            return row[i] / row[j];
+          }
+        }
+      }
+      return 0;
+    });
+    return check_sums.reduce(summarize);
   }
 }
