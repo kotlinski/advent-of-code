@@ -10,7 +10,7 @@ Every problem has example data, but the problem should be solved with a personal
 | [2015](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2015) |  4  |
 | [2016](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2016) |  4  |
 | [2017](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2017) |  4  |
-| [2018](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2018) |  2  |
+| [2018](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2018) |  4  |
 | [2019](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2019) |  2  |
 | [2020](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2020) |  2  |
 | [2021](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2021) | 20  |
