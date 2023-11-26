@@ -1,5 +1,6 @@
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
+import filenamifyUrl from 'filenamify-url';
 import HeadersInit = NodeJS.fetch.HeadersInit;
 
 function getHeaders(): HeadersInit {
@@ -11,21 +12,25 @@ function getHeaders(): HeadersInit {
   return { cookie };
 }
 
-export async function fetchTaskInputData(year: number, day: number): Promise<string> {
-  const result = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
+async function fetchUrl(url: string, skip_cache = false): Promise<string> {
+  const cache_file = path.resolve(__dirname, `./cache/${filenamifyUrl(url)}`);
+  if (existsSync(cache_file) && skip_cache) {
+    console.log(`Found cache: ${url}`);
+    return readFileSync(cache_file).toString();
+  }
+  console.log(`Fetching data from: ${url}`);
+  const result = await fetch(url, {
     method: 'GET',
     headers: getHeaders(),
   });
-
-  console.log(`https://adventofcode.com/${year}/day/${day}/input`);
-  return result.text();
+  const result_text = await result.text();
+  writeFileSync(cache_file, result_text);
+  return result_text;
 }
-export async function fetchHtmlTaskDescription(year: number, day: number): Promise<string> {
-  const result = await fetch(`https://adventofcode.com/${year}/day/${day}`, {
-    method: 'GET',
-    headers: getHeaders(),
-  });
-  console.log(`https://adventofcode.com/${year}/day/${day}`);
 
-  return result.text();
+export async function getTaskInputData(year: number, day: number): Promise<string> {
+  return fetchUrl(`https://adventofcode.com/${year}/day/${day}/input`);
+}
+export async function getHtmlTaskDescription(year: number, day: number): Promise<string> {
+  return fetchUrl(`https://adventofcode.com/${year}/day/${day}`, true);
 }

@@ -3,7 +3,6 @@ import parse from 'node-html-parser';
 export function parseProblemDescription(html: string): string {
   const parsed_html = parse(html);
   const articles = parsed_html.querySelectorAll('.day-desc');
-  console.log(`Articles found: ${articles.length}`);
   return articles.reduce((output, article) => {
     output += article;
     return output;
