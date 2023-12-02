@@ -4,8 +4,8 @@ import { Letter } from '../../common/interface';
 
 export class PasswordValidator {
   private readonly rule_letter: Letter;
-  private readonly min: number;
-  private readonly max: number;
+  private readonly param_1: number;
+  private readonly param_2: number;
   private readonly code: Letter[];
   constructor(line: string) {
     // 1-3 a: abcde
@@ -13,15 +13,18 @@ export class PasswordValidator {
     this.code = line.split(': ')[1].split('') as Letter[];
     this.rule_letter = rule.split(' ')[1] as Letter;
     const span = rule.split(' ')[0];
-    this.min = Number(span.split('-')[0]);
-    this.max = Number(span.split('-')[1]);
+    this.param_1 = Number(span.split('-')[0]);
+    this.param_2 = Number(span.split('-')[1]);
   }
-  public hasValidCode(): boolean {
+  public hasValidMinMaxCode(): boolean {
     const letter_count = this.code.reduce((count, letter: Letter) => {
       count += letter === this.rule_letter ? 1 : 0;
       return count;
     }, 0);
-    return letter_count >= this.min && letter_count <= this.max;
+    return letter_count >= this.param_1 && letter_count <= this.param_2;
+  }
+  public hasValidIndexCode(): boolean {
+    return (this.code[this.param_1 - 1] === this.rule_letter) !== (this.code[this.param_2 - 1] === this.rule_letter);
   }
 }
 export default class PasswordPhilosophySolver extends Solver<PasswordValidator[]> {
@@ -37,11 +40,12 @@ export default class PasswordPhilosophySolver extends Solver<PasswordValidator[]
   }
 
   solvePartOne(): number {
-    const valid_codes = this.input.filter((code_validation) => code_validation.hasValidCode());
+    const valid_codes = this.input.filter((code_validation) => code_validation.hasValidMinMaxCode());
     return valid_codes.length;
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const valid_codes = this.input.filter((code_validation) => code_validation.hasValidIndexCode());
+    return valid_codes.length;
   }
 }
