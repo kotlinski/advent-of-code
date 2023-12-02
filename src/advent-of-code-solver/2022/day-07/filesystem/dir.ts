@@ -1,4 +1,4 @@
-import { summarize } from '../../../common-operations/array-operations/reduce';
+import { summarize } from '../../../common/array-operations/reduce';
 
 export default class Dir {
   private readonly sub_dirs: Map<string, Dir> = new Map<string, Dir>();

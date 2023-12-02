@@ -1,5 +1,5 @@
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
-import { stringToNumber } from '../../common-operations/array-operations/map';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 function countBitsPerIndex(input: number[][]): number[] {

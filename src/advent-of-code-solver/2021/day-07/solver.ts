@@ -1,5 +1,5 @@
-import { stringToNumber } from '../../common-operations/array-operations/map';
-import { cache } from '../../common-operations/cache';
+import { stringToNumber } from '../../common/array-operations/map';
+import { cache } from '../../common/cache';
 import Solver from '../../solver';
 
 function getConstantFuelCost(distance: number) {

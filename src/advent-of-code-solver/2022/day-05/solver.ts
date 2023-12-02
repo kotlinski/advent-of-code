@@ -1,5 +1,5 @@
-import { removeEmptyLinesPredicate, removeUndefinedPredicate } from '../../common-operations/array-operations/filter';
-import { stringToNumber } from '../../common-operations/array-operations/map';
+import { removeEmptyLinesPredicate, removeUndefinedPredicate } from '../../common/array-operations/filter';
+import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 export class SupplyInstructions {

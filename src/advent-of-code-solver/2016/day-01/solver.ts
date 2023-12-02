@@ -1,5 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate, removeSpacePredicate } from '../../common-operations/array-operations/filter';
+import { removeEmptyLinesPredicate, removeSpacePredicate } from '../../common/array-operations/filter';
 
 export interface CoordinatedStep {
   turn: 'L' | 'R';

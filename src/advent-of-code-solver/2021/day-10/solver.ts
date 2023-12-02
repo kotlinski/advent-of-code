@@ -1,6 +1,6 @@
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
-import { splitStringOnChar } from '../../common-operations/array-operations/map';
-import { summarize } from '../../common-operations/array-operations/reduce';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { splitStringOnChar } from '../../common/array-operations/map';
+import { summarize } from '../../common/array-operations/reduce';
 import Solver from '../../solver';
 
 const isClosingChar = (nav_char: string) => '>)]}'.split('').some((char) => char === nav_char);
