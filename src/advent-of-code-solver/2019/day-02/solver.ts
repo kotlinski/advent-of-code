@@ -12,42 +12,45 @@ export default class ProgramAlarmSolver extends Solver<number[]> {
   }
 
   solvePartOne(): number {
-    const program = this.input;
-    program[1] = 12;
-    program[2] = 2;
-    return this.runProgramPart1(this.input)[0];
+    const program = [...this.input];
+    const noun = 12;
+    const verb = 2;
+    program[1] = noun;
+    program[2] = verb;
+    return this.runProgram(program)[0];
   }
 
   solvePartTwo(): number {
+    for (let i = 0; i < 100; i++) {
+      for (let j = 0; j < 99; j++) {
+        const program = [...this.input];
+        const noun = i;
+        const verb = j;
+        program[1] = noun;
+        program[2] = verb;
+        if (this.runProgram(program)[0] === 19690720) return 100 * noun + verb;
+      }
+    }
     return 4711;
   }
 
-  runProgramPart1(input: number[] = this.input): number[] {
-    for (let offset = 0; offset < input.length; offset += 4) {
-      console.log(`input: ${JSON.stringify(input, null, 2)}`);
-      const operation = input[offset];
-      const index_value_a = input[offset + 1];
-      const index_value_b = input[offset + 2];
-      const result_index = input[offset + 3];
-      console.log(`operation: ${operation}`);
-      console.log(`value_a: ${index_value_a}`);
-      console.log(`value_b: ${index_value_b}`);
-      console.log(`result_index: ${result_index}`);
-      switch (operation) {
+  runProgram(input: number[] = this.input): number[] {
+    for (let instruction_pointer = 0; instruction_pointer < input.length; instruction_pointer += 4) {
+      const opcode = input[instruction_pointer];
+      const parameter_1 = input[instruction_pointer + 1];
+      const parameter_2 = input[instruction_pointer + 2];
+      const parameter_4 = input[instruction_pointer + 3];
+      switch (opcode) {
         case 1:
-          console.log(`input[${result_index}] = ${input[index_value_a]} + ${input[index_value_b]}`);
-          input[result_index] = input[index_value_a] + input[index_value_b];
+          input[parameter_4] = input[parameter_1] + input[parameter_2];
           break;
         case 2:
-          console.log(`input[${result_index}] = ${input[index_value_a]} * ${input[index_value_b]}`);
-          input[result_index] = input[index_value_a] * input[index_value_b];
+          input[parameter_4] = input[parameter_1] * input[parameter_2];
           break;
         case 99:
-          console.log(`input: ${JSON.stringify(input, null, 2)}`);
           return input;
       }
     }
-    console.log(`end of loop}`);
     return [];
   }
 }
