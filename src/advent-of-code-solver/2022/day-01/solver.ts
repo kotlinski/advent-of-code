@@ -1,6 +1,6 @@
-import { stringToNumber } from '../../common-operations/array-operations/map';
-import { summarize } from '../../common-operations/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common-operations/array-operations/sort';
+import { stringToNumber } from '../../common/array-operations/map';
+import { summarize } from '../../common/array-operations/reduce';
+import { highToLowCompareFunction } from '../../common/array-operations/sort';
 import Solver from '../../solver';
 
 export default class CalorieCounting extends Solver<number[]> {

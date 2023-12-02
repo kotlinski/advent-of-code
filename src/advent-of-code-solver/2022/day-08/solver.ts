@@ -1,8 +1,8 @@
 import { all_directions, isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations';
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
-import { splitStringOnChar, stringToNumber } from '../../common-operations/array-operations/map';
-import { productarize } from '../../common-operations/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common-operations/array-operations/sort';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { splitStringOnChar, stringToNumber } from '../../common/array-operations/map';
+import { productarize } from '../../common/array-operations/reduce';
+import { highToLowCompareFunction } from '../../common/array-operations/sort';
 import Solver from '../../solver';
 
 export default class TreetopTreeHouse extends Solver<number[][]> {

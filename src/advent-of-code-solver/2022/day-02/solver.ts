@@ -1,5 +1,5 @@
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
-import { splitStringOnChar } from '../../common-operations/array-operations/map';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { splitStringOnChar } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 function summarize(accumulator: number, number: number) {

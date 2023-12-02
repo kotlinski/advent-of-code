@@ -1,10 +1,10 @@
 import { parseLinesToFileSystem } from './filesystem/command-line-parser';
 import Dir from './filesystem/dir';
 import { folderSizesVisitor } from './filesystem/visitors';
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 
-import { summarize } from '../../common-operations/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common-operations/array-operations/sort';
+import { summarize } from '../../common/array-operations/reduce';
+import { highToLowCompareFunction } from '../../common/array-operations/sort';
 import Solver from '../../solver';
 
 export default class NoSpaceLeftOnDevice extends Solver<Dir> {

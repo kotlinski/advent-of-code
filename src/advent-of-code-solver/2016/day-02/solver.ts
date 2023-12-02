@@ -1,5 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 
 export type Instruction = 'U' | 'D' | 'L' | 'R';
 export type Instructions = Instruction[];

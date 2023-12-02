@@ -1,4 +1,4 @@
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import Solver from '../../solver';
 
 export default class SevenSegmentSearchSolver extends Solver<string[][]> {

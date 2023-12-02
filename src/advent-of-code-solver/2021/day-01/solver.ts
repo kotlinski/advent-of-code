@@ -1,4 +1,4 @@
-import { stringToNumber } from '../../common-operations/array-operations/map';
+import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 export default class SonarSweepSolver extends Solver<number[]> {

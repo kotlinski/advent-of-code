@@ -1,8 +1,8 @@
 import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common-operations/array-operations/filter';
-import { stringToNumber } from '../../common-operations/array-operations/map';
-import { summarize } from '../../common-operations/array-operations/reduce';
-import { lowToHighNumber } from '../../common-operations/array-operations/sort';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { stringToNumber } from '../../common/array-operations/map';
+import { summarize } from '../../common/array-operations/reduce';
+import { lowToHighNumber } from '../../common/array-operations/sort';
 
 export interface Dimensions {
   l: number;
