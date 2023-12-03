@@ -3,6 +3,10 @@ import { removeEmptyLinesPredicate } from '../../common/array-operations/filter'
 import { summarize } from '../../common/array-operations/reduce';
 import { Coordinate } from '../../common/interface';
 
+class EngineSymbol {
+  constructor(public readonly symbol: string, public readonly coordinate: Coordinate) {}
+}
+
 class PartNumber {
   private end_coordinate: Coordinate;
 
@@ -29,7 +33,7 @@ class PartNumber {
 }
 export class EngineSchematic {
   public readonly part_numbers: PartNumber[] = [];
-  readonly symbol_coordinates: Coordinate[] = [];
+  readonly engine_symbols: EngineSymbol[] = [];
   constructor(engine_schematics: string[][]) {
     for (let y = 0; y < engine_schematics.length; y++) {
       const row = engine_schematics[y];
@@ -47,20 +51,29 @@ export class EngineSchematic {
           // noop
         } else {
           part_number = undefined;
-          this.symbol_coordinates.push({ x, y });
+          this.engine_symbols.push(new EngineSymbol(row[x], { x, y }));
         }
       }
     }
   }
   getPartNumbersConnectedToSymbols(): PartNumber[] {
     return this.part_numbers.filter((part) => {
-      for (const symbol_coordinate of this.symbol_coordinates) {
-        if (part.isConnectedTo(symbol_coordinate)) {
+      for (const symbol of this.engine_symbols) {
+        if (part.isConnectedTo(symbol.coordinate)) {
           return true;
         }
       }
       return false;
     });
+  }
+  getGearRatioSum(symbol: string): number {
+    const symbols = this.engine_symbols.filter((engine_symbol) => engine_symbol.symbol === symbol);
+    const symbol_number_parts = symbols.map((engine_symbol) =>
+      this.part_numbers.filter((part_number) => part_number.isConnectedTo(engine_symbol.coordinate)),
+    );
+    const part_pairs = symbol_number_parts.filter((number_parts) => number_parts.length === 2);
+    const pair_products = part_pairs.map((pair) => pair[0].getValue() * pair[1].getValue());
+    return pair_products.reduce(summarize, 0);
   }
 }
 export default class GearRatiosSolver extends Solver<EngineSchematic> {
@@ -84,6 +97,6 @@ export default class GearRatiosSolver extends Solver<EngineSchematic> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    return this.input.getGearRatioSum('*');
   }
 }
