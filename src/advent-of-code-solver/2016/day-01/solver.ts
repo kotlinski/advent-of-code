@@ -1,20 +1,12 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate, removeSpacePredicate } from '../../common/array-operations/filter';
+import { Coordinate, Vector } from '../../common/interface';
 
 export interface CoordinatedStep {
   turn: 'L' | 'R';
   distance: number;
 }
 
-interface Coordinate {
-  x: number;
-  y: number;
-}
-
-export interface Vector {
-  from: Coordinate;
-  to: Coordinate;
-}
 export default class NoTimeForATaxicabSolver extends Solver<CoordinatedStep[]> {
   constructor(raw_input: string) {
     super(raw_input);
