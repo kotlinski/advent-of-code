@@ -30,7 +30,6 @@ export default class TuningTrouble extends Solver<string[]> {
   }
 
   private hasUniqueChars(chars: string[]) {
-    console.log(`chars: ${JSON.stringify(chars, null, 2)}`);
     while (chars.length > 0) {
       const letter: string = chars.pop()!;
       if (chars.concat('').includes(letter)) {
