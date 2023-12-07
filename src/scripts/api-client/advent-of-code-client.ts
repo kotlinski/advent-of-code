@@ -32,5 +32,5 @@ export async function getTaskInputData(year: number, day: number): Promise<strin
   return fetchUrl(`https://adventofcode.com/${year}/day/${day}/input`);
 }
 export async function getHtmlTaskDescription(year: number, day: number): Promise<string> {
-  return fetchUrl(`https://adventofcode.com/${year}/day/${day}`, true);
+  return fetchUrl(`https://adventofcode.com/${year}/day/${day}`);
 }

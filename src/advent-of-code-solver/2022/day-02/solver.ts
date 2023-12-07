@@ -58,7 +58,6 @@ export default class RockPaperScissors extends Solver<string[][]> {
   }
 
   private loosesAgainst(sign: Sign): Sign {
-    console.log(`sign: ${JSON.stringify(sign, null, 2)}`);
     switch (sign) {
       case 'Rock':
         return 'Paper';

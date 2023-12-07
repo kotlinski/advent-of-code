@@ -21,6 +21,5 @@ export function pascalName(verbose_header: string) {
 export function parseSolverName(html: string): string {
   const task_description = parseProblemDescription(html);
   const parsed_html = parse(task_description);
-  const verbose_header = parsed_html.getElementsByTagName('h2')[0].toString();
-  return pascalName(verbose_header);
+  return parsed_html.getElementsByTagName('h2')[0].toString();
 }

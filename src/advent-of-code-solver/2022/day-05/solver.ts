@@ -73,7 +73,6 @@ export default class SupplyStacks extends Solver<SupplyInstructions> {
   solvePartOne(): string {
     while (this.input.hasMoreInstructions()) {
       const instructions = this.input.getNextInstruction();
-      console.log(instructions);
       this.input.performPopInstruction(instructions!);
     }
     return this.input.getTopOfEachCrate();
@@ -82,7 +81,6 @@ export default class SupplyStacks extends Solver<SupplyInstructions> {
   solvePartTwo(): string {
     while (this.input.hasMoreInstructions()) {
       const instructions = this.input.getNextInstruction();
-      console.log(instructions);
       this.input.performMoveInstruction(instructions!);
     }
     return this.input.getTopOfEachCrate();
