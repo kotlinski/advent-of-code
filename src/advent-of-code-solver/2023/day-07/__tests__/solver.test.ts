@@ -1,8 +1,8 @@
 import Solver from '../../../../advent-of-code-solver/solver';
-import CamelCardsSolver, { CamelPokerPlayer } from '../solver';
+import CamelCardsSolver from '../solver';
 
 describe('day 7', () => {
-  let solver: Solver<CamelPokerPlayer[]>;
+  let solver: Solver<string[]>;
   describe('part one', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [
@@ -19,8 +19,7 @@ describe('day 7', () => {
   describe('part two', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [
-      { input: ')\n', output: 4711 },
-      { input: '()())\n', output: 4711 },
+      { input: '32T3K 765\n' + 'T55J5 684\n' + 'KK677 28\n' + 'KTJJT 220\n' + 'QQQJA 483\n', output: 5905 },
     ];
     describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
       it(`should equal to ${output}`, () => {
