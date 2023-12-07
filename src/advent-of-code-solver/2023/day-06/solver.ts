@@ -14,11 +14,11 @@ class Race {
 }
 export class BoatTournament {
   private readonly races: Race[];
-  constructor({ distances, times }: { distances: number[]; times: number[] }) {
+  constructor({ distances, times }: { distances: number[]; times: number[] }, private readonly race: Race) {
     this.races = distances.map((distance, index) => new Race({ distance, ms: times[index] }));
   }
 
-  findWaysToWin(): number[] {
+  findWaysToWinTheRaces(): number[] {
     return this.races.map((race): number => {
       const distances: number[] = [];
       for (let i = 0; i <= race.ms; i++) {
@@ -28,6 +28,15 @@ export class BoatTournament {
       }
       return distances.filter((distance) => distance > race.distance).length;
     });
+  }
+  findWaysToWinTheRace(): number {
+    const distances: number[] = [];
+    for (let i = 0; i <= this.race.ms; i++) {
+      const speed = i;
+      const distance = speed * (this.race.ms - i);
+      distances.push(distance);
+    }
+    return distances.filter((distance) => distance > this.race.distance).length;
   }
 }
 export default class WaitForItSolver extends Solver<BoatTournament> {
@@ -43,14 +52,17 @@ export default class WaitForItSolver extends Solver<BoatTournament> {
     const lines = raw_input.split('\n').filter(removeEmptyLinesPredicate);
     const times = lines[0].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(stringToNumber);
     const distances = lines[1].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(stringToNumber);
-    return new BoatTournament({ times, distances });
+    const ms = Number(times.join(''));
+    const distance = Number(distances.join(''));
+    const race = new Race({ ms, distance });
+    return new BoatTournament({ times, distances }, race);
   }
 
   solvePartOne(): number {
-    return this.input.findWaysToWin().reduce(productarize, 1);
+    return this.input.findWaysToWinTheRaces().reduce(productarize, 1);
   }
 
   solvePartTwo(): number {
-    return 4711;
+    return this.input.findWaysToWinTheRace();
   }
 }
