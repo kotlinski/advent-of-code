@@ -24,7 +24,7 @@ describe('html-parser', () => {
       html = mockAdventHtml();
     });
     it('should format the task name', () => {
-      expect(parseSolverName(html)).toEqual('RopeBridge');
+      expect(parseSolverName(html)).toEqual('<h2>--- Day 9: Rope Bridge ---</h2>');
     });
   });
   describe('parseProblemDescription', () => {

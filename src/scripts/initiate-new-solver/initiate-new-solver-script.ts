@@ -1,18 +1,17 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-import { parseProblemDescription, parseSolverName } from './html-parser';
+import { parseSolverName, pascalName } from './html-parser';
 import { getHtmlTaskDescription } from '../api-client/advent-of-code-client';
 
 export async function initiateNewSolver({ year, day }: { year: number; day: number }) {
   const html = await getHtmlTaskDescription(year, day);
-  const task_description = parseProblemDescription(html);
-  const solver_name = parseSolverName(html);
+  const raw_solver_name = parseSolverName(html);
+  const solver_name = pascalName(raw_solver_name);
 
   const day_path = path.resolve(`./src/advent-of-code-solver/${year}/day-${String(day).padStart(2, '0')}`);
   if (!existsSync(`${day_path}/__tests__`)) {
     mkdirSync(`${day_path}/__tests__`, { recursive: true });
   }
-  writeFileSync(`${day_path}/README.md`, task_description);
 
   if (!existsSync(`${day_path}/solver.ts`)) {
     const solver_path = path.resolve(`${__dirname}/day-template/solver`);
@@ -27,5 +26,5 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
       solver_test_template.replaceAll('Template', solver_name).replace('day X', `day ${day}`),
     );
   }
-  writeFileSync(`${day_path}/README.md`, task_description);
+  writeFileSync(`${day_path}/README.md`, `${raw_solver_name}\n\nhttps://adventofcode.com/${year}/day/${day}`);
 }
