@@ -16,6 +16,7 @@ export default class MirageMaintenanceSolver extends Solver<string> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const sensor = new OasisAndSandInstabilitySensor(this.input);
+    return sensor.values.reduce((sum: number, value_array: number[]) => sum + sensor.extrapolate(value_array.reverse()), 0);
   }
 }
