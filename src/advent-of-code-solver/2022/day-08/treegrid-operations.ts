@@ -1,8 +1,7 @@
-export type Direction = 'up' | 'down' | 'left' | 'right';
-export const all_directions: Direction[] = ['up', 'down', 'left', 'right'];
+import { Direction } from '../../common/matrix/up-down-left-right';
 
 export function getCompareValuesInDirection(
-  direction: 'up' | 'down' | 'left' | 'right',
+  direction: Direction,
   row_index: number,
   tree_matrix: number[][],
   column_index: number,
