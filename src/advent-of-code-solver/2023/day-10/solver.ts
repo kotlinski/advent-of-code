@@ -1,4 +1,4 @@
-import { PipeMaze } from './pipe-maze';
+import { PipeMaze } from './pipe-maze/pipe-maze';
 import Solver from '../../../advent-of-code-solver/solver';
 
 export default class PipeMazeSolver extends Solver<string> {
@@ -16,6 +16,7 @@ export default class PipeMazeSolver extends Solver<string> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const pipe_maze = new PipeMaze(this.input);
+    return pipe_maze.findInsideAreaOfLoop();
   }
 }
