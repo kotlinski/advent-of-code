@@ -1,13 +1,3 @@
-export interface Vector {
-  from: Coordinate;
-  to: Coordinate;
-}
-
-export interface Coordinate {
-  x: number;
-  y: number;
-}
-
 export type Letter =
   | 'a'
   | 'b'

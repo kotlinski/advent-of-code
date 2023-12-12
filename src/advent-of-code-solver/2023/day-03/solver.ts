@@ -1,7 +1,7 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import { summarize } from '../../common/array-operations/reduce';
-import { Coordinate } from '../../common/interface';
+import { Coordinate } from '../../common/matrix/interface';
 
 class EngineSymbol {
   constructor(public readonly symbol: string, public readonly coordinate: Coordinate) {}

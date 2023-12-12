@@ -1,8 +1,9 @@
-import { all_directions, isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations';
+import { isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import { splitStringOnChar, stringToNumber } from '../../common/array-operations/map';
 import { productarize } from '../../common/array-operations/reduce';
 import { highToLowCompareFunction } from '../../common/array-operations/sort';
+import { all_directions } from '../../common/matrix/grid/interface';
 import Solver from '../../solver';
 
 export default class TreetopTreeHouse extends Solver<number[][]> {
