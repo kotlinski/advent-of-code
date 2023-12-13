@@ -1,5 +1,4 @@
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 function findNeighbours(heightmap: number[][], x: number, y: number) {
@@ -32,7 +31,7 @@ export default class SmokeBasinSolver extends Solver<number[][]> {
     return raw_input
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((line) => line.split('').map(stringToNumber));
+      .map((line) => line.split('').map(Number));
   }
 
   solvePartOne(): number {

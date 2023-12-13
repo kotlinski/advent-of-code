@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { productarize } from '../../common/array-operations/reduce';
 import { any_space } from '../../common/array-operations/split';
 
@@ -53,8 +52,8 @@ export default class WaitForItSolver extends Solver<BoatTournament> {
       Distance:  9  40  200
      */
     const lines = raw_input.split('\n').filter(removeEmptyLinesPredicate);
-    const times = lines[0].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(stringToNumber);
-    const distances = lines[1].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(stringToNumber);
+    const times = lines[0].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(Number);
+    const distances = lines[1].split(': ')[1].split(any_space).filter(removeEmptyLinesPredicate).map(Number);
     const ms = Number(times.join(''));
     const distance = Number(distances.join(''));
     const race = new Race({ ms, distance });

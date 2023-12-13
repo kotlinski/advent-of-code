@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 
 export default class ChronalCalibrationSolver extends Solver<number[]> {
@@ -9,7 +8,7 @@ export default class ChronalCalibrationSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(stringToNumber);
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(Number);
   }
 
   solvePartOne(): number {

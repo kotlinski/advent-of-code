@@ -1,5 +1,4 @@
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 class Tile {
@@ -72,7 +71,7 @@ export default class GiantSquidSolver extends Solver<BingoGame> {
   }
 
   parse(raw_input: string): BingoGame {
-    const numbers = raw_input.split('\n')[0].split(',').map(stringToNumber);
+    const numbers = raw_input.split('\n')[0].split(',').map(Number);
     let bingo_board: BingoBoard = new BingoBoard();
     const bingo_boards: BingoBoard[] = [];
 

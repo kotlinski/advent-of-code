@@ -1,5 +1,5 @@
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { fillInterval, stringToNumber } from '../../common/array-operations/map';
+import { fillInterval } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 export default class CampCleanup extends Solver<number[][][]> {
@@ -14,7 +14,7 @@ export default class CampCleanup extends Solver<number[][][]> {
       .map((pair: string) =>
         pair
           .split(',')
-          .map((assignment: string) => assignment.split('-').map(stringToNumber))
+          .map((assignment: string) => assignment.split('-').map(Number))
           .map(fillInterval),
       );
   }

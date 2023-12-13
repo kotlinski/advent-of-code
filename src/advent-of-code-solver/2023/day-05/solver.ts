@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { lowToHighNumber } from '../../common/array-operations/sort';
 
 const map_keys: MapKey[] = [
@@ -61,7 +60,7 @@ export class FoodProductionMapper {
   private readonly seed_ranges: { start: number; stop: number }[] = [];
   private readonly production = new Map<MapKey, Mapper[]>();
   constructor(input: string[]) {
-    this.seeds = input[0].split(': ')[1].split(' ').map(stringToNumber);
+    this.seeds = input[0].split(': ')[1].split(' ').map(Number);
     for (let i = 0; i < this.seeds.length; i += 2) {
       this.seed_ranges.push({ start: this.seeds[i], stop: this.seeds[i] + this.seeds[i + 1] - 1 });
     }
@@ -132,7 +131,7 @@ class Mapper {
   public readonly source_range_start: number;
   public readonly range_length: number;
   constructor(input: string) {
-    const map_numbers = input.split(' ').map(stringToNumber);
+    const map_numbers = input.split(' ').map(Number);
     this.destination_range_start = map_numbers[0];
     this.source_range_start = map_numbers[1];
     this.range_length = map_numbers[2];

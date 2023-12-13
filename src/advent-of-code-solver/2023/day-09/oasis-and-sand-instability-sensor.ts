@@ -1,5 +1,4 @@
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 
 function allZeros(historical_values: number[][]) {
   const last_level = historical_values.at(-1)!;
@@ -12,7 +11,7 @@ export class OasisAndSandInstabilitySensor {
     this.values = input
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((line) => line.split(' ').map(stringToNumber));
+      .map((line) => line.split(' ').map(Number));
   }
   public extrapolate(historical_values: number[]) {
     const levels = [historical_values];

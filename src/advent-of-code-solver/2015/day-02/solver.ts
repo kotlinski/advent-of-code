@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 import { lowToHighNumber } from '../../common/array-operations/sort';
 
@@ -19,7 +18,7 @@ export default class IWasToldThereWouldBeNoMathSolver extends Solver<Dimensions[
     return raw_input
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((present) => present.split('x').map(stringToNumber))
+      .map((present) => present.split('x').map(Number))
       .map((dimensions) => ({ l: dimensions[0], w: dimensions[1], h: dimensions[2] }));
   }
 

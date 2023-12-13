@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 
 export class ScratchCard {
@@ -12,8 +11,8 @@ export class ScratchCard {
     // Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
     this.card_id = Number(scratch_card.split(':')[0].replace('Card ', '')) - 1;
     const numbers = scratch_card.split(':')[1];
-    this.winning_numbers = numbers.split('|')[0].split(' ').filter(removeEmptyLinesPredicate).map(stringToNumber);
-    this.scratch_card_numbers = numbers.split('|')[1].split(' ').filter(removeEmptyLinesPredicate).map(stringToNumber);
+    this.winning_numbers = numbers.split('|')[0].split(' ').filter(removeEmptyLinesPredicate).map(Number);
+    this.scratch_card_numbers = numbers.split('|')[1].split(' ').filter(removeEmptyLinesPredicate).map(Number);
     this.correct_numbers = this.scratch_card_numbers.filter((number) => this.winning_numbers.includes(number));
   }
 }
