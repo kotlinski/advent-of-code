@@ -8,7 +8,10 @@ export function coordinateToString({ x, y }: Coordinate): string {
 export class Tile<T> {
   public readonly y: number;
   public readonly x: number;
-  constructor(coordinate: Coordinate, public readonly value: T) {
+  constructor(
+    coordinate: Coordinate,
+    public readonly value: T,
+  ) {
     this.x = coordinate.x;
     this.y = coordinate.y;
   }

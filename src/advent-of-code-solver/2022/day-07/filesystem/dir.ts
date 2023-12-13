@@ -3,7 +3,10 @@ import { summarize } from '../../../common/array-operations/reduce';
 export default class Dir {
   private readonly sub_dirs: Map<string, Dir> = new Map<string, Dir>();
   private dir_file_size = 0;
-  constructor(public readonly dir_name: string, public readonly parent: Dir | undefined) {}
+  constructor(
+    public readonly dir_name: string,
+    public readonly parent: Dir | undefined,
+  ) {}
 
   public toString(): string {
     let output = this.dir_name;

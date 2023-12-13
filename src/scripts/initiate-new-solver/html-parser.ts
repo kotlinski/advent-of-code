@@ -4,7 +4,7 @@ export function parseProblemDescription(html: string): string {
   const parsed_html = parse(html);
   const articles = parsed_html.querySelectorAll('.day-desc');
   return articles.reduce((output, article) => {
-    output += article;
+    output += article.toString();
     return output;
   }, '');
 }

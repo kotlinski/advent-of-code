@@ -4,13 +4,19 @@ import { summarize } from '../../common/array-operations/reduce';
 import { Coordinate } from '../../common/matrix/interface';
 
 class EngineSymbol {
-  constructor(public readonly symbol: string, public readonly coordinate: Coordinate) {}
+  constructor(
+    public readonly symbol: string,
+    public readonly coordinate: Coordinate,
+  ) {}
 }
 
 class PartNumber {
   private end_coordinate: Coordinate;
 
-  constructor(private number: number, private readonly start_coordinate: Coordinate) {
+  constructor(
+    private number: number,
+    private readonly start_coordinate: Coordinate,
+  ) {
     this.end_coordinate = start_coordinate;
   }
   append(number: number, coordinate: Coordinate) {

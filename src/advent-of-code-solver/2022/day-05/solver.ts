@@ -3,7 +3,10 @@ import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 export class SupplyInstructions {
-  constructor(private readonly crates: string[][], private readonly instructions: number[][]) {}
+  constructor(
+    private readonly crates: string[][],
+    private readonly instructions: number[][],
+  ) {}
 
   getNextInstruction() {
     return this.instructions.pop();

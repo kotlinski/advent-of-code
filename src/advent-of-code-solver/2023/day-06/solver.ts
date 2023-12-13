@@ -14,7 +14,10 @@ class Race {
 }
 export class BoatTournament {
   private readonly races: Race[];
-  constructor({ distances, times }: { distances: number[]; times: number[] }, private readonly race: Race) {
+  constructor(
+    { distances, times }: { distances: number[]; times: number[] },
+    private readonly race: Race,
+  ) {
     this.races = distances.map((distance, index) => new Race({ distance, ms: times[index] }));
   }
 
