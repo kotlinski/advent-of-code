@@ -1,4 +1,3 @@
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 import { highToLowCompareFunction } from '../../common/array-operations/sort';
 import Solver from '../../solver';
@@ -14,7 +13,7 @@ export default class CalorieCounting extends Solver<number[]> {
       .map((carrier: string) =>
         carrier
           .split('\n')
-          .map(stringToNumber)
+          .map(Number)
           .filter((i) => !isNaN(i)),
       )
       .map((numbers: number[]) => numbers.reduce(summarize, 0));

@@ -10,7 +10,11 @@ export interface Movement {
   steps: number;
 }
 class UnderWaterVector {
-  constructor(private depth: number, private horizontal_position: number, private aim: number) {}
+  constructor(
+    private depth: number,
+    private horizontal_position: number,
+    private aim: number,
+  ) {}
   public push(coordinate: UnderWaterVector): UnderWaterVector {
     this.depth += coordinate.depth;
     this.horizontal_position += coordinate.horizontal_position;

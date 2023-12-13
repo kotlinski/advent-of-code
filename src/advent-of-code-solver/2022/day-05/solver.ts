@@ -1,9 +1,11 @@
 import { removeEmptyLinesPredicate, removeUndefinedPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 export class SupplyInstructions {
-  constructor(private readonly crates: string[][], private readonly instructions: number[][]) {}
+  constructor(
+    private readonly crates: string[][],
+    private readonly instructions: number[][],
+  ) {}
 
   getNextInstruction() {
     return this.instructions.pop();
@@ -65,7 +67,7 @@ export default class SupplyStacks extends Solver<SupplyInstructions> {
       .split('\n\n')[1]
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((line_of_instructions: string) => line_of_instructions.match(/[-+]?[0-9]*\.?[0-9]+/g)!.map(stringToNumber));
+      .map((line_of_instructions: string) => line_of_instructions.match(/[-+]?[0-9]*\.?[0-9]+/g)!.map(Number));
 
     return new SupplyInstructions(crates, instructions.reverse());
   }

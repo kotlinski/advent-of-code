@@ -1,4 +1,3 @@
-import { stringToNumber } from '../../common/array-operations/map';
 import { cache } from '../../common/cache';
 import Solver from '../../solver';
 
@@ -26,7 +25,7 @@ export default class LanternfishSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split(',').map(stringToNumber);
+    return raw_input.split(',').map(Number);
   }
 
   solvePartOne(optional_param?: { iterations: number; input: number[] }): number {

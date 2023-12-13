@@ -13,13 +13,16 @@ export class GhostCoordinate {
 }
 export class GhostMap {
   private readonly connected_coordinates = new Map<string, GhostCoordinate>();
-  constructor(private readonly instructions: Direction[], coordinates: GhostCoordinate[]) {
+  constructor(
+    private readonly instructions: Direction[],
+    coordinates: GhostCoordinate[],
+  ) {
     for (const coordinate of coordinates) {
       this.connected_coordinates.set(coordinate.key, coordinate);
     }
   }
   private recursiveTraversing(key_state: KeyState, kill_switch: number, end_key: RegExp): string[] {
-    if (key_state.key.match(end_key) || key_state.direction_offset >= kill_switch) {
+    if (key_state.key.match(end_key) ?? key_state.direction_offset >= kill_switch) {
       return [key_state.key];
     }
     const next_key_state = this.performOneStep(key_state);

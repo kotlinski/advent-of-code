@@ -19,7 +19,10 @@ export class CamelPokerPlayer {
 }
 class CamePokerGame {
   private readonly players: CamelPokerPlayer[];
-  constructor(players_input: string[], private readonly rules: CamelCardRules) {
+  constructor(
+    players_input: string[],
+    private readonly rules: CamelCardRules,
+  ) {
     this.players = players_input.map((player_input) => new CamelPokerPlayer(player_input, this.rules));
   }
   private rankPlayers() {

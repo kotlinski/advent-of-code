@@ -1,6 +1,6 @@
 import { isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { splitStringOnChar, stringToNumber } from '../../common/array-operations/map';
+import { splitStringOnChar } from '../../common/array-operations/map';
 import { productarize } from '../../common/array-operations/reduce';
 import { highToLowCompareFunction } from '../../common/array-operations/sort';
 import { all_directions } from '../../common/matrix/grid/interface';
@@ -13,7 +13,7 @@ export default class TreetopTreeHouse extends Solver<number[][]> {
 
   parse(raw_input: string): number[][] {
     const lines = raw_input.split('\n').filter(removeEmptyLinesPredicate);
-    return lines.map(splitStringOnChar('')).map((line) => line.map(stringToNumber));
+    return lines.map(splitStringOnChar('')).map((line) => line.map(Number));
   }
 
   solvePartOne(): number {

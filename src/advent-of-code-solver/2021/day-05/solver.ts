@@ -1,5 +1,4 @@
 import { mustBeEqualOrHigherThanPredicate, removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import Solver from '../../solver';
 
 class Point {
@@ -17,7 +16,7 @@ class Point {
 export class Vector {
   private readonly points: Point[];
   constructor(raw_vector: string) {
-    this.points = raw_vector.split(' -> ').map((raw_point) => new Point(raw_point.split(',').map(stringToNumber)));
+    this.points = raw_vector.split(' -> ').map((raw_point) => new Point(raw_point.split(',').map(Number)));
   }
 
   isHorizontal = (): boolean => this.points[0].y === this.points[1].y;

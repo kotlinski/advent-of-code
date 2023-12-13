@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 import { any_space } from '../../common/array-operations/split';
 
@@ -13,7 +12,7 @@ export default class CorruptionChecksumSolver extends Solver<number[][]> {
     return raw_input
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((row_of_numbers) => row_of_numbers.split(any_space).map(stringToNumber));
+      .map((row_of_numbers) => row_of_numbers.split(any_space).map(Number));
   }
 
   solvePartOne(): number {

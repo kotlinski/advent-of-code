@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 import { summarize } from '../../common/array-operations/reduce';
 
 export default class TrebuchetSolver extends Solver<string[]> {
@@ -60,7 +59,7 @@ export default class TrebuchetSolver extends Solver<string[]> {
   private parseNumber(line: string): number | undefined {
     const number = line
       .split('')
-      .map(stringToNumber)
+      .map(Number)
       .filter((character) => Number.isInteger(Number(character)))[0];
     return Number.isInteger(number) ? number : undefined;
   }

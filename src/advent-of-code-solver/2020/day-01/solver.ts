@@ -1,6 +1,5 @@
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
 
 export default class ReportRepairSolver extends Solver<number[]> {
   constructor(raw_input: string) {
@@ -8,7 +7,7 @@ export default class ReportRepairSolver extends Solver<number[]> {
   }
 
   parse(raw_input: string): number[] {
-    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(stringToNumber);
+    return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(Number);
   }
 
   solvePartOne(): number {

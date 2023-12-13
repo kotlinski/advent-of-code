@@ -1,4 +1,4 @@
-export function stringToNumber(string_number: string) {
+export function stringToNumber(string_number: string): number {
   return parseInt(string_number, 10);
 }
 
