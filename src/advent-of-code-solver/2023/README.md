@@ -14,3 +14,4 @@ https://adventofcode.com/2023
 | [Day 8](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023/day-08)  |   🌟   |   🌟   |
 | [Day 9](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023/day-09)  |   🌟   |   🌟   |
 | [Day 10](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023/day-10) |   🌟   |   🌟   |
+| [Day 11](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023/day-11) |   🌟   |   🌟   |
