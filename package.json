@@ -50,6 +50,7 @@
     "@springworks/eslint-config-typescript": "^3005.250.0",
     "@springworks/prettier-config": "^3005.77.0",
     "@types/jest": "^29.5.11",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",
     "eslint": "^8.55.0",
     "filenamify-url": "2.1.2",
@@ -60,5 +61,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }

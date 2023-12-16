@@ -1,0 +1,100 @@
+import Solver from '../../../../advent-of-code-solver/solver';
+import HotSpringsSolver, { Row } from '../solver';
+
+describe('day 12', () => {
+  let solver: Solver<Row[]>;
+  describe('part one', () => {
+    type TestCase = { input: string; output: number };
+    const cases: TestCase[] = [
+      { input: '???.### 1,1,3\n', output: 1 },
+      { input: '#.#.### 1,1,3\n', output: 1 },
+      { input: '.#.###.#.###### 1,3,1,6\n', output: 1 },
+      {
+        input:
+          '#.#.### 1,1,3\n' +
+          '.#...#....###. 1,1,3\n' +
+          '.#.###.#.###### 1,3,1,6\n' +
+          '####.#...#... 4,1,1\n' +
+          '#....######..#####. 1,6,5\n' +
+          '.###.##....# 3,2,1\n',
+        output: 6,
+      },
+      { input: '.??..??...?##. 1,1,3\n', output: 4 },
+      { input: '?#?#?#?#?#?#?#? 1,3,1,6\n', output: 1 },
+      { input: '????.#...#... 4,1,1\n', output: 1 },
+      { input: '????.######..#####. 1,6,5\n', output: 4 },
+      { input: '?###???????? 3,2,1\n', output: 10 },
+      { input: '#.?###???????? 3,2,1\n', output: 0 }, // 0 because of the damage at index 0
+      { input: '?###??##?#?# 3,2,1\n', output: 0 }, // 0 because of the last damage
+      {
+        input:
+          '???.### 1,1,3\n' +
+          '.??..??...?##. 1,1,3\n' +
+          '?#?#?#?#?#?#?#? 1,3,1,6\n' +
+          '????.#...#... 4,1,1\n' +
+          '????.######..#####. 1,6,5\n' +
+          '?###???????? 3,2,1',
+        output: 21,
+      },
+    ];
+    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+      it(`should equal to ${output}`, () => {
+        solver = new HotSpringsSolver(input);
+        const result = solver.solvePartOne();
+        expect(result).toEqual(output);
+      });
+    });
+  });
+  describe('part two', () => {
+    type TestCase = { input: string; output: number };
+
+    const cases: TestCase[] = [
+      { input: '.# 1\n', output: 1 },
+      { input: '???.### 1,1,3\n', output: 1 },
+      { input: '.??..??...?##. 1,1,3\n', output: 16384 },
+      { input: '?#?#?#?#?#?#?#? 1,3,1,6\n', output: 1 },
+      { input: '????.#...#... 4,1,1\n', output: 16 },
+      { input: '????.######..#####. 1,6,5\n', output: 2500 },
+      { input: '?###???????? 3,2,1\n', output: 506250 },
+      { input: '?.#?.#?????????? 1,1,6\n', output: 33236 },
+      { input: '????..??.???? 1,1,1,2\n', output: 1235306325 },
+      { input: '?.???????..###?????? 1,1,3,4,1,1\n', output: 28063056 },
+      { input: '#.??.?#.?.? 1,2\n\n', output: 1 },
+      {
+        input:
+          '?###???????? 3,2,1\n????..??.???? 1,1,1,2\n?.???????..###?????? 1,1,3,4,1,1\n' +
+          '.????.??#?#?..?? 3,5\n' +
+          '#???#??#?#??#??. 5,1,1,1,1\n' +
+          '???.?.??#??????#?? 1,1,1,3,7\n' +
+          '?????#?#??.#??. 6,3\n' +
+          '?#?##???#???????? 10,2\n' +
+          '?????#????#?##??.?? 1,3,7,1\n' +
+          '...??????. 1,1\n' +
+          '#.??????#. 1,1,1\n' +
+          '??#?#????.?##????? 1,5,5,1\n',
+        output: 1633162124,
+      },
+      {
+        input:
+          '.????.??#?#?..?? 3,5\n' +
+          '#???#??#?#??#??. 5,1,1,1,1\n' +
+          '???.?.??#??????#?? 1,1,1,3,7\n' +
+          '?????#?#??.#??. 6,3\n' +
+          '?#?##???#???????? 10,2\n' +
+          '?????#????#?##??.?? 1,3,7,1\n' +
+          '...??????. 1,1\n' +
+          '#.??????#. 1,1,1\n' +
+          '??#?#????.?##????? 1,5,5,1\n',
+        output: 369286493,
+      },
+    ];
+
+    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+      it(`should equal to ${output}`, async () => {
+        solver = new HotSpringsSolver(input);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(output);
+      });
+    });
+  });
+});

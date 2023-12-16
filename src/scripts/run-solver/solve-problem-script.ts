@@ -16,6 +16,7 @@ export async function xmasFactory(year: number, day: number): Promise<Solver<any
 export async function solveProblem({ year, day, task_type }: { year: number; day: number; task_type: TaskType }) {
   const solver = await xmasFactory(year, day);
   let answer: number | string;
+  console.time('Time');
   switch (task_type) {
     case TaskType.PART_ONE:
       answer = solver.solvePartOne();
@@ -23,5 +24,6 @@ export async function solveProblem({ year, day, task_type }: { year: number; day
     case TaskType.PART_TWO:
       answer = solver.solvePartTwo();
   }
+  console.timeEnd('Time');
   console.log(`The answer is ${answer}`);
 }
