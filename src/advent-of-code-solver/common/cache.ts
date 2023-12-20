@@ -1,4 +1,3 @@
-export const cache = new Map<string, number>();
 /**
  * See year 2023 day 12 for usage
  */
