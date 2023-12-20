@@ -32,11 +32,11 @@ export class CosmicExpansion {
     return (tiles: SpaceTile[], index: number) => (this.isEmpty(tiles) ? index_array.push(index) : undefined);
   }
 
-  private isEmpty(column: SpaceTile[]) {
-    return column.every((tile) => tile.value === '.');
+  private isEmpty(tiles: SpaceTile[]) {
+    return tiles.every((tile) => tile.value === '.');
   }
 
-  findShortestPairs(multiplier: number) {
+  findSumOfShortestPathDistances(multiplier: number) {
     let sum = 0;
     for (let i = 0; i < this.galaxies.length - 1; i++) {
       for (let j = i + 1; j < this.galaxies.length; j++) {

@@ -15,7 +15,7 @@ Every problem has example data, but the problem should be solved with a personal
 | [2020](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2020) |  4  |
 | [2021](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2021) | 20  |
 | [2022](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2022) | 16  |
-| [2023](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023) | 22  |
+| [2023](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2023) | 24  |
 
 ## Prerequisite
 

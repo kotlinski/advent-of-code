@@ -12,11 +12,11 @@ export default class CosmicExpansionSolver extends Solver<string> {
 
   solvePartOne(): number {
     const cosmic_expansion = new CosmicExpansion(this.input);
-    return cosmic_expansion.findShortestPairs(1);
+    return cosmic_expansion.findSumOfShortestPathDistances(1);
   }
 
   solvePartTwo(): number {
     const cosmic_expansion = new CosmicExpansion(this.input);
-    return cosmic_expansion.findShortestPairs(1_000_000 - 1);
+    return cosmic_expansion.findSumOfShortestPathDistances(1_000_000 - 1);
   }
 }
