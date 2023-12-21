@@ -1,13 +1,5 @@
 import { summarize } from '../../common/array-operations/reduce';
-
-// Inspired by @shahata's memoize implementation https://github.com/shahata/adventofcode-solver/blob/master/src/2023/day12.js
-function memoize(fn: (arrangement: string, groups: number[]) => number) {
-  const memo: Map<string, number> = new Map();
-  return function (...x: [arrangement: string, groups: number[]]) {
-    const key = JSON.stringify(x);
-    return memo.set(key, memo.has(key) ? memo.get(key)! : fn(...x)).get(key)!;
-  };
-}
+import { memoize } from '../../common/cache';
 
 export class HotSpringsConsumer {
   private readonly memoized: (arrangement: string, groups: number[]) => number;
@@ -19,7 +11,10 @@ export class HotSpringsConsumer {
   ) {
     this.arrangement = arrangement.replace(/[.]{2,}/g, '.'); // replace clusters of .
     // I tried to solve this with a Map<string, number> as cache first, but ran out of memory when running task 2.
-    this.memoized = memoize(this.getRecursiveConsumer());
+    this.memoized = memoize<[string, number[]], number>(
+      this.getRecursiveConsumer(),
+      (input) => `${input[0].length}${input[1].length}`,
+    );
   }
 
   calculateNumberOfCombinations(): number {

@@ -1,24 +1,25 @@
-import { cache } from '../../common/cache';
+import { memoize } from '../../common/cache';
 import Solver from '../../solver';
 
 function getConstantFuelCost(distance: number) {
   return distance;
 }
-export function getAcceleratingFuelCostForDistance(distance: number): number {
-  if (cache.has(`${distance}`)) {
-    return cache.get(`${distance}`)!;
-  }
-  let count = 0;
-  for (let i = 1; i <= distance; i++) {
-    count += i;
-  }
-  cache.set(`${distance}`, count);
-  return count;
-}
 
 export default class TheTreacheryOfWhalesSolver extends Solver<number[]> {
+  public readonly memo: (distance: number) => number;
+
   constructor(raw_input: string) {
     super(raw_input);
+    this.memo = memoize<[number], number>(this.getAcceleratingFuelCostForDistance(), (input) => `${input[0]}`);
+  }
+  private getAcceleratingFuelCostForDistance() {
+    return (distance: number): number => {
+      let count = 0;
+      for (let i = 1; i <= distance; i++) {
+        count += i;
+      }
+      return count;
+    };
   }
 
   parse(raw_input: string): number[] {
@@ -39,7 +40,7 @@ export default class TheTreacheryOfWhalesSolver extends Solver<number[]> {
 
   solvePartTwo(): number {
     const crab_positions = this.input;
-    const fuel_calculator = getAcceleratingFuelCostForDistance;
+    const fuel_calculator = this.memo;
     return this.calculateCheapestFuelConsumption(crab_positions, fuel_calculator);
   }
 

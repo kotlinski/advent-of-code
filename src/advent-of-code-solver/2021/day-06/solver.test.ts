@@ -63,7 +63,7 @@ describe('day 6', () => {
     });
   });
   describe('part two', () => {
-    it('should be 4711', () => {
+    it('should be 26984457539', () => {
       expect(lanternfish_solver.solvePartTwo()).toEqual(26984457539);
     });
   });
