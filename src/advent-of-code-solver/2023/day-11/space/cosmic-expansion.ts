@@ -17,21 +17,24 @@ export class CosmicExpansion {
       .map((line) => line.split('') as SpaceChar[]);
 
     this.space = new Grid<SpaceChar>(old_space_input);
-    this.empty_x_indexes = [];
-    this.space.traverseColumns(this.getEmptyIndexesCallback(this.empty_x_indexes));
-    this.empty_y_indexes = [];
-    this.space.traverseRows(this.getEmptyIndexesCallback(this.empty_y_indexes));
+    this.empty_x_indexes = this.space.traverseColumns((prev: number[], tiles: SpaceTile[], index: number) => {
+      if (this.isEmpty(tiles)) {
+        prev.push(index);
+      }
+      return prev;
+    }, []);
+    this.empty_y_indexes = this.space.traverseRows((prev: number[], tiles: SpaceTile[], index: number) => {
+      if (this.isEmpty(tiles)) {
+        prev.push(index);
+      }
+      return prev;
+    }, []);
 
     this.galaxies = [];
     this.space.traverseTiles((tile) => {
       if (tile.value === '#') this.galaxies.push(tile);
     });
   }
-
-  private getEmptyIndexesCallback(index_array: number[]) {
-    return (tiles: SpaceTile[], index: number) => (this.isEmpty(tiles) ? index_array.push(index) : undefined);
-  }
-
   private isEmpty(tiles: SpaceTile[]) {
     return tiles.every((tile) => tile.value === '.');
   }
