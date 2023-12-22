@@ -10,7 +10,7 @@ export class Tile<T> {
   public readonly x: number;
   constructor(
     coordinate: Coordinate,
-    public readonly value: T,
+    public value: T,
   ) {
     this.x = coordinate.x;
     this.y = coordinate.y;

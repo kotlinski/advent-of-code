@@ -1,4 +1,5 @@
-import { Tile } from './tile';
+import { coordinateToString, Tile } from './tile';
+import { Coordinate } from '../interface';
 
 export class Grid<T> {
   private readonly grid_map: Map<string, Tile<T>>;
@@ -12,6 +13,17 @@ export class Grid<T> {
     this.width = raw_matrix[0].length;
     this.height = raw_matrix.length;
   }
+  toString(): string {
+    const rows = this.traverseRows((output: string[], _row, _index, values) => {
+      output.push(values.join(''));
+      return output;
+    }, []);
+    return rows.join('\n');
+  }
+  getTileAtCoordinate(coordinate: Coordinate): Tile<T> | undefined {
+    return this.grid_map.get(coordinateToString(coordinate));
+  }
+
   private populateGrid(raw_matrix: T[][]) {
     const grid_map = new Map<string, Tile<T>>();
     const matrix: Tile<T>[][] = [];
@@ -46,15 +58,19 @@ export class Grid<T> {
     }
     return cumulative;
   }
-
+  traverseColumns(callback: (prev: Tile<T>, column: Tile<T>[], index: number, values: T[]) => Tile<T> | void): Tile<T>;
+  traverseColumns<TResult>(
+    callback: (prev: TResult, column: Tile<T>[], index: number, values: T[]) => TResult,
+    init: TResult,
+  ): TResult;
   /**
    * Will traverse column by column in a `reduce`like fashion.
    */
-  traverseColumns<TResult>(
-    callback: (prev: TResult, column: Tile<T>[], x: number, values: T[]) => TResult,
-    init: TResult,
-  ): TResult {
-    let cumulative = init;
+  traverseColumns<TResult extends Tile<T>>(
+    callback: (prev: TResult | Tile<T>, column: Tile<T>[], index: number, values: T[]) => TResult | Tile<T>,
+    init?: TResult | Tile<T>,
+  ): TResult | Tile<T> {
+    let cumulative = init ?? this.matrix[0][0]!;
     for (let x = 0; x < this.matrix[0].length; x++) {
       const column: Tile<T>[] = [];
       const values: T[] = [];
