@@ -46,12 +46,19 @@ export class Grid<T> {
       }
     }
   }
-
+  traverseRows(callback: (prev: Tile<T>, row: Tile<T>[], index: number, values: T[]) => Tile<T> | void): Tile<T>;
+  traverseRows<TResult>(
+    callback: (prev: TResult, row: Tile<T>[], index: number, values: T[]) => TResult,
+    init: TResult,
+  ): TResult;
   /**
    * Will traverse row by row in a `reduce`like fashion.
    */
-  traverseRows<TResult>(callback: (prev: TResult, row: Tile<T>[], y: number, values: T[]) => TResult, init: TResult): TResult {
-    let cumulative = init;
+  traverseRows<TResult extends Tile<T>>(
+    callback: (prev: TResult | Tile<T>, column: Tile<T>[], index: number, values: T[]) => TResult | Tile<T>,
+    init?: TResult | Tile<T>,
+  ): TResult | Tile<T> {
+    let cumulative = init ?? this.matrix[0][0]!;
     for (const [y, row] of this.matrix.entries()) {
       const row_values = row.map((tile) => tile.value);
       cumulative = callback(cumulative, row, y, row_values);

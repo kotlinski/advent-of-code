@@ -1,17 +1,23 @@
+import { sortRocks } from './rock-sorter';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { memoize } from '../../common/cache';
 import { Grid } from '../../common/matrix/grid/grid';
+import { Direction } from '../../common/matrix/grid/interface';
 import { Tile } from '../../common/matrix/grid/tile';
 
-type GridType = '#' | '.' | 'O';
+export type RockType = '#' | '.' | 'O';
 
 export class MirrorDisc {
-  private readonly disc: Grid<GridType>;
+  private readonly disc: Grid<RockType>;
+  private readonly memo_sort: (direction: Direction, values: RockType[]) => RockType[];
+
   constructor(disc_input: string) {
     const disc_matrix = disc_input
       .split('\n')
       .filter(removeEmptyLinesPredicate)
-      .map((row) => row.split('') as GridType[]);
-    this.disc = new Grid<GridType>(disc_matrix);
+      .map((row) => row.split('') as RockType[]);
+    this.disc = new Grid<RockType>(disc_matrix);
+    this.memo_sort = memoize<[Direction, RockType[]], RockType[]>(sortRocks, (input) => `${input[0]}${input[1].join()}`);
   }
   toString(): string {
     return this.disc.toString();
@@ -24,26 +30,37 @@ export class MirrorDisc {
       return sum;
     }, 0);
   }
-  public flipNorth(): void {
-    this.disc.traverseColumns((_prev, column) => {
-      let swap_count = 0;
-      do {
-        swap_count = 0;
-        for (const tile of column) {
-          if (['#'].includes(tile.value)) continue; // non moving tile types
-          const tile_down = this.disc.getTileAtCoordinate(tile.findCoordinateInDirection('down'));
-          if (!tile_down || ['#', '.'].includes(tile_down.value)) continue; // non movable spaces
-          if (tile.value === tile_down.value) continue;
-          this.swapValues(tile, tile_down);
-          swap_count++;
-        }
-      } while (swap_count !== 0);
-    });
+
+  public flip(direction: Direction): void {
+    const rock_roller_callback_function = this.getRockRollerCallback(direction);
+    if (['up', 'down'].includes(direction)) {
+      this.disc.traverseColumns(rock_roller_callback_function);
+    } else {
+      this.disc.traverseRows(rock_roller_callback_function);
+    }
   }
 
-  private swapValues(tile_a: Tile<GridType>, tile_b: Tile<GridType>) {
-    const swap = tile_a.value;
-    tile_a.value = tile_b.value;
-    tile_b.value = swap;
+  /**
+   * Callback when traversing rows/columns
+   * Will tilt to the given direction
+   */
+  private getRockRollerCallback(direction: Direction) {
+    return (_prev: Tile<RockType>, tiles: Tile<RockType>[], index: number, values: RockType[]) => {
+      // tilt values in row/column depending direction
+      const sorted_values = this.memo_sort(direction, values);
+
+      // replace values in the grid.
+      for (let i = 0; i < tiles.length; i++) {
+        tiles[i].value = sorted_values[i];
+      }
+    };
+  }
+
+  cycle() {
+    // console.time('cycle');
+    (['up', 'left', 'down', 'right'] as Direction[]).forEach((direction: Direction) => {
+      this.flip(direction);
+    });
+    // console.timeEnd('cycle');
   }
 }
