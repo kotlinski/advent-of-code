@@ -87,7 +87,7 @@ export default class HydrothermalVentureSolver extends Solver<Vector[]> {
       }
       visual += '\n';
     }
-    console.log(visual);
+    // console.log(visual);
   }
 
   private static countOverlappingPoints(diagram: Map<string, number>) {
