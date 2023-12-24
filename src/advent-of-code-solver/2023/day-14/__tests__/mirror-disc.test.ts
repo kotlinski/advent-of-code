@@ -244,9 +244,9 @@ describe('MirrorDisc', () => {
         );
       });
       it('should roll the round rocks to the west', () => {
-        console.log(`mirror_disc.toString(): \n${mirror_disc.toString()}`);
+        // console.log(`mirror_disc.toString(): \n${mirror_disc.toString()}`);
         mirror_disc.flip('left');
-        console.log(`mirror_disc.toString(): \n${mirror_disc.toString()}`);
+        // console.log(`mirror_disc.toString(): \n${mirror_disc.toString()}`);
         expect(mirror_disc.toString()).toEqual(
           'O....#....\n' +
             'OOO.#....#\n' +
