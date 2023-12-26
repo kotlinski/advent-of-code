@@ -1,6 +1,8 @@
 import { Move, PipeTile, SketchTile } from './pipe-tile';
+import { coordinateToString } from '../../../common/matrix/grid/grid';
 import { all_directions, Direction, opposite } from '../../../common/matrix/grid/interface';
-import { coordinateToString, Tile } from '../../../common/matrix/grid/tile';
+
+import { Tile } from '../../../common/matrix/grid/tile';
 import { Coordinate } from '../../../common/matrix/interface';
 
 export class PipeTraveler {

@@ -79,14 +79,14 @@ export default class HydrothermalVentureSolver extends Solver<Vector[]> {
     return HydrothermalVentureSolver.countOverlappingPoints(diagram);
   }
 
-  private static visualizeDiagram(diagram: Map<string, number>) {
-    let visual = '';
+  private static visualizeDiagram(_diagram: Map<string, number>) {
+    /*    let visual = '';
     for (let y = 0; y <= 9; y++) {
       for (let x = 0; x <= 9; x++) {
         visual += diagram.get(`${x},${y}`) ?? '.';
       }
       visual += '\n';
-    }
+    }*/
     // console.log(visual);
   }
 
