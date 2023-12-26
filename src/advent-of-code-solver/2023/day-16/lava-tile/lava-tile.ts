@@ -12,6 +12,6 @@ export class LavaTile extends Tile<MirrorTileValue> {
     this.direction_mapper = createDirectionMapper(value);
   }
   getNextDirections(direction: Direction): Direction[] {
-    return this.direction_mapper.get(direction)!;
+    return [...this.direction_mapper.get(direction)!];
   }
 }

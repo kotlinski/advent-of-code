@@ -38,13 +38,16 @@ export class LightBeamTraveler {
   mapKey = (coordinate: Coordinate, direction?: Direction): string =>
     `${coordinateToString(coordinate)}${direction ? direction[0] : ''}`;
 
-  constructor(private readonly contraption: Grid<MirrorTileValue, LavaTile>) {
+  constructor(
+    private readonly contraption: Grid<MirrorTileValue, LavaTile>,
+    start_direction: Direction,
+    start_coordinate: Coordinate,
+  ) {
     this.visited_tiles = new Set<string>();
     this.established_flows = new Set<string>();
-    const start_coordinate = { x: 0, y: 0 };
     const tile = this.contraption.getTileAtCoordinate(start_coordinate)!;
     const stream = new Stream();
-    this.pushOrStopStream(tile, 'right', stream);
+    this.pushOrStopStream(tile, start_direction, stream);
     this.streams = [stream];
   }
   toString(): string {
