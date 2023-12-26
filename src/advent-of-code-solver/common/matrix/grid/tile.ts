@@ -1,9 +1,6 @@
+import { coordinateToString } from './grid';
 import { Direction } from './interface';
 import { Coordinate } from '../interface';
-
-export function coordinateToString({ x, y }: Coordinate): string {
-  return JSON.stringify({ x, y });
-}
 
 export class Tile<T> {
   public readonly y: number;
