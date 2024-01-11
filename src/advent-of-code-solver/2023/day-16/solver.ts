@@ -28,7 +28,7 @@ export default class TheFloorWillBeLavaSolver extends Solver<MirrorTileValue[][]
 
     const traveler = new LightBeamTraveler(contraption, 'right', { x: 0, y: 0 });
     while (traveler.makeStep()) {
-      console.log(`${traveler.toString()}`);
+      // console.log(`${traveler.toString()}`);
       // make steps until fixed state
     }
     return traveler.getNumberOfCoveredTiles();
@@ -43,9 +43,7 @@ export default class TheFloorWillBeLavaSolver extends Solver<MirrorTileValue[][]
 
     const covered_tiles: number[] = start_positions.map((start) => {
       const traveler = new LightBeamTraveler(contraption, start.direction, start.coordinate);
-      // console.log(`${traveler.toString()}`);
       while (traveler.makeStep()) {
-        // console.log(`${traveler.toString()}`);
         // make steps until fixed state
       }
       return traveler.getNumberOfCoveredTiles();

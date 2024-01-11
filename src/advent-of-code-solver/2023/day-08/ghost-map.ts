@@ -1,4 +1,4 @@
-export type Direction = 'L' | 'R';
+export type LeftRightDirection = 'L' | 'R';
 export type KeyState = { direction_offset: number; key: string };
 
 export class GhostCoordinate {
@@ -14,7 +14,7 @@ export class GhostCoordinate {
 export class GhostMap {
   private readonly connected_coordinates = new Map<string, GhostCoordinate>();
   constructor(
-    private readonly instructions: Direction[],
+    private readonly instructions: LeftRightDirection[],
     coordinates: GhostCoordinate[],
   ) {
     for (const coordinate of coordinates) {

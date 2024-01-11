@@ -2,7 +2,7 @@ import { coordinateToString } from './grid';
 import { Direction } from './interface';
 import { Coordinate } from '../interface';
 
-export class Tile<T> {
+export class Tile<T> implements Coordinate {
   public readonly y: number;
   public readonly x: number;
   constructor(

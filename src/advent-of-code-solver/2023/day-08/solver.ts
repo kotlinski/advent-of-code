@@ -1,4 +1,4 @@
-import { Direction, GhostCoordinate, GhostMap, KeyState } from './ghost-map';
+import { LeftRightDirection, GhostCoordinate, GhostMap, KeyState } from './ghost-map';
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import { findLeastCommonMultiplier } from '../../common/math/least-common-multiplier';
@@ -11,7 +11,7 @@ export default class HauntedWastelandSolver extends Solver<GhostMap> {
   parse(raw_input: string): GhostMap {
     const lines = raw_input.split('\n').filter(removeEmptyLinesPredicate);
     const first_line = lines.splice(0, 1)[0];
-    const instructions: Direction[] = first_line.split('') as Direction[];
+    const instructions: LeftRightDirection[] = first_line.split('') as LeftRightDirection[];
     const coordinates: GhostCoordinate[] = lines.map((line) => new GhostCoordinate(line));
     return new GhostMap(instructions, coordinates);
   }
