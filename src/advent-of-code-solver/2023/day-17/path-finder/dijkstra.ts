@@ -52,22 +52,4 @@ export class Dijkstra {
     }
     return path.sum;
   }
-  /*
-  With the current implementation, no path history is stored, otherwise this toString was helpful to visualize the paths
-  toString(_path: CityNavigator): string {
-    const base = this.city_map.toString().split('');
-    // this.paths.forEach((path) => {
-    // const path_string: string[] = [];
-    /!*    path.getSteps().forEach((step, i) => {
-      const coordinate = step.tile.getCoordinate();
-      path_string.push(`${coordinateToString(coordinate)} ${path.pathEfficiency()} ${step.direction}`);
-      const index = coordinate.x + coordinate.y * (this.city_map.width + 1); // plus 1 for new line chars
-      if (step.direction) {
-        const direction_char = [' ', ' ', ' ', ' '][['left', 'right', 'up', 'down'].indexOf(step.direction)];
-        base.splice(index, 1, direction_char);
-      }
-    });*!/
-    //   });
-    return `${base.join('\n')}\n\n${base.join('')}`;
-  }*/
 }
