@@ -1,9 +1,10 @@
-import { Move, PipeTile, SketchTile } from './pipe-tile';
-import { coordinateToString } from '../../../common/matrix/grid/grid';
-import { all_directions, Direction, opposite } from '../../../common/matrix/grid/interface';
+import { MapTile } from './pipe';
+import { Move, PipeTile } from './pipe-tile';
+import { all_directions, Direction, opposite } from '../matrix/grid/direction';
+import { coordinateToString } from '../matrix/grid/grid';
 
-import { Tile } from '../../../common/matrix/grid/tile';
-import { Coordinate } from '../../../common/matrix/interface';
+import { Tile } from '../matrix/grid/tile';
+import { Coordinate } from '../matrix/interface';
 
 export class PipeTraveler {
   private readonly start_tile: PipeTile;
@@ -17,7 +18,7 @@ export class PipeTraveler {
   /**
    * Will find tile connections in all possible directions. Will return first possible direction
    */
-  private findInitialDirection(tile: Tile<SketchTile>): Direction {
+  private findInitialDirection(tile: Tile<MapTile>): Direction {
     return all_directions.find((direction) => {
       const neighbour_coordinate = tile.findCoordinateInDirection(direction);
       const neighbour_tile = this.findTileForCoordinate(neighbour_coordinate);
@@ -42,7 +43,9 @@ export class PipeTraveler {
     let direction = this.start_direction;
     let tile = this.start_tile;
     do {
-      direction = this.findNextDirection(tile, direction);
+      do {
+        direction = this.findNextDirection(tile, direction);
+      } while (tile.findCoordinateInDirection(direction) === undefined || this.findNextTile(tile, direction).value === '.');
       tile = this.findNextTile(tile, direction);
       const move = tile.getTravelerMoveThroughTile(opposite(direction));
       callback(tile, direction, move);

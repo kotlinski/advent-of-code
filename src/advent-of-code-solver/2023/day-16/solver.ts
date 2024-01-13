@@ -3,8 +3,8 @@ import { LightBeamTraveler } from './light-beam-traveler';
 import Solver from '../../../advent-of-code-solver/solver';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import { highToLowCompareFunction } from '../../common/array-operations/sort';
+import { all_directions, Direction } from '../../common/matrix/grid/direction';
 import { Grid } from '../../common/matrix/grid/grid';
-import { all_directions, Direction } from '../../common/matrix/grid/interface';
 import { Coordinate } from '../../common/matrix/interface';
 
 export type MirrorTileValue = '.' | '-' | '|' | '/' | '\\';

@@ -1,4 +1,4 @@
-import { Direction } from '../../../common/matrix/grid/interface';
+import { Direction } from '../../../common/matrix/grid/direction';
 import { RockType } from '../mirror-disc';
 import { sortRocks } from '../rock-sorter';
 

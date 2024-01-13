@@ -3,7 +3,7 @@ import { removeEmptyLinesPredicate } from '../../common/array-operations/filter'
 import { splitStringOnChar } from '../../common/array-operations/map';
 import { productarize } from '../../common/array-operations/reduce';
 import { highToLowCompareFunction } from '../../common/array-operations/sort';
-import { all_directions } from '../../common/matrix/grid/interface';
+import { all_directions } from '../../common/matrix/grid/direction';
 import Solver from '../../solver';
 
 export default class TreetopTreeHouse extends Solver<number[][]> {

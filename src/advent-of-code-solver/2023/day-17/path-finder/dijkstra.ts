@@ -1,7 +1,7 @@
 import { CrucibleStepsProvider } from './crucible-steps-provider';
 import { PathStore, PathSum } from './path-store';
-import { all_directions, Direction } from '../../../common/matrix/grid/interface';
-import { Coordinate } from '../../../common/matrix/interface';
+import { all_directions, Direction } from '../../../common/matrix/grid/direction';
+import { compareCoordinates, Coordinate } from '../../../common/matrix/interface';
 
 type Vertical = ('down' | 'up')[];
 type Horizontal = ('left' | 'right')[];
@@ -43,7 +43,7 @@ export class Dijkstra {
     return ['left', 'right'].includes(direction) ? ['down', 'up'] : ['right', 'left'];
   }
   private hasReachedGoal(coordinate: Coordinate) {
-    return this.goal.x === coordinate.x && this.goal.y === coordinate.y;
+    return compareCoordinates(this.goal, coordinate);
   }
   findCheapestPathEfficiency() {
     let path: PathSum | undefined;

@@ -1,22 +1,17 @@
-import { Move, PipeTile, SketchTile } from './pipe-tile';
+import { MapTile } from './pipe';
+import { Move, PipeTile } from './pipe-tile';
 import { PipeTraveler } from './pipe-traveler';
-import { removeEmptyLinesPredicate } from '../../../common/array-operations/filter';
-import { coordinateToString } from '../../../common/matrix/grid/grid';
-import { all_directions, Direction, opposite } from '../../../common/matrix/grid/interface';
-import { Coordinate } from '../../../common/matrix/interface';
+import { all_directions, Direction, opposite } from '../matrix/grid/direction';
+import { coordinateToString } from '../matrix/grid/grid';
+import { Coordinate } from '../matrix/interface';
 
 export class PipeMaze {
   private readonly traveler: PipeTraveler;
   private readonly map: Map<string, PipeTile>;
-  constructor(input: string) {
-    const sketch: SketchTile[][] = input
-      .split('\n')
-      .filter(removeEmptyLinesPredicate)
-      .map((line) => line.split('') as SketchTile[]);
-
+  constructor(input: MapTile[][]) {
     this.map = new Map<string, PipeTile>();
-    for (let y = 0; y < sketch.length; y++) {
-      const row = sketch[y];
+    for (let y = 0; y < input.length; y++) {
+      const row = input[y];
       for (let x = 0; x < row.length; x++) {
         const tile = new PipeTile({ x, y }, row[x]);
         this.map.set(tile.toString(), tile);

@@ -1,5 +1,5 @@
 import { createDirectionMapper } from './direction-mapper';
-import { Direction } from '../../../common/matrix/grid/interface';
+import { Direction } from '../../../common/matrix/grid/direction';
 import { Tile } from '../../../common/matrix/grid/tile';
 import { Coordinate } from '../../../common/matrix/interface';
 import { MirrorTileValue } from '../solver';

@@ -1,13 +1,12 @@
-import { Direction } from '../../../common/matrix/grid/interface';
-import { Tile } from '../../../common/matrix/grid/tile';
-import { Coordinate } from '../../../common/matrix/interface';
+import { MapTile } from './pipe';
+import { Direction } from '../matrix/grid/direction';
+import { Tile } from '../matrix/grid/tile';
+import { Coordinate } from '../matrix/interface';
 
-type PipeType = '|' | '-' | 'L' | 'J' | '7' | 'F' | 'S';
-export type SketchTile = PipeType | '.';
 export type Move = 'left' | 'right' | 'forward';
 
-export class PipeTile extends Tile<SketchTile> {
-  constructor(coordinate: Coordinate, value: SketchTile) {
+export class PipeTile extends Tile<MapTile> {
+  constructor(coordinate: Coordinate, value: MapTile) {
     super(coordinate, value);
   }
   getDirections(): Direction[] {
@@ -65,7 +64,7 @@ export class PipeTile extends Tile<SketchTile> {
         return 'forward';
       case '.':
       default:
-        throw new Error('Traveling outside pipe');
+        throw new Error(`Traveling outside pipe: ${from_direction}, ${this.value}`);
     }
   }
 }
