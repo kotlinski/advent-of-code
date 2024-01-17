@@ -1,8 +1,9 @@
 import Solver from '../../../../advent-of-code-solver/solver';
+import { MapTile } from '../../../common/pipe-maze/pipe';
 import PipeMazeSolver from '../solver';
 
 describe('day 10', () => {
-  let solver: Solver<string>;
+  let solver: Solver<MapTile[][]>;
   describe('part one', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [

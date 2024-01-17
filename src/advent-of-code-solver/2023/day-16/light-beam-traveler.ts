@@ -1,7 +1,7 @@
 import { LavaTile } from './lava-tile/lava-tile';
 import { MirrorTileValue } from './solver';
+import { Direction } from '../../common/matrix/grid/direction';
 import { coordinateToString, Grid } from '../../common/matrix/grid/grid';
-import { Direction } from '../../common/matrix/grid/interface';
 import { Coordinate } from '../../common/matrix/interface';
 
 type Step = { tile: LavaTile; direction: Direction };

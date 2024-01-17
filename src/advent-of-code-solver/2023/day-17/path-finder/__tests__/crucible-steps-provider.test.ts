@@ -1,5 +1,5 @@
+import { all_directions } from '../../../../common/matrix/grid/direction';
 import { Grid } from '../../../../common/matrix/grid/grid';
-import { all_directions } from '../../../../common/matrix/grid/interface';
 import { CrucibleStepsProvider } from '../crucible-steps-provider';
 
 describe('CrucibleStepsProvider', () => {

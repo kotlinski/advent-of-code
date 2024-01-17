@@ -1,5 +1,5 @@
+import { Direction } from './direction';
 import { coordinateToString } from './grid';
-import { Direction } from './interface';
 import { Coordinate } from '../interface';
 
 export class Tile<T> implements Coordinate {

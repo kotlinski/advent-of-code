@@ -1,4 +1,4 @@
-import { all_directions, Direction } from '../../../common/matrix/grid/interface';
+import { all_directions, Direction } from '../../../common/matrix/grid/direction';
 import { MirrorTileValue } from '../solver';
 
 export function createDirectionMapper(value: MirrorTileValue): Map<Direction, Direction[]> {

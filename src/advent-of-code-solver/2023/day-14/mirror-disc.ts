@@ -1,8 +1,8 @@
 import { sortRocks } from './rock-sorter';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
 import { memoize } from '../../common/cache';
+import { Direction } from '../../common/matrix/grid/direction';
 import { Grid } from '../../common/matrix/grid/grid';
-import { Direction } from '../../common/matrix/grid/interface';
 import { Tile } from '../../common/matrix/grid/tile';
 
 export type RockType = '#' | '.' | 'O';

@@ -1,4 +1,4 @@
-import { all_directions, Direction } from './interface';
+import { all_directions, Direction } from './direction';
 import { Tile } from './tile';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter';
 import { Coordinate } from '../interface';
@@ -26,7 +26,7 @@ export function createEmptyMatrix<V = undefined>(width: number, height: number, 
   return empty_city_blocks;
 }
 type TileCreator<V, T> = (coordinate: Coordinate, value: V) => T;
-export class Grid<V extends string | number | object | undefined, T extends Tile<V> = Tile<V>> {
+export class Grid<V extends string | number | object | undefined | boolean, T extends Tile<V> = Tile<V>> {
   private readonly grid_map: Map<string, T>;
   private readonly matrix: T[][];
   public readonly height: number;

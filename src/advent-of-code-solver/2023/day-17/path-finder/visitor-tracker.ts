@@ -1,4 +1,4 @@
-import { Direction } from '../../../common/matrix/grid/interface';
+import { Direction } from '../../../common/matrix/grid/direction';
 import { Coordinate } from '../../../common/matrix/interface';
 
 export interface CityStep {
