@@ -1,9 +1,9 @@
-import { MapTile } from './pipe';
-import { Move, PipeTile } from './pipe-tile';
-import { PipeTraveler } from './pipe-traveler';
-import { all_directions, Direction, opposite } from '../matrix/grid/direction';
-import { coordinateToString } from '../matrix/grid/grid';
-import { Coordinate } from '../matrix/interface';
+import { MapTile } from './pipe.js';
+import { Move, PipeTile } from './pipe-tile.js';
+import { PipeTraveler } from './pipe-traveler.js';
+import { all_directions, Direction, opposite } from '../matrix/grid/direction.js';
+import { coordinateToString } from '../matrix/grid/grid.js';
+import { Coordinate } from '../matrix/interface.js';
 
 export class PipeMaze {
   private readonly traveler: PipeTraveler;

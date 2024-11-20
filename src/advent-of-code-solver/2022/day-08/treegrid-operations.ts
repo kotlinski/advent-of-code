@@ -1,4 +1,4 @@
-import { Direction } from '../../common/matrix/grid/direction';
+import { Direction } from '../../common/matrix/grid/direction.js';
 
 export function getCompareValuesInDirection(
   direction: Direction,

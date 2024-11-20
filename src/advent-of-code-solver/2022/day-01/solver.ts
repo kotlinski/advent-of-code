@@ -1,6 +1,6 @@
-import { summarize } from '../../common/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common/array-operations/sort';
-import Solver from '../../solver';
+import Solver from '../../solver.js';
+import { summarize } from '../../common/array-operations/reduce.js';
+import { highToLowCompareFunction } from '../../common/array-operations/sort.js';
 
 export default class CalorieCounting extends Solver<number[]> {
   constructor(raw_input: string) {

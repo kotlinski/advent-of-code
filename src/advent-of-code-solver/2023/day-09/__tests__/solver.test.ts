@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import MirageMaintenanceSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import MirageMaintenanceSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 9', () => {
   let solver: Solver<string>;
@@ -11,7 +13,7 @@ describe('day 9', () => {
       { input: '10 13 16 21 30 45\n', output: 68 },
       { input: '0 3 6 9 12 15\n' + '1 3 6 10 15 21\n' + '10 13 16 21 30 45\n', output: 114 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new MirageMaintenanceSolver(input);
         const result = solver.solvePartOne();
@@ -27,7 +29,7 @@ describe('day 9', () => {
       { input: '10 13 16 21 30 45\n', output: 5 },
       { input: '0 3 6 9 12 15\n' + '1 3 6 10 15 21\n' + '10 13 16 21 30 45\n', output: 2 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new MirageMaintenanceSolver(input);
         const result = solver.solvePartTwo();

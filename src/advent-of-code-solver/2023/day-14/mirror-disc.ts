@@ -1,9 +1,9 @@
-import { sortRocks } from './rock-sorter';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { memoize } from '../../common/cache';
-import { Direction } from '../../common/matrix/grid/direction';
-import { Grid } from '../../common/matrix/grid/grid';
-import { Tile } from '../../common/matrix/grid/tile';
+import { sortRocks } from './rock-sorter.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { memoize } from '../../common/cache.js';
+import { Direction } from '../../common/matrix/grid/direction.js';
+import { Grid } from '../../common/matrix/grid/grid.js';
+import { Tile } from '../../common/matrix/grid/tile.js';
 
 export type RockType = '#' | '.' | 'O';
 

@@ -1,7 +1,7 @@
-import { MapTile } from './pipe';
-import { Direction } from '../matrix/grid/direction';
-import { Tile } from '../matrix/grid/tile';
-import { Coordinate } from '../matrix/interface';
+import { MapTile } from './pipe.js';
+import { Direction } from '../matrix/grid/direction.js';
+import { Tile } from '../matrix/grid/tile.js';
+import { Coordinate } from '../matrix/interface.js';
 
 export type Move = 'left' | 'right' | 'forward';
 

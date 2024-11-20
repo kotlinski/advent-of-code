@@ -1,11 +1,11 @@
-import { LavaTile } from './lava-tile/lava-tile';
-import { LightBeamTraveler } from './light-beam-traveler';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { highToLowCompareFunction } from '../../common/array-operations/sort';
-import { all_directions, Direction } from '../../common/matrix/grid/direction';
-import { Grid } from '../../common/matrix/grid/grid';
-import { Coordinate } from '../../common/matrix/interface';
+import { LavaTile } from './lava-tile/lava-tile.js';
+import { LightBeamTraveler } from './light-beam-traveler.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { highToLowCompareFunction } from '../../common/array-operations/sort.js';
+import { all_directions, Direction } from '../../common/matrix/grid/direction.js';
+import { Grid } from '../../common/matrix/grid/grid.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 export type MirrorTileValue = '.' | '-' | '|' | '/' | '\\';
 export default class TheFloorWillBeLavaSolver extends Solver<MirrorTileValue[][]> {

@@ -1,4 +1,4 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 
 function allZeros(historical_values: number[][]) {
   const last_level = historical_values.at(-1)!;

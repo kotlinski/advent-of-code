@@ -1,4 +1,4 @@
-import Dir from './dir';
+import Dir from './dir.js';
 
 export function folderSizesVisitor(dir: Dir): Map<string, number> {
   let dir_sizes = new Map<string, number>();

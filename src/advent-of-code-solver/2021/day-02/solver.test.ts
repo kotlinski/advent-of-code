@@ -1,5 +1,7 @@
-import DiveProblemSolver, { Movement } from './solver';
-import Solver from '../../solver';
+import DiveProblemSolver, { Movement } from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 2', () => {
   let day: Solver<Movement[]>;

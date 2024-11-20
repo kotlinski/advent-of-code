@@ -1,14 +1,16 @@
-import { Grid, parseStringToMatrix } from '../../../../common/matrix/grid/grid';
-import { CrucibleStepsProvider } from '../crucible-steps-provider';
-import { Dijkstra } from '../dijkstra';
-import { PathStore, PathSum } from '../path-store';
-import { VisitorTracker } from '../visitor-tracker';
+import { Grid, parseStringToMatrix } from '../../../../common/matrix/grid/grid.js';
+import { CrucibleStepsProvider } from '../crucible-steps-provider.js';
+import { Dijkstra } from '../dijkstra.js';
+import { PathStore, PathSum } from '../path-store.js';
+import { VisitorTracker } from '../visitor-tracker.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('Dijkstra', () => {
   let dijkstra: Dijkstra;
   let city_map: Grid<number>;
   describe('with a small city', () => {
-    beforeAll(() => {
+    before(() => {
       city_map = new Grid<number>([
         //  1  2  3  4  5
         [1, 9, 1, 1, 1, 5], // 0
@@ -30,7 +32,7 @@ describe('Dijkstra', () => {
     });
   });
   describe('with a test city', () => {
-    beforeAll(() => {
+    before(() => {
       const input = parseStringToMatrix(
         '2413432311323\n' +
           '3215453535623\n' +

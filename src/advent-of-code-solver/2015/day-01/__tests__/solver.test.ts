@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import NotQuiteLispSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import NotQuiteLispSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2015 day 1', () => {
   let solver: Solver<('(' | ')')[]>;
@@ -17,11 +19,13 @@ describe('2015 day 1', () => {
       { input: ')))\n', output: -3 },
       { input: ')())())\n', output: -3 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
-      it(`should equal to ${output}`, () => {
-        solver = new NotQuiteLispSolver(input);
-        const result = solver.solvePartOne();
-        expect(result).toEqual(output);
+    cases.forEach(({ input, output }) => {
+      describe(`with input ${input}`, () => {
+        it(`should equal to ${output}`, () => {
+          solver = new NotQuiteLispSolver(input);
+          const result = solver.solvePartOne();
+          expect(result).toEqual(output);
+        });
       });
     });
   });
@@ -31,11 +35,13 @@ describe('2015 day 1', () => {
       { input: ')\n', output: 1 },
       { input: '()())\n', output: 5 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
-      it(`should equal to ${output}`, () => {
-        solver = new NotQuiteLispSolver(input);
-        const result = solver.solvePartTwo();
-        expect(result).toEqual(output);
+    cases.forEach(({ input, output }) => {
+      describe(`with input ${input}`, () => {
+        it(`should equal to ${output}`, () => {
+          solver = new NotQuiteLispSolver(input);
+          const result = solver.solvePartTwo();
+          expect(result).toEqual(output);
+        });
       });
     });
   });

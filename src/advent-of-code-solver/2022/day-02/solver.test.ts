@@ -1,5 +1,7 @@
-import RockPaperScissors from './solver';
-import Solver from '../../solver';
+import RockPaperScissors from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 2', () => {
   let day: Solver<string[][]>;

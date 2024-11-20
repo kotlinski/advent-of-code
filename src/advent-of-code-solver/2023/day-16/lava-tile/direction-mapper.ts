@@ -1,5 +1,5 @@
-import { all_directions, Direction } from '../../../common/matrix/grid/direction';
-import { MirrorTileValue } from '../solver';
+import { all_directions, Direction } from '../../../common/matrix/grid/direction.js';
+import { MirrorTileValue } from '../solver.js';
 
 export function createDirectionMapper(value: MirrorTileValue): Map<Direction, Direction[]> {
   const mapper = new Map<Direction, Direction[]>();

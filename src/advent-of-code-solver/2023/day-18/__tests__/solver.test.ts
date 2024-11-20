@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import LavaductLagoonSolver, { DigInstruction } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import LavaductLagoonSolver, { DigInstruction } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 18', () => {
   let solver: Solver<DigInstruction[]>;
@@ -52,7 +54,7 @@ describe('day 18', () => {
           output: 69,
         },
       ];
-      describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+      cases.forEach(({ input, output }) => {
         it(`should equal to ${output}`, () => {
           solver = new LavaductLagoonSolver(input);
           const result = solver.solvePartOne();
@@ -83,7 +85,7 @@ describe('day 18', () => {
         output: 952408144115,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new LavaductLagoonSolver(input);
         const result = solver.solvePartTwo();

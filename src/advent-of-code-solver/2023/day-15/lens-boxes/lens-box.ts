@@ -1,4 +1,4 @@
-import { summarize } from '../../../common/array-operations/reduce';
+import { summarize } from '../../../common/array-operations/reduce.js';
 
 interface Lens {
   label: string;

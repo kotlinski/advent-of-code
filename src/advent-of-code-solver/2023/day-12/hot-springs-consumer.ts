@@ -1,5 +1,5 @@
-import { summarize } from '../../common/array-operations/reduce';
-import { memoize } from '../../common/cache';
+import { summarize } from '../../common/array-operations/reduce.js';
+import { memoize } from '../../common/cache.js';
 
 export class HotSpringsConsumer {
   private readonly memoized: (arrangement: string, groups: number[]) => number;

@@ -1,6 +1,6 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate, removeNonNumbers } from '../../common/array-operations/filter';
-import { stringToNumber } from '../../common/array-operations/map';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate, removeNonNumbers } from '../../common/array-operations/filter.js';
+import { stringToNumber } from '../../common/array-operations/map.js';
 
 export default class InverseCaptchaSolver extends Solver<number[]> {
   constructor(raw_input: string) {

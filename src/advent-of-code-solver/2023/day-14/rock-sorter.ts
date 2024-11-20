@@ -1,5 +1,5 @@
-import { RockType } from './mirror-disc';
-import { Direction } from '../../common/matrix/grid/direction';
+import { RockType } from './mirror-disc.js';
+import { Direction } from '../../common/matrix/grid/direction.js';
 
 /**
  * Rock type '#' should be un touched

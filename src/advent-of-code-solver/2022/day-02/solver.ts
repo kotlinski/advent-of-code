@@ -1,6 +1,6 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { splitStringOnChar } from '../../common/array-operations/map';
-import Solver from '../../solver';
+import Solver from '../../solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { splitStringOnChar } from '../../common/array-operations/map.js';
 
 function summarize(accumulator: number, number: number) {
   return accumulator + number;
@@ -13,7 +13,7 @@ export default class RockPaperScissors extends Solver<string[][]> {
     if (value === 'A' || value === 'X') return 'Rock';
     if (value === 'B' || value === 'Y') return 'Paper';
     if (value === 'C' || value === 'Z') return 'Scissors';
-    throw Error(`Can't parse ${value}`);
+    throw new Error(`Can't parse ${value}`);
   }
 
   constructor(raw_input: string) {

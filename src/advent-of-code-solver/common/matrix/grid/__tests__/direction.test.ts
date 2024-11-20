@@ -1,4 +1,6 @@
-import { getDirection } from '../direction';
+import { getDirection } from '../direction.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('getDirection', () => {
   it('right', () => {

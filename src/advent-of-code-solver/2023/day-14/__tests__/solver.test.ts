@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import ParabolicReflectorDishSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import ParabolicReflectorDishSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 14', () => {
   let solver: Solver<string>;
@@ -21,7 +23,7 @@ describe('day 14', () => {
         output: 136,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ParabolicReflectorDishSolver(input);
         const result = solver.solvePartOne();
@@ -47,7 +49,7 @@ describe('day 14', () => {
         output: 64,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ParabolicReflectorDishSolver(input);
         const result = solver.solvePartTwo();

@@ -1,9 +1,9 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { splitStringOnChar } from '../../common/array-operations/map';
-import { summarize } from '../../common/array-operations/reduce';
-import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { splitStringOnChar } from '../../common/array-operations/map.js';
+import { summarize } from '../../common/array-operations/reduce.js';
+import Solver from '../../solver.js';
 
-const isClosingChar = (nav_char: string) => '>)]}'.split('').some((char) => char === nav_char);
+const is_closing_char = (nav_char: string) => '>)]}'.split('').some((char) => char === nav_char);
 
 function isMatching(char_a: string, char_b: string): boolean {
   if (char_a === ']' && char_b === '[') {
@@ -19,12 +19,12 @@ function isMatching(char_a: string, char_b: string): boolean {
 }
 
 function isCorrupt(line: string[]): boolean {
-  return line.some(isClosingChar);
+  return line.some(is_closing_char);
 }
 
 function reduceCompleteChunks(line: string[]) {
   for (let i = 0; i < line.length; i++) {
-    if (isClosingChar(line[i])) {
+    if (is_closing_char(line[i])) {
       const j = i - 1;
       if (isMatching(line[i], line[j])) {
         line.splice(j, i - j + 1);
@@ -37,7 +37,7 @@ function reduceCompleteChunks(line: string[]) {
 }
 
 function getSyntaxErrorScore(corrupt_line: string[]): number {
-  const corrupt_char = corrupt_line.find(isClosingChar);
+  const corrupt_char = corrupt_line.find(is_closing_char);
   switch (corrupt_char) {
     case ')': {
       return 3;

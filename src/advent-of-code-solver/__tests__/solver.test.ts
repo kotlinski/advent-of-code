@@ -1,5 +1,7 @@
-import TheTreacheryOfWhalesSolver from '../2021/day-07/solver';
-import { solverFactory } from '../solver';
+import TheTreacheryOfWhalesSolver from '../2021/day-07/solver.js';
+import { solverFactory } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('solverFactory', () => {
   it('should create a solver', () => {

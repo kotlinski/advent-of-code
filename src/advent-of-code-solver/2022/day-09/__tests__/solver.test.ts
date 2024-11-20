@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import RopeBridgeSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import RopeBridgeSolver from '../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 9', () => {
   let solver: Solver<number[]>;

@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import InverseCaptchaSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import InverseCaptchaSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 1', () => {
   let solver: Solver<number[]>;
@@ -11,7 +13,7 @@ describe('day 1', () => {
       { input: '1234\n', output: 0 },
       { input: '91212129\n', output: 9 },
     ];
-    describe.each(cases)('$input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should result with ${output}`, () => {
         solver = new InverseCaptchaSolver(input);
         expect(solver.solvePartOne()).toEqual(output);
@@ -27,7 +29,7 @@ describe('day 1', () => {
       { input: '123123\n', output: 12 },
       { input: '12131415\n', output: 4 },
     ];
-    describe.each(cases)('$input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should result with ${output}`, () => {
         solver = new InverseCaptchaSolver(input);
         expect(solver.solvePartTwo()).toEqual(output);

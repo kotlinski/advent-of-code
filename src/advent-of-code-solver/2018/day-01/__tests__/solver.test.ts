@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import ChronalCalibrationSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import ChronalCalibrationSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 1', () => {
   let solver: Solver<number[]>;
@@ -11,7 +13,7 @@ describe('day 1', () => {
       { input: '+1\n' + '+1\n' + '+1\n', output: 3 },
       { input: '-1\n' + '-2\n' + '-3\n', output: -6 },
     ];
-    describe.each(cases)('input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should be ${output}`, () => {
         solver = new ChronalCalibrationSolver(input);
         expect(solver.solvePartOne()).toEqual(output);
@@ -27,7 +29,7 @@ describe('day 1', () => {
       { input: '-6\n' + '+3\n' + '+8\n' + '+5\n' + '-6\n', output: 5 },
       { input: '+7\n' + '+7\n' + '-2\n' + '-7\n' + '-4\n', output: 14 },
     ];
-    describe.each(cases)('input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should be ${output}`, () => {
         solver = new ChronalCalibrationSolver(input);
         expect(solver.solvePartTwo()).toEqual(output);

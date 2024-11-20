@@ -1,4 +1,4 @@
-import parse from 'node-html-parser';
+import { parse } from 'node-html-parser';
 
 export function parseProblemDescription(html: string): string {
   const parsed_html = parse(html);

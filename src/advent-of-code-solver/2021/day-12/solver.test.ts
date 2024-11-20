@@ -1,6 +1,8 @@
-import { Graph } from './graph';
-import PassagePathingSolver from './solver';
-import Solver from '../../solver';
+import { Graph } from './graph.js';
+import PassagePathingSolver from './solver.js';
+import Solver from '../../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 12', () => {
   const tiny_input = 'start-A\n' + 'start-b\n' + 'A-c\n' + 'A-b\n' + 'b-d\n' + 'A-end\n' + 'b-end\n';

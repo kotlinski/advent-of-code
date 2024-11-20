@@ -1,5 +1,7 @@
-import SyntaxScoringSolver from './solver';
-import Solver from '../../solver';
+import SyntaxScoringSolver from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day X', () => {
   let day: Solver<string[][]>;

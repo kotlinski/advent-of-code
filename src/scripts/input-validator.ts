@@ -1,7 +1,12 @@
-export function verifyInput(day: number): void {
+export function verifyInput(year: number, day: number): void {
+  if (Number.isNaN(year) || year < 2015) {
+    console.error(`The year input must be a number 2015+, year was ${year}`);
+    console.error('For example: yarn solve day 2024 1');
+    process.exit(1);
+  }
   if (Number.isNaN(day) || day < 1 || day > 25) {
     console.error(`You have to choose a day between 1 and 25, ${day} is out of range`);
-    console.error('For example: yarn day 1');
+    console.error(`For example: yarn solve day ${year} 1`);
     process.exit(1);
   }
 }
@@ -26,17 +31,16 @@ export function parseTaskType(input: string): TaskType {
 }
 
 export function parseInput(
-  input_1: string,
-  input_2: string,
-  input_3: string,
+  [_node_path, script_path, _script_name, year_input, day_input]: string[]
 ): { year: number; day: number; task_type: TaskType; script: 'solve' | 'init-solver' } {
-  const year = parseInt(input_2, 10);
-  const day = parseInt(input_3, 10);
-  verifyInput(day);
+  console.log(`process.argv[: ${JSON.stringify(process.argv, null, 2)}`);
+  const year = parseInt(year_input, 10);
+  const day = parseInt(day_input, 10);
+  verifyInput(year, day);
   return {
-    script: verifyScriptName(input_1),
+    script: verifyScriptName(script_path),
     year,
     day,
-    task_type: parseTaskType(input_3),
+    task_type: parseTaskType(day_input),
   };
 }

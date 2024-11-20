@@ -1,8 +1,8 @@
-import { CamelCard, CamelCardRules } from './game/camel-card';
-import { InterestingRules } from './game/rules/interesting-rules';
-import { SimpleRules } from './game/rules/simple-rules';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { CamelCard, CamelCardRules } from './game/camel-card.js';
+import { InterestingRules } from './game/rules/interesting-rules.js';
+import { SimpleRules } from './game/rules/simple-rules.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 
 export class CamelPokerPlayer {
   public readonly hand: CamelCard[];

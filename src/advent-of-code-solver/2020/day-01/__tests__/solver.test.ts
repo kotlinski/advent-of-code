@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import ReportRepairSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import ReportRepairSolver from '../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 1', () => {
   let solver: Solver<number[]>;

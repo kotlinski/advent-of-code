@@ -1,9 +1,11 @@
-import { PathStore, PathSum } from '../path-store';
-import { VisitorTracker } from '../visitor-tracker';
+import { PathStore, PathSum } from '../path-store.js';
+import { VisitorTracker } from '../visitor-tracker.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('PathStore', () => {
   let path_store: PathStore;
-  beforeAll(() => {
+  before(() => {
     const visitor_tracker = new VisitorTracker();
     path_store = new PathStore(visitor_tracker);
   });

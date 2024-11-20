@@ -1,4 +1,4 @@
-import Dir from './dir';
+import Dir from './dir.js';
 
 type LineType = 'cd' | 'ls' | 'dir' | 'file';
 

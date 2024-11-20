@@ -1,5 +1,7 @@
-import GiantSquidSolver, { BingoGame } from './solver';
-import Solver from '../../solver';
+import GiantSquidSolver, { BingoGame } from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 4', () => {
   let day: Solver<BingoGame>;
