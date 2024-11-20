@@ -1,7 +1,7 @@
-import { LeftRightDirection, GhostCoordinate, GhostMap, KeyState } from './ghost-map';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { findLeastCommonMultiplier } from '../../common/math/least-common-multiplier';
+import { LeftRightDirection, GhostCoordinate, GhostMap, KeyState } from './ghost-map.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { findLeastCommonMultiplier } from '../../common/math/least-common-multiplier.js';
 
 export default class HauntedWastelandSolver extends Solver<GhostMap> {
   constructor(raw_input: string) {

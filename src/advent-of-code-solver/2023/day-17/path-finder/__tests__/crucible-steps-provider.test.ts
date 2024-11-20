@@ -1,6 +1,8 @@
-import { all_directions } from '../../../../common/matrix/grid/direction';
-import { Grid } from '../../../../common/matrix/grid/grid';
-import { CrucibleStepsProvider } from '../crucible-steps-provider';
+import { all_directions } from '../../../../common/matrix/grid/direction.js';
+import { Grid } from '../../../../common/matrix/grid/grid.js';
+import { CrucibleStepsProvider } from '../crucible-steps-provider.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('CrucibleStepsProvider', () => {
   let crucible_steps_provider: CrucibleStepsProvider;
@@ -10,7 +12,7 @@ describe('CrucibleStepsProvider', () => {
     [1, 8, 1, 9, 1, 6], // 1
     [1, 1, 1, 9, 2, 2], // 2
   ]);
-  beforeAll(() => {
+  before(() => {
     crucible_steps_provider = new CrucibleStepsProvider(1, 3, city_map);
   });
   describe('createChildPaths', () => {

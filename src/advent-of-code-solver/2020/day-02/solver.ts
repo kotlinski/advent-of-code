@@ -1,6 +1,6 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { Letter } from '../../common/interface';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { Letter } from '../../common/interface.js';
 
 export class PasswordValidator {
   private readonly rule_letter: Letter;

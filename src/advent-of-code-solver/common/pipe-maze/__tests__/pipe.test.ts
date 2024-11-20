@@ -1,4 +1,6 @@
-import { getPipeFromCoordinates } from '../pipe';
+import { getPipeFromCoordinates } from '../pipe.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('pipe', () => {
   describe('getPipeFromCoordinates', () => {

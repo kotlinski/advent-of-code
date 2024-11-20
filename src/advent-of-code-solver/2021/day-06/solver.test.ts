@@ -1,5 +1,7 @@
-import LanternfishSolver from './solver';
-import Solver from '../../solver';
+import LanternfishSolver from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 6', () => {
   let lanternfish_solver: Solver<number[]>;
@@ -10,8 +12,10 @@ describe('day 6', () => {
   describe('part one', () => {
     describe('day-by-day', () => {
       describe('run a pick', () => {
-        test.each([[5, 10]])('After day %s, there should be a fish population of %s', (day, population) => {
-          expect(lanternfish_solver.solvePartOne({ iterations: day, input: [3, 4, 3, 1, 2] })).toEqual(population);
+        [[5, 10]].forEach(([day, population]) => {
+          it(`should have a fish population of ${population} after ${day} days`, () => {
+            expect(lanternfish_solver.solvePartOne({ iterations: day, input: [3, 4, 3, 1, 2] })).toEqual(population);
+          });
         });
       });
       describe('a fish with 1 day to birth', () => {
@@ -28,8 +32,10 @@ describe('day 6', () => {
           [10, 3],
           [11, 4],
         ];
-        test.each(table)('After day %s, there should be a fish population of %s', (day, population) => {
-          expect(lanternfish_solver.solvePartOne({ iterations: day, input: [1] })).toEqual(population);
+        table.forEach(([day, population]) => {
+          it(`should have a fish population of ${population} after ${day} days`, () => {
+            expect(lanternfish_solver.solvePartOne({ iterations: day, input: [1] })).toEqual(population);
+          });
         });
       });
       describe('the original 5 fishes', () => {
@@ -53,8 +59,10 @@ describe('day 6', () => {
           [17, 22],
           [18, 26],
         ];
-        test.each(table)('After day %s, there should be a fish population of %s', (day, population) => {
-          expect(lanternfish_solver.solvePartOne({ iterations: day })).toEqual(population);
+        table.forEach(([day, population]) => {
+          it(`should have a fish population of ${population} after ${day} days`, () => {
+            expect(lanternfish_solver.solvePartOne({ iterations: day, input: [3, 4, 3, 1, 2] })).toEqual(population);
+          });
         });
       });
     });

@@ -1,6 +1,8 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import { GhostMap } from '../ghost-map';
-import HauntedWastelandSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import { GhostMap } from '../ghost-map.js';
+import HauntedWastelandSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 8', () => {
   let solver: Solver<GhostMap>;
@@ -22,7 +24,7 @@ describe('day 8', () => {
       },
       { input: 'LLR\n' + '\n' + 'AAA = (BBB, BBB)\n' + 'BBB = (AAA, ZZZ)\n' + 'ZZZ = (ZZZ, ZZZ)\n', output: 6 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new HauntedWastelandSolver(input);
         const result = solver.solvePartOne();
@@ -48,7 +50,7 @@ describe('day 8', () => {
         output: 6,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new HauntedWastelandSolver(input);
         const result = solver.solvePartTwo();

@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import CubeConundrumSolver, { Game } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import CubeConundrumSolver, { Game } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 2', () => {
   let solver: Solver<Game[]>;
@@ -35,7 +37,7 @@ describe('day 2', () => {
         output: 8,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new CubeConundrumSolver(input);
         const result = solver.solvePartOne();
@@ -61,7 +63,7 @@ describe('day 2', () => {
         output: 2286,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new CubeConundrumSolver(input);
         const result = solver.solvePartTwo();

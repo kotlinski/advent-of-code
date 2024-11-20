@@ -1,11 +1,11 @@
-import { parseLinesToFileSystem } from './filesystem/command-line-parser';
-import Dir from './filesystem/dir';
-import { folderSizesVisitor } from './filesystem/visitors';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
+import { parseLinesToFileSystem } from './filesystem/command-line-parser.js';
+import Dir from './filesystem/dir.js';
+import { folderSizesVisitor } from './filesystem/visitors.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 
-import { summarize } from '../../common/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common/array-operations/sort';
-import Solver from '../../solver';
+import { summarize } from '../../common/array-operations/reduce.js';
+import { highToLowCompareFunction } from '../../common/array-operations/sort.js';
+import Solver from '../../solver.js';
 
 export default class NoSpaceLeftOnDevice extends Solver<Dir> {
   constructor(raw_input: string) {

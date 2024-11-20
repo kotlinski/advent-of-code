@@ -1,5 +1,7 @@
-import BinaryDiagnosticSolver from './solver';
-import Solver from '../../solver';
+import BinaryDiagnosticSolver from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 3', () => {
   let day: Solver<number[][]>;

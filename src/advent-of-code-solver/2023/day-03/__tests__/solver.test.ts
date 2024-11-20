@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import GearRatiosSolver, { EngineSchematic } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import GearRatiosSolver, { EngineSchematic } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 3', () => {
   let solver: Solver<EngineSchematic>;
@@ -29,7 +31,7 @@ describe('day 3', () => {
         output: 4361,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new GearRatiosSolver(input);
         const result = solver.solvePartOne();
@@ -55,7 +57,7 @@ describe('day 3', () => {
         output: 467835,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new GearRatiosSolver(input);
         const result = solver.solvePartTwo();

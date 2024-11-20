@@ -1,4 +1,4 @@
-import Solver from '../../solver';
+import Solver from '../../solver.js';
 
 export default class SonarSweepSolver extends Solver<number[]> {
   constructor(raw_input: string) {

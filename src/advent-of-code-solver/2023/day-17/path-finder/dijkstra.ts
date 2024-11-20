@@ -1,7 +1,7 @@
-import { CrucibleStepsProvider } from './crucible-steps-provider';
-import { PathStore, PathSum } from './path-store';
-import { all_directions, Direction } from '../../../common/matrix/grid/direction';
-import { compareCoordinates, Coordinate } from '../../../common/matrix/interface';
+import { CrucibleStepsProvider } from './crucible-steps-provider.js';
+import { PathStore, PathSum } from './path-store.js';
+import { all_directions, Direction } from '../../../common/matrix/grid/direction.js';
+import { compareCoordinates, Coordinate } from '../../../common/matrix/interface.js';
 
 type Vertical = ('down' | 'up')[];
 type Horizontal = ('left' | 'right')[];

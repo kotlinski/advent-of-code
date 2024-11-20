@@ -1,5 +1,5 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import Solver from '../../solver.js';
 
 function findNeighbours(heightmap: number[][], x: number, y: number) {
   const neighbours: number[] = [];

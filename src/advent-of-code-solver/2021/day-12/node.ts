@@ -1,4 +1,4 @@
-import { CaveType } from './graph';
+import { CaveType } from './graph.js';
 
 export class Node {
   readonly key: string;

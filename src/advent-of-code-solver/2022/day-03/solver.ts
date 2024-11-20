@@ -1,7 +1,7 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { splitStringOnChar } from '../../common/array-operations/map';
-import { summarize } from '../../common/array-operations/reduce';
-import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { splitStringOnChar } from '../../common/array-operations/map.js';
+import { summarize } from '../../common/array-operations/reduce.js';
+import Solver from '../../solver.js';
 
 export default class RucksackReorganization extends Solver<string[][]> {
   constructor(raw_input: string) {

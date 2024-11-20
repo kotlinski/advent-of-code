@@ -1,10 +1,10 @@
-import { isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { splitStringOnChar } from '../../common/array-operations/map';
-import { productarize } from '../../common/array-operations/reduce';
-import { highToLowCompareFunction } from '../../common/array-operations/sort';
-import { all_directions } from '../../common/matrix/grid/direction';
-import Solver from '../../solver';
+import { isFullyVisibleInDirection, numberOfVisibleTreesInDirection } from './treegrid-operations.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { splitStringOnChar } from '../../common/array-operations/map.js';
+import { productarize } from '../../common/array-operations/reduce.js';
+import { highToLowCompareFunction } from '../../common/array-operations/sort.js';
+import { all_directions } from '../../common/matrix/grid/direction.js';
+import Solver from '../../solver.js';
 
 export default class TreetopTreeHouse extends Solver<number[][]> {
   constructor(raw_input: string) {

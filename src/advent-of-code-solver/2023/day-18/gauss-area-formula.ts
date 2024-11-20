@@ -1,5 +1,5 @@
-import { summarize } from '../../common/array-operations/reduce';
-import { Coordinate } from '../../common/matrix/interface';
+import { summarize } from '../../common/array-operations/reduce.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 /**
  * Gauss area formula aka the Shoelace formula

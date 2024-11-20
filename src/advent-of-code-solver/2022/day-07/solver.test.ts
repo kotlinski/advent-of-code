@@ -1,6 +1,8 @@
-import Dir from './filesystem/dir';
-import NoSpaceLeftOnDevice from './solver';
-import Solver from '../../solver';
+import Dir from './filesystem/dir.js';
+import NoSpaceLeftOnDevice from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 7', () => {
   let day: Solver<Dir>;

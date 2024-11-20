@@ -1,6 +1,6 @@
-import { removeEmptyLinesPredicate } from '../../../common/array-operations/filter';
-import { Grid } from '../../../common/matrix/grid/grid';
-import { Tile } from '../../../common/matrix/grid/tile';
+import { removeEmptyLinesPredicate } from '../../../common/array-operations/filter.js';
+import { Grid } from '../../../common/matrix/grid/grid.js';
+import { Tile } from '../../../common/matrix/grid/tile.js';
 
 export type SpaceChar = '#' | '.';
 export type SpaceTile = Tile<SpaceChar>;

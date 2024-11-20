@@ -1,7 +1,7 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { productarize } from '../../common/array-operations/reduce';
-import { any_space } from '../../common/array-operations/split';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { productarize } from '../../common/array-operations/reduce.js';
+import { any_space } from '../../common/array-operations/split.js';
 
 class Race {
   public readonly ms: number;
