@@ -1,6 +1,6 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate, removeSpacePredicate } from '../../common/array-operations/filter';
-import { Coordinate, Vector } from '../../common/matrix/interface';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate, removeSpacePredicate } from '../../common/array-operations/filter.js';
+import { Coordinate, Vector } from '../../common/matrix/interface.js';
 
 export interface CoordinatedStep {
   turn: 'L' | 'R';

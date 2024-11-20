@@ -1,5 +1,7 @@
-import { mockAdventHtml } from './html-helper';
-import { parseProblemDescription, parseSolverName, pascalName } from '../html-parser';
+import { mockAdventHtml } from './html-helper.js';
+import { parseProblemDescription, parseSolverName, pascalName } from '../html-parser.js';
+import { describe, it, before } from 'node:test';
+import { expect } from 'expect';
 
 describe('html-parser', () => {
   describe('pascalName', () => {
@@ -11,16 +13,18 @@ describe('html-parser', () => {
       { input: '--- Day 1: Not Quite Lisp ---', output: 'NotQuiteLisp' },
       { input: '--- Day 1: The Tyranny of the Rocket Equation ---\n', output: 'TheTyrannyOfTheRocketEquation' },
     ];
-    describe.each(cases)('$description', ({ input, output }: TestCase) => {
-      it('should format to PascalCase', () => {
-        const result = pascalName(input);
-        expect(result).toEqual(output);
+    cases.forEach(({ input, output }) => {
+      describe(`${input}`, () => {
+        it('should format to PascalCase', () => {
+          const result = pascalName(input);
+          expect(result).toEqual(output);
+        });
       });
     });
   });
   describe('parseSolverName', () => {
     let html: string;
-    beforeAll(() => {
+    before(() => {
       html = mockAdventHtml();
     });
     it('should format the task name', () => {
@@ -29,7 +33,7 @@ describe('html-parser', () => {
   });
   describe('parseProblemDescription', () => {
     let html: string;
-    beforeAll(() => {
+    before(() => {
       html = mockAdventHtml();
     });
     it('should keep the "articles", and skip the rest', () => {

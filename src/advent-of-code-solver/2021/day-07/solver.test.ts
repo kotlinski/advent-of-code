@@ -1,5 +1,7 @@
-import TheTreacheryOfWhalesSolver from './solver';
-import Solver from '../../solver';
+import TheTreacheryOfWhalesSolver from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 7', () => {
   let day: Solver<number[]>;

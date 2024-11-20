@@ -1,6 +1,6 @@
-import { LensBox } from './lens-box';
-import { summarize } from '../../../common/array-operations/reduce';
-import { LavaHasher } from '../lava-hasher';
+import { LensBox } from './lens-box.js';
+import { summarize } from '../../../common/array-operations/reduce.js';
+import { LavaHasher } from '../lava-hasher.js';
 
 type LensOperation = '-' | '=';
 

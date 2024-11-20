@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import PointOfIncidenceSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import PointOfIncidenceSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 13', () => {
   let solver: Solver<string[][][]>;
@@ -34,7 +36,7 @@ describe('day 13', () => {
         output: 405,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new PointOfIncidenceSolver(input);
         const result = solver.solvePartOne();
@@ -107,7 +109,7 @@ describe('day 13', () => {
         output: 5,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new PointOfIncidenceSolver(input);
         const result = solver.solvePartTwo();

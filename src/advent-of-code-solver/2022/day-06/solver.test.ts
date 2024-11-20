@@ -1,5 +1,7 @@
-import TuningTrouble from './solver';
-import Solver from '../../solver';
+import TuningTrouble from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 6', () => {
   let day: Solver<string[]>;

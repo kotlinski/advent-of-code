@@ -1,5 +1,7 @@
-import SonarSweepSolver from './solver';
-import Solver from '../../solver';
+import SonarSweepSolver from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 1', () => {
   let day: Solver<number[]>;

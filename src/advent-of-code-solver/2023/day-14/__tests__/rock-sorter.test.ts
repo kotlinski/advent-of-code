@@ -1,6 +1,8 @@
-import { Direction } from '../../../common/matrix/grid/direction';
-import { RockType } from '../mirror-disc';
-import { sortRocks } from '../rock-sorter';
+import { Direction } from '../../../common/matrix/grid/direction.js';
+import { RockType } from '../mirror-disc.js';
+import { sortRocks } from '../rock-sorter.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('sortRocks', () => {
   type TestCase = { input: [Direction, RockType[]]; output: RockType[] | undefined };
@@ -22,7 +24,7 @@ describe('sortRocks', () => {
       output: ['.', '.', '.', 'O', '#', '.', '.', 'O', 'O', '#'],
     },
   ];
-  describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+  cases.forEach(({ input, output }) => {
     it(`should equal to ${output?.toString()}`, () => {
       expect(sortRocks(...input)).toEqual(output);
     });

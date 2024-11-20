@@ -1,5 +1,5 @@
-import { memoize } from '../../common/cache';
-import Solver from '../../solver';
+import { memoize } from '../../common/cache.js';
+import Solver from '../../solver.js';
 
 function getConstantFuelCost(distance: number) {
   return distance;

@@ -1,6 +1,6 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { lowToHighNumber } from '../../common/array-operations/sort';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { lowToHighNumber } from '../../common/array-operations/sort.js';
 
 const map_keys: MapKey[] = [
   'seed-to-soil map',

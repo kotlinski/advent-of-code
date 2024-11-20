@@ -1,4 +1,6 @@
-import { checkForCycles, CycleResult } from '../cycle-finder';
+import { checkForCycles, CycleResult } from '../cycle-finder.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('checkForCycles', () => {
   type TestCase = { input: [number[], number?]; output: CycleResult | undefined };
@@ -20,7 +22,7 @@ describe('checkForCycles', () => {
       output: undefined,
     },
   ];
-  describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+  cases.forEach(({ input, output }) => {
     it(`should equal to ${output?.toString()}`, () => {
       expect(checkForCycles(...input)).toEqual(output);
     });
