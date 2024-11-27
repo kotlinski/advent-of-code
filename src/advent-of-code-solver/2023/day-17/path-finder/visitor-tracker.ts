@@ -1,5 +1,5 @@
-import { Direction } from '../../../common/matrix/grid/direction';
-import { Coordinate } from '../../../common/matrix/interface';
+import { Direction } from '../../../common/matrix/grid/direction.js';
+import { Coordinate } from '../../../common/matrix/interface.js';
 
 export interface CityStep {
   coordinate: Coordinate;

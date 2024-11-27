@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import ClumsyCrucibleSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import ClumsyCrucibleSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 17', () => {
   let solver: Solver<number[][]>;
@@ -25,7 +27,7 @@ describe('day 17', () => {
         output: 102,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ClumsyCrucibleSolver(input);
         const result = solver.solvePartOne();
@@ -41,7 +43,7 @@ describe('day 17', () => {
         output: 94,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ClumsyCrucibleSolver(input);
         const result = solver.solvePartTwo();

@@ -1,8 +1,8 @@
-import { createDirectionMapper } from './direction-mapper';
-import { Direction } from '../../../common/matrix/grid/direction';
-import { Tile } from '../../../common/matrix/grid/tile';
-import { Coordinate } from '../../../common/matrix/interface';
-import { MirrorTileValue } from '../solver';
+import { createDirectionMapper } from './direction-mapper.js';
+import { Direction } from '../../../common/matrix/grid/direction.js';
+import { Tile } from '../../../common/matrix/grid/tile.js';
+import { Coordinate } from '../../../common/matrix/interface.js';
+import { MirrorTileValue } from '../solver.js';
 
 export class LavaTile extends Tile<MirrorTileValue> {
   // in direction mapped to out directions

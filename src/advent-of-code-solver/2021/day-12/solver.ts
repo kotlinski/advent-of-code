@@ -1,7 +1,7 @@
-import { Graph } from './graph';
-import { Node } from './node';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import Solver from '../../solver';
+import { Graph } from './graph.js';
+import { Node } from './node.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import Solver from '../../solver.js';
 
 export default class PassagePathingSolver extends Solver<Graph> {
   constructor(raw_input: string) {

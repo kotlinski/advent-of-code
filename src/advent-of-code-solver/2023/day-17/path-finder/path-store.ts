@@ -1,4 +1,4 @@
-import { CityStep, VisitorTracker } from './visitor-tracker';
+import { CityStep, VisitorTracker } from './visitor-tracker.js';
 
 export interface PathSum extends CityStep {
   sum: number;

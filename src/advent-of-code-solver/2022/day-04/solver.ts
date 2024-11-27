@@ -1,6 +1,6 @@
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { fillInterval } from '../../common/array-operations/map';
-import Solver from '../../solver';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { fillInterval } from '../../common/array-operations/map.js';
+import Solver from '../../solver.js';
 
 export default class CampCleanup extends Solver<number[][][]> {
   constructor(raw_input: string) {

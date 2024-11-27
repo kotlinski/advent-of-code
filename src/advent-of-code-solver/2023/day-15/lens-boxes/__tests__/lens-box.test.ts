@@ -1,8 +1,10 @@
-import { LensBox } from '../lens-box';
+import { LensBox } from '../lens-box.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('LensBox', () => {
   let lens_box: LensBox;
-  beforeAll(() => {
+  before(() => {
     lens_box = new LensBox(1);
   });
   describe('add and remove', () => {

@@ -1,16 +1,18 @@
-import { CamelPokerPlayer } from '../../../solver';
-import { SimpleRules } from '../simple-rules';
+import { CamelPokerPlayer } from '../../../solver.js';
+import { SimpleRules } from '../simple-rules.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('camel-card', () => {
   let rules: SimpleRules;
-  beforeAll(() => {
+  before(() => {
     rules = new SimpleRules();
   });
   describe('compareHands', () => {
     describe('two two pair hands', () => {
       let player_a: CamelPokerPlayer;
       let player_b: CamelPokerPlayer;
-      beforeAll(() => {
+      before(() => {
         player_a = new CamelPokerPlayer('KK677 28', rules);
         player_b = new CamelPokerPlayer('KTJJT 220', rules);
       });

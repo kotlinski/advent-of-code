@@ -1,5 +1,7 @@
-import CalorieCounting from './solver';
-import Solver from '../../solver';
+import CalorieCounting from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 1', () => {
   let day: Solver<number[]>;

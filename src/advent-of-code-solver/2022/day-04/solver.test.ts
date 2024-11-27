@@ -1,5 +1,7 @@
-import CampCleanup from './solver';
-import Solver from '../../solver';
+import CampCleanup from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 4', () => {
   let day: Solver<number[][][]>;

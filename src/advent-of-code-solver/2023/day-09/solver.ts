@@ -1,5 +1,5 @@
-import { OasisAndSandInstabilitySensor } from './oasis-and-sand-instability-sensor';
-import Solver from '../../../advent-of-code-solver/solver';
+import { OasisAndSandInstabilitySensor } from './oasis-and-sand-instability-sensor.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
 
 export default class MirageMaintenanceSolver extends Solver<string> {
   constructor(raw_input: string) {

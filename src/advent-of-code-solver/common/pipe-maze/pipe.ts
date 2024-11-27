@@ -1,5 +1,5 @@
-import { Direction, getDirection } from '../matrix/grid/direction';
-import { Coordinate } from '../matrix/interface';
+import { Direction, getDirection } from '../matrix/grid/direction.js';
+import { Coordinate } from '../matrix/interface.js';
 
 export type PipeType = '|' | '-' | 'L' | 'J' | '7' | 'F' | 'S';
 export type MapTile = PipeType | '.';

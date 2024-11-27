@@ -1,4 +1,6 @@
-import ProgramAlarmSolver from '../solver';
+import ProgramAlarmSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 2', () => {
   let solver: ProgramAlarmSolver;
@@ -11,7 +13,7 @@ describe('day 2', () => {
       { input: '2,4,4,5,99,0\n', output: [2, 4, 4, 5, 99, 9801] },
       { input: '1,1,1,4,99,5,6,0,99\n', output: [30, 1, 1, 4, 2, 5, 6, 0, 99] },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output.join(', ')}`, () => {
         solver = new ProgramAlarmSolver(input);
         const result = solver.runProgram();
@@ -28,7 +30,7 @@ describe('day 2', () => {
         output: 3931283,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ProgramAlarmSolver(input);
         const result = solver.solvePartOne();
@@ -45,7 +47,7 @@ describe('day 2', () => {
         output: 6979,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ProgramAlarmSolver(input);
         const result = solver.solvePartTwo();

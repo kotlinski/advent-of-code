@@ -1,8 +1,8 @@
-import { LavaTile } from './lava-tile/lava-tile';
-import { MirrorTileValue } from './solver';
-import { Direction } from '../../common/matrix/grid/direction';
-import { coordinateToString, Grid } from '../../common/matrix/grid/grid';
-import { Coordinate } from '../../common/matrix/interface';
+import { LavaTile } from './lava-tile/lava-tile.js';
+import { MirrorTileValue } from './solver.js';
+import { Direction } from '../../common/matrix/grid/direction.js';
+import { coordinateToString, Grid } from '../../common/matrix/grid/grid.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 type Step = { tile: LavaTile; direction: Direction };
 

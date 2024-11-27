@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import ScratchcardsSolver, { ScratchCard } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import ScratchcardsSolver, { ScratchCard } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 4', () => {
   let solver: Solver<ScratchCard[]>;
@@ -23,7 +25,7 @@ describe('day 4', () => {
         output: 13,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ScratchcardsSolver(input);
         const result = solver.solvePartOne();
@@ -45,7 +47,7 @@ describe('day 4', () => {
         output: 30,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new ScratchcardsSolver(input);
         const result = solver.solvePartTwo();

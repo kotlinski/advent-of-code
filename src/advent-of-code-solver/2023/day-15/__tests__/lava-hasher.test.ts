@@ -1,8 +1,10 @@
-import { LavaHasher } from '../lava-hasher';
+import { LavaHasher } from '../lava-hasher.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('LavaHasher', () => {
   let hasher: LavaHasher;
-  beforeAll(() => {
+  before(() => {
     hasher = new LavaHasher();
   });
   describe('hash', () => {
@@ -26,7 +28,7 @@ describe('LavaHasher', () => {
         { input: 'pc=6', output: 214 },
         { input: 'ot=7', output: 231 },
       ];
-      describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+      cases.forEach(({ input, output }) => {
         it(`should equal to ${output}`, () => {
           expect(hasher.hash(input)).toEqual(output);
         });

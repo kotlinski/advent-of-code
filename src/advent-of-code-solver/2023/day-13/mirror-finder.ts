@@ -1,6 +1,6 @@
-import { TileType } from './solver';
+import { TileType } from './solver.js';
 
-import { Grid } from '../../common/matrix/grid/grid';
+import { Grid } from '../../common/matrix/grid/grid.js';
 
 export class MirrorFinder {
   private readonly room: Grid<TileType>;
