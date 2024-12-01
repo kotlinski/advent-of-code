@@ -1,4 +1,6 @@
-import { parseLineType } from '../filesystem/command-line-parser';
+import { parseLineType } from '../filesystem/command-line-parser.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('command-line-parser', () => {
   describe('parseLineType', () => {

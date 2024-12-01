@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import TheFloorWillBeLavaSolver, { MirrorTileValue } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import TheFloorWillBeLavaSolver, { MirrorTileValue } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 16', () => {
   let solver: Solver<MirrorTileValue[][]>;
@@ -21,7 +23,7 @@ describe('day 16', () => {
         output: 46,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TheFloorWillBeLavaSolver(input);
         const result = solver.solvePartOne();
@@ -47,7 +49,7 @@ describe('day 16', () => {
         output: 51,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TheFloorWillBeLavaSolver(input);
         const result = solver.solvePartTwo();

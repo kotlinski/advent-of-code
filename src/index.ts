@@ -1,9 +1,9 @@
-import { initiateNewSolver } from './scripts/initiate-new-solver/initiate-new-solver-script';
-import { parseInput } from './scripts/input-validator';
-import { solveProblem } from './scripts/run-solver/solve-problem-script';
+import { initiateNewSolver } from './scripts/initiate-new-solver/initiate-new-solver-script.js';
+import { parseInput } from './scripts/input-validator.js';
+import { solveProblem } from './scripts/run-solver/solve-problem-script.js';
 
 export async function main() {
-  const { script, task_type, year, day } = parseInput(process.argv[1], process.argv[2], process.argv[3]);
+  const { script, task_type, year, day } = parseInput(process.argv);
   switch (script) {
     case 'solve':
       console.log('Will solve problem');

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
+    "target": "es2022",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
     "outDir": "build",
     "allowJs": false,
     "resolveJsonModule": true,
@@ -19,7 +20,7 @@
   },
   "ts-node": {
     "files": true,
-    "useESM": false,
     "transpileOnly": true
-  }
+  },
+  "exclude": ["node_modules", "coverage"]
 }

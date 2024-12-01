@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@springworks/biome-config"],
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": ["coverage/**"]
+  }
+}

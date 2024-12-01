@@ -1,10 +1,10 @@
-import { findArea } from './gauss-area-formula';
-import { mapToCoordinates } from './input-parser';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { summarize } from '../../common/array-operations/reduce';
-import { Direction, mapDirection } from '../../common/matrix/grid/direction';
-import { Coordinate } from '../../common/matrix/interface';
+import { findArea } from './gauss-area-formula.js';
+import { mapToCoordinates } from './input-parser.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { summarize } from '../../common/array-operations/reduce.js';
+import { Direction, mapDirection } from '../../common/matrix/grid/direction.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 export interface DigInstruction {
   direction: Direction;

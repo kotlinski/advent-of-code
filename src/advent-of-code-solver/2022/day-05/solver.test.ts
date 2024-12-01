@@ -1,5 +1,7 @@
-import SupplyStacks, { SupplyInstructions } from './solver';
-import Solver from '../../solver';
+import SupplyStacks, { SupplyInstructions } from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 5', () => {
   let day: Solver<SupplyInstructions>;

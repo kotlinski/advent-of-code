@@ -1,7 +1,7 @@
-import { all_directions, Direction } from './direction';
-import { Tile } from './tile';
-import { removeEmptyLinesPredicate } from '../../array-operations/filter';
-import { Coordinate } from '../interface';
+import { all_directions, Direction } from './direction.js';
+import { Tile } from './tile.js';
+import { removeEmptyLinesPredicate } from '../../array-operations/filter.js';
+import { Coordinate } from '../interface.js';
 
 export function coordinateToString({ x, y }: Coordinate): string {
   return `${x};${y}`;

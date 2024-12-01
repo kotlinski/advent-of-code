@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import TrebuchetSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import TrebuchetSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 1', () => {
   let solver: Solver<string[]>;
@@ -13,7 +15,7 @@ describe('day 1', () => {
       { input: '1abc2\n' + 'pqr3stu8vwx\n' + 'a1b2c3d4e5f\n' + 'treb7uchet', output: 142 },
       { input: 'seven1abc2\n', output: 12 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TrebuchetSolver(input);
         const result = solver.solvePartOne();
@@ -78,7 +80,7 @@ describe('day 1', () => {
       { input: 'onezdfz6', output: 16 },
       { input: 'vqhvfxrxhpdgqhcrrczjlmhdnlzseventvtrrktd9twonenqn', output: 71 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TrebuchetSolver(input);
         const result = solver.solvePartTwo();

@@ -1,11 +1,13 @@
-import { MirrorDisc } from '../mirror-disc';
+import { MirrorDisc } from '../mirror-disc.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('MirrorDisc', () => {
   let mirror_disc: MirrorDisc;
 
   describe('countLoad', () => {
     describe('example input', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'OOOO.#.O..\n' +
             'OO..#....#\n' +
@@ -25,7 +27,7 @@ describe('MirrorDisc', () => {
       });
     });
     describe('a rock at bottom line', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'OOOO.#.O..\n' +
             'OO..#....#\n' +
@@ -45,7 +47,7 @@ describe('MirrorDisc', () => {
       });
     });
     describe('after three cycles', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           '.....#....\n' +
             '....#...O#\n' +
@@ -67,7 +69,7 @@ describe('MirrorDisc', () => {
   });
   describe('cycle', () => {
     describe('once', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'OOOO.#.O..\n' +
             'OO..#....#\n' +
@@ -98,7 +100,7 @@ describe('MirrorDisc', () => {
       });
     });
     describe('twice', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'OOOO.#.O..\n' +
             'OO..#....#\n' +
@@ -130,7 +132,7 @@ describe('MirrorDisc', () => {
       });
     });
     describe('thrice', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'OOOO.#.O..\n' +
             'OO..#....#\n' +
@@ -165,7 +167,7 @@ describe('MirrorDisc', () => {
   });
   describe('flipNorth', () => {
     describe('task example data', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'O....#....\n' +
             'O.OO#....#\n' +
@@ -196,7 +198,7 @@ describe('MirrorDisc', () => {
       });
     });
     describe('with two round rocks at bottom', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'O....#....\n' +
             'O.OO#....#\n' +
@@ -229,7 +231,7 @@ describe('MirrorDisc', () => {
   });
   describe('flipWest', () => {
     describe('task example data', () => {
-      beforeAll(() => {
+      before(() => {
         mirror_disc = new MirrorDisc(
           'O....#....\n' +
             'O.OO#....#\n' +

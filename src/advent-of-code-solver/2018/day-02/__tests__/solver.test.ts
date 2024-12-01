@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import InventoryManagementSystemSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import InventoryManagementSystemSolver from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 2', () => {
   let solver: Solver<string[][]>;
@@ -14,7 +16,7 @@ describe('day 2', () => {
       { input: 'ababab\n', output: 0 },
       { input: 'abcdef\n' + 'bababc\n' + 'abbcde\n' + 'abcccd\n' + 'aabcdd\n' + 'abcdee\n' + 'ababab\n', output: 12 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new InventoryManagementSystemSolver(input);
         const result = solver.solvePartOne();
@@ -27,7 +29,7 @@ describe('day 2', () => {
     const cases: TestCase[] = [
       { input: 'abcde\n' + 'fghij\n' + 'klmno\n' + 'pqrst\n' + 'fguij\n' + 'axcye\n' + 'wvxyz\n', output: 'fgij' },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new InventoryManagementSystemSolver(input);
         const result = solver.solvePartTwo();

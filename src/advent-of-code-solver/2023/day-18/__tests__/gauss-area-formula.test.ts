@@ -1,5 +1,7 @@
-import { Coordinate } from '../../../common/matrix/interface';
-import { findArea } from '../gauss-area-formula';
+import { Coordinate } from '../../../common/matrix/interface.js';
+import { findArea } from '../gauss-area-formula.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('findArea', () => {
   let coordinates: Coordinate[];

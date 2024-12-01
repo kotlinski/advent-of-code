@@ -1,7 +1,7 @@
-import { MirrorFinder, MirrorScanner, Scanner, SmudgyMirrorScanner } from './mirror-finder';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { summarize } from '../../common/array-operations/reduce';
+import { MirrorFinder, MirrorScanner, Scanner, SmudgyMirrorScanner } from './mirror-finder.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { summarize } from '../../common/array-operations/reduce.js';
 
 export type TileType = '#' | '.';
 export default class PointOfIncidenceSolver extends Solver<TileType[][][]> {

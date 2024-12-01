@@ -1,5 +1,5 @@
-import { memoize } from '../../common/cache';
-import Solver from '../../solver';
+import { memoize } from '../../common/cache.js';
+import Solver from '../../solver.js';
 
 export default class LanternfishSolver extends Solver<number[]> {
   private readonly memo: (days_until_birth: number, days: number) => number;
@@ -15,20 +15,20 @@ export default class LanternfishSolver extends Solver<number[]> {
 
   solvePartOne(optional_param?: { iterations: number; input: number[] }): number {
     const lanternfish = optional_param?.input ?? this.input;
-    const DAYS = optional_param?.iterations ?? 80;
+    const days = optional_param?.iterations ?? 80;
     let offsprings = lanternfish.length;
     lanternfish.forEach((days_until_birth) => {
-      offsprings += this.memo(days_until_birth, DAYS);
+      offsprings += this.memo(days_until_birth, days);
     });
     return offsprings;
   }
 
   solvePartTwo(): number {
     const lanternfish = this.input;
-    const DAYS = 256;
+    const days = 256;
     let offsprings = lanternfish.length;
     lanternfish.forEach((days_until_birth) => {
-      offsprings += this.memo(days_until_birth, DAYS);
+      offsprings += this.memo(days_until_birth, days);
     });
     return offsprings;
   }

@@ -1,5 +1,5 @@
-import { CosmicExpansion } from './space/cosmic-expansion';
-import Solver from '../../../advent-of-code-solver/solver';
+import { CosmicExpansion } from './space/cosmic-expansion.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
 
 export default class CosmicExpansionSolver extends Solver<string> {
   constructor(raw_input: string) {

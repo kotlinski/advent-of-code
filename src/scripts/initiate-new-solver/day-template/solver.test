@@ -1,5 +1,5 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import TemplateSolver from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import TemplateSolver from '../solver.js';
 
 describe('day X', () => {
   let solver: Solver<number[]>;
@@ -9,7 +9,7 @@ describe('day X', () => {
       { input: ')\n', output: 1 },
       { input: '()())\n', output: 5 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TemplateSolver(input);
         const result = solver.solvePartOne();
@@ -23,7 +23,7 @@ describe('day X', () => {
       { input: ')\n', output: 4711 },
       { input: '()())\n', output: 4711 },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new TemplateSolver(input);
         const result = solver.solvePartTwo();

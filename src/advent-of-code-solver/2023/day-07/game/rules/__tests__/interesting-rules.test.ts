@@ -1,16 +1,18 @@
-import { CamelPokerPlayer } from '../../../solver';
-import { InterestingRules } from '../interesting-rules';
+import { CamelPokerPlayer } from '../../../solver.js';
+import { InterestingRules } from '../interesting-rules.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('camel-card', () => {
   let rules: InterestingRules;
-  beforeAll(() => {
+  before(() => {
     rules = new InterestingRules();
   });
   describe('compareHands', () => {
     describe('two two pair hands', () => {
       let player_a: CamelPokerPlayer;
       let player_b: CamelPokerPlayer;
-      beforeAll(() => {
+      before(() => {
         player_a = new CamelPokerPlayer('QQQQ2 684', rules);
         player_b = new CamelPokerPlayer('JKKK2 483', rules);
       });

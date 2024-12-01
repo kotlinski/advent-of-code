@@ -1,6 +1,6 @@
-import { Direction } from './direction';
-import { coordinateToString } from './grid';
-import { Coordinate } from '../interface';
+import { Direction } from './direction.js';
+import { coordinateToString } from './grid.js';
+import { Coordinate } from '../interface.js';
 
 export class Tile<T> implements Coordinate {
   public readonly y: number;

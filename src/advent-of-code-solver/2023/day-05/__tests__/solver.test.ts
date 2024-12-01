@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import IfYouGiveASeedAFertilizerSolver, { FoodProductionMapper } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import IfYouGiveASeedAFertilizerSolver, { FoodProductionMapper } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 const test_input_data =
   'seeds: 79 14 55 13\n' +
   '\n' +
@@ -45,7 +47,7 @@ describe('day 5', () => {
         output: 35,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new IfYouGiveASeedAFertilizerSolver(input);
         const result = solver.solvePartOne();
@@ -56,7 +58,7 @@ describe('day 5', () => {
   describe('part two', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [{ input: test_input_data, output: 46 }];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new IfYouGiveASeedAFertilizerSolver(input);
         const result = solver.solvePartTwo();

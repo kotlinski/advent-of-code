@@ -1,5 +1,7 @@
-import TreetopTreeHouse from './solver';
-import Solver from '../../solver';
+import TreetopTreeHouse from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('2022 day 8', () => {
   let day: Solver<number[][]>;

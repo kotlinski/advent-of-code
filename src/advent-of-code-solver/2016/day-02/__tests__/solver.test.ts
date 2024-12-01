@@ -1,12 +1,14 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import BathroomSecuritySolver, { Instructions } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import BathroomSecuritySolver, { Instructions } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 2', () => {
   let solver: Solver<Instructions[]>;
   type TestCase = { input: string; output: string };
   describe('part one', () => {
     const cases: TestCase[] = [{ input: 'ULL\n' + 'RRDDD\n' + 'LURDL\n' + 'UUUUD\n', output: '1985' }];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should equal to ${output}`, () => {
         solver = new BathroomSecuritySolver(input);
         const result = solver.solvePartOne();
@@ -16,7 +18,7 @@ describe('day 2', () => {
   });
   describe('part two', () => {
     const cases: TestCase[] = [{ input: 'ULL\n' + 'RRDDD\n' + 'LURDL\n' + 'UUUUD\n', output: '5DB3' }];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }: TestCase) => {
       it(`should equal to ${output}`, () => {
         solver = new BathroomSecuritySolver(input);
         const result = solver.solvePartTwo();

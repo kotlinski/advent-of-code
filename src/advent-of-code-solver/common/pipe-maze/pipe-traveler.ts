@@ -1,10 +1,10 @@
-import { MapTile } from './pipe';
-import { Move, PipeTile } from './pipe-tile';
-import { all_directions, Direction, opposite } from '../matrix/grid/direction';
-import { coordinateToString } from '../matrix/grid/grid';
+import { MapTile } from './pipe.js';
+import { Move, PipeTile } from './pipe-tile.js';
+import { all_directions, Direction, opposite } from '../matrix/grid/direction.js';
+import { coordinateToString } from '../matrix/grid/grid.js';
 
-import { Tile } from '../matrix/grid/tile';
-import { Coordinate } from '../matrix/interface';
+import { Tile } from '../matrix/grid/tile.js';
+import { Coordinate } from '../matrix/interface.js';
 
 export class PipeTraveler {
   private readonly start_tile: PipeTile;

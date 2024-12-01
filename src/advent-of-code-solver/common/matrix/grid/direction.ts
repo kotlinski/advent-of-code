@@ -1,4 +1,4 @@
-import { Coordinate } from '../interface';
+import { Coordinate } from '../interface.js';
 
 export type Direction = 'up' | 'down' | 'left' | 'right';
 export const all_directions: Direction[] = ['up', 'down', 'left', 'right'];

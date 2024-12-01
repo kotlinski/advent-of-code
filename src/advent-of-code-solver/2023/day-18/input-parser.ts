@@ -1,5 +1,5 @@
-import { DigInstruction } from './solver';
-import { Coordinate } from '../../common/matrix/interface';
+import { DigInstruction } from './solver.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 function instructionToCoordinate(last: Coordinate, instruction: DigInstruction /* , cycle_direction: boolean*/): Coordinate {
   const { direction, steps } = instruction;

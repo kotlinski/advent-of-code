@@ -1,6 +1,6 @@
-import { checkForCycles } from './cycle-finder';
-import { MirrorDisc } from './mirror-disc';
-import Solver from '../../../advent-of-code-solver/solver';
+import { checkForCycles } from './cycle-finder.js';
+import { MirrorDisc } from './mirror-disc.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
 
 export default class ParabolicReflectorDishSolver extends Solver<string> {
   constructor(raw_input: string) {
@@ -18,7 +18,7 @@ export default class ParabolicReflectorDishSolver extends Solver<string> {
 
   solvePartTwo(): number {
     const mirror = new MirrorDisc(this.input);
-    const NUMBER_OF_CYCLES = 1_000_000_000;
+    const numberOfCycles = 1_000_000_000;
     const loads: number[] = [];
     let result: number | undefined;
     do {
@@ -26,9 +26,9 @@ export default class ParabolicReflectorDishSolver extends Solver<string> {
       loads.push(mirror.countLoad());
       const cycle = checkForCycles(loads);
       if (cycle) {
-        result = cycle.loads[(NUMBER_OF_CYCLES - cycle.index - 1) % cycle.loads.length];
+        result = cycle.loads[(numberOfCycles - cycle.index - 1) % cycle.loads.length];
       }
-    } while (result === undefined || loads.length === NUMBER_OF_CYCLES);
+    } while (result === undefined || loads.length === numberOfCycles);
     return result ?? loads.at(-1);
   }
 }

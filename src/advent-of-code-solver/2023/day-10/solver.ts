@@ -1,7 +1,7 @@
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { MapTile } from '../../common/pipe-maze/pipe';
-import { PipeMaze } from '../../common/pipe-maze/pipe-maze';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { MapTile } from '../../common/pipe-maze/pipe.js';
+import { PipeMaze } from '../../common/pipe-maze/pipe-maze.js';
 
 export default class PipeMazeSolver extends Solver<MapTile[][]> {
   constructor(raw_input: string) {

@@ -1,4 +1,4 @@
-import { CamelCard, CamelCardRules, countCards, findCardCountsOf } from '../camel-card';
+import { CamelCard, CamelCardRules, countCards, findCardCountsOf } from '../camel-card.js';
 
 export class InterestingRules extends CamelCardRules {
   hasFiveOfAKind(hand: CamelCard[]) {

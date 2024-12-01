@@ -1,9 +1,11 @@
-import { LavaHasher } from '../../lava-hasher';
-import { LensBoxSetup } from '../lens-box-setup';
+import { LavaHasher } from '../../lava-hasher.js';
+import { LensBoxSetup } from '../lens-box-setup.js';
+import { before, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('LensBox', () => {
   let lens_box_setup: LensBoxSetup;
-  beforeAll(() => {
+  before(() => {
     const steps = 'rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7'.split(',');
     lens_box_setup = new LensBoxSetup(new LavaHasher(), steps);
   });

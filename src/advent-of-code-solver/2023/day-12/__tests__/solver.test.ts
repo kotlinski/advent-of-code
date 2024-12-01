@@ -1,5 +1,7 @@
-import Solver from '../../../../advent-of-code-solver/solver';
-import HotSpringsSolver, { Row } from '../solver';
+import Solver from '../../../../advent-of-code-solver/solver.js';
+import HotSpringsSolver, { Row } from '../solver.js';
+import { describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 12', () => {
   let solver: Solver<Row[]>;
@@ -37,7 +39,7 @@ describe('day 12', () => {
         output: 21,
       },
     ];
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new HotSpringsSolver(input);
         const result = solver.solvePartOne();
@@ -89,7 +91,7 @@ describe('day 12', () => {
       },
     ];
 
-    describe.each(cases)('with input $input', ({ input, output }: TestCase) => {
+    cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, async () => {
         solver = new HotSpringsSolver(input);
         const result = solver.solvePartTwo();

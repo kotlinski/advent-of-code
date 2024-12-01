@@ -1,7 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-import { parseSolverName, pascalName } from './html-parser';
-import { getHtmlTaskDescription } from '../api-client/advent-of-code-client';
+import { parseSolverName, pascalName } from './html-parser.js';
+import { getHtmlTaskDescription } from '../api-client/advent-of-code-client.js';
+const dirname = import.meta.dirname;
 
 export async function initiateNewSolver({ year, day }: { year: number; day: number }) {
   const html = await getHtmlTaskDescription(year, day);
@@ -14,12 +15,12 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
   }
 
   if (!existsSync(`${day_path}/solver.ts`)) {
-    const solver_path = path.resolve(`${__dirname}/day-template/solver`);
+    const solver_path = path.resolve(`${dirname}/day-template/solver`);
     const solver_template = readFileSync(solver_path).toString();
     writeFileSync(`${day_path}/solver.ts`, solver_template.replaceAll('Template', solver_name));
   }
   if (!existsSync(`${day_path}/__tests__/solver.test.ts`)) {
-    const solver_test_path = path.resolve(`${__dirname}/day-template/solver.test`);
+    const solver_test_path = path.resolve(`${dirname}/day-template/solver.test`);
     const solver_test_template = readFileSync(solver_test_path).toString();
     writeFileSync(
       `${day_path}/__tests__/solver.test.ts`,

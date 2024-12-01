@@ -1,10 +1,10 @@
-import { CrucibleStepsProvider } from './path-finder/crucible-steps-provider';
-import { Dijkstra } from './path-finder/dijkstra';
-import { PathStore } from './path-finder/path-store';
-import { VisitorTracker } from './path-finder/visitor-tracker';
-import Solver from '../../../advent-of-code-solver/solver';
-import { removeEmptyLinesPredicate } from '../../common/array-operations/filter';
-import { Grid } from '../../common/matrix/grid/grid';
+import { CrucibleStepsProvider } from './path-finder/crucible-steps-provider.js';
+import { Dijkstra } from './path-finder/dijkstra.js';
+import { PathStore } from './path-finder/path-store.js';
+import { VisitorTracker } from './path-finder/visitor-tracker.js';
+import Solver from '../../../advent-of-code-solver/solver.js';
+import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { Grid } from '../../common/matrix/grid/grid.js';
 
 export default class ClumsyCrucibleSolver extends Solver<number[][]> {
   constructor(raw_input: string) {

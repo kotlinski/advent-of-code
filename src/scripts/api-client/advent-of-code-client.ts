@@ -1,9 +1,10 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import filenamifyUrl from 'filenamify-url';
+const dirname = import.meta.dirname;
 
 function getHeaders(): Headers {
-  const cookie_path = path.resolve(__dirname, './../../../cookie');
+  const cookie_path = path.resolve(dirname, './../../../cookie');
   const session_value = readFileSync(cookie_path)
     .toString()
     .replace(/(\r\n|\n|\r)/gm, '');
@@ -12,7 +13,7 @@ function getHeaders(): Headers {
 }
 
 async function fetchUrl(url: string, skip_cache = false): Promise<string> {
-  const cache_folder = path.resolve(__dirname, `./cache`);
+  const cache_folder = path.resolve(dirname, `./cache`);
   const cache_file = `${cache_folder}/${filenamifyUrl(url)}`;
   if (existsSync(cache_file) && !skip_cache) {
     console.log(`Found cache: ${url}`);

@@ -1,5 +1,7 @@
-import HydrothermalVentureSolver, { Vector } from './solver';
-import Solver from '../../solver';
+import HydrothermalVentureSolver, { Vector } from './solver.js';
+import Solver from '../../solver.js';
+import { beforeEach, describe, it } from 'node:test';
+import { expect } from 'expect';
 
 describe('day 5', () => {
   let day: Solver<Vector[]>;

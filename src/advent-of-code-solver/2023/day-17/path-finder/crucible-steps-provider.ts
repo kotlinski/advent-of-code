@@ -1,6 +1,6 @@
-import { PathSum } from './path-store';
-import { Direction } from '../../../common/matrix/grid/direction';
-import { Grid } from '../../../common/matrix/grid/grid';
+import { PathSum } from './path-store.js';
+import { Direction } from '../../../common/matrix/grid/direction.js';
+import { Grid } from '../../../common/matrix/grid/grid.js';
 
 export class CrucibleStepsProvider {
   constructor(

@@ -1,7 +1,7 @@
 import path from 'path';
-import Solver, { solverFactory } from '../../advent-of-code-solver/solver';
-import { getTaskInputData } from '../api-client/advent-of-code-client';
-import { TaskType } from '../input-validator';
+import Solver, { solverFactory } from '../../advent-of-code-solver/solver.js';
+import { getTaskInputData } from '../api-client/advent-of-code-client.js';
+import { TaskType } from '../input-validator.js';
 
 export async function xmasFactory(year: number, day: number): Promise<Solver<any>> {
   const input = await getTaskInputData(year, day);
