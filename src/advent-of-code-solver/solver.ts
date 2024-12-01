@@ -4,7 +4,7 @@
  * first and second assignment of the day
  */
 export default abstract class Solver<T> {
-  protected input: T;
+  public input: T;
 
   protected constructor(raw_input: string) {
     this.input = this.parse(raw_input);

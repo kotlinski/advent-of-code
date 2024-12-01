@@ -37,7 +37,7 @@ The two scripts in this project _creates a new solver for the new task_ and _run
 This script will create a folder and a solver with template code for the given year and date.
 
 ```sh
-$ yarn run init-solver 2022 1
+$ yarn init-solver 2022 1
 > https://adventofcode.com/2022/day/9
 > ✨ Done in 1.19s.
 ```
@@ -46,13 +46,13 @@ $ yarn run init-solver 2022 1
 
 The script will use your session cookie and fetch your personal input data for the given year and day.
 
-Run in a terminal `npm run day [year] [day]` or add a `+` sign in the end for part two.
+Run in a terminal `yarn solve [year] [day]` or add a `+` sign in the end for part two.
 
 ```sh
-$ yarn run solve 2022 1
+$ yarn solve 2022 1
 > The answer is 7746
 
-$ yarn run solve 2022 1+
+$ yarn solve 2022 1+
 > The answer is 2604
 ```
 
