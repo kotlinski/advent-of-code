@@ -1,6 +1,6 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
-import {summarize} from "../../common/array-operations/reduce.js";
+import { summarize } from '../../common/array-operations/reduce.js';
 
 export default class HistorianHysteriaSolver extends Solver<number[][]> {
   constructor(raw_input: string) {
@@ -31,6 +31,12 @@ export default class HistorianHysteriaSolver extends Solver<number[][]> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const [first, second] = this.input.map((numbers) => {
+      return numbers.sort((a, b) => a - b);
+    });
+    return first.reduce((sum, number) => {
+      const occurrences = second.filter((n) => n === number);
+      return sum + number * occurrences.length;
+    }, 0);
   }
 }

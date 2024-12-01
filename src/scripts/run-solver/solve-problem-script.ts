@@ -25,5 +25,8 @@ export async function solveProblem({ year, day, task_type }: { year: number; day
       answer = solver.solvePartTwo();
   }
   console.timeEnd('Time');
+  console.log('');
   console.log(`The answer is ${answer}`);
+  console.log('');
+  console.log(`Enter your answer here: https://adventofcode.com/${year}/day/${day}/answer`);
 }

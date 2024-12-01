@@ -27,7 +27,7 @@ describe('day 1', () => {
   });
   describe('part two', () => {
     type TestCase = { input: string; output: number };
-    const cases: TestCase[] = [{ input: raw_input, output: 4711 }];
+    const cases: TestCase[] = [{ input: raw_input, output: 31 }];
     cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {
         solver = new HistorianHysteriaSolver(input);
