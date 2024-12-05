@@ -33,7 +33,7 @@ describe('day 2', () => {
     type TestCase = { input: string; output: number };
     const cases: TestCase[] = [
       { input: raw_input, output: 4 },
-      { input: `${raw_input}60 59 60 62 65 67\n`, output: 5 }
+      { input: `${raw_input}60 59 60 62 65 67\n`, output: 5 },
     ];
     cases.forEach(({ input, output }) => {
       it(`should equal to ${output}`, () => {

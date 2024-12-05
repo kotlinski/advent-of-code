@@ -11,8 +11,7 @@ function isRowSafe(row: number[]): boolean {
     const new_direction = diff / abs_diff;
     if (abs_diff <= 0 || abs_diff > 3) {
       return false;
-    }
-    else if (direction !== 0 && new_direction !== direction) return false;
+    } else if (direction !== 0 && new_direction !== direction) return false;
     direction = new_direction;
   }
   return true;
@@ -35,7 +34,7 @@ export default class RedSolver extends Solver<number[][]> {
 
   solvePartTwo(): number {
     const safe_rows = this.input.filter((row) => {
-      const combinations = row.map((_v, i) => [...row.slice(0, i), ...row.slice(i+1)]);
+      const combinations = row.map((_v, i) => [...row.slice(0, i), ...row.slice(i + 1)]);
       return combinations.some((combination) => isRowSafe(combination));
     });
     return safe_rows.length;
