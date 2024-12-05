@@ -27,7 +27,21 @@ export default class CeresSearchSolver extends Solver<string[][]> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const number_of_rows = this.input.length;
+    const number_of_cols = this.input[0].length;
+    let count = 0;
+    for (let y = 1; y < number_of_rows - 1; y++) {
+      for (let x = 1; x < number_of_cols - 1; x++) {
+        if (this.input[y][x] !== 'A') continue;
+        const diagonal_a = this.input[y - 1][x - 1] + this.input[y + 1][x + 1];
+        if (diagonal_a !== 'MS' && diagonal_a !== 'SM') continue;
+        const diagonal_b = this.input[y - 1][x + 1] + this.input[y + 1][x - 1];
+        if (diagonal_b !== 'MS' && diagonal_b !== 'SM') continue;
+        count++;
+      }
+    }
+
+    return count;
   }
 
   private getHorizontalLines() {
