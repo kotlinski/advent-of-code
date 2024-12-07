@@ -1,4 +1,3 @@
-import Solver from '../../../../advent-of-code-solver/solver.js';
 import TemplateSolver from '../solver.js';
 import { describe, it } from 'node:test';
 import { expect } from 'expect';
@@ -6,7 +5,7 @@ import { expect } from 'expect';
 const input = '\n';
 
 describe('day X', () => {
-  let solver: Solver<number[]>;
+  let solver: TemplateSolver;
   describe('parser', () => {
     it('should parse the input', () => {
       solver = new TemplateSolver(input);
