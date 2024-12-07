@@ -92,12 +92,14 @@ export default class GuardGallivantSolver extends Solver<T> {
    */
   private drawGuardRoute(map: string[][], brush: Brush): boolean {
     const history = new History();
-    const crates: Coordinate[] = [...this.findCoordinates(map, '#'), ...this.findCoordinates(map, 'O')];
+    const crates_set = new Set<string>(
+      [...this.findCoordinates(map, '#'), ...this.findCoordinates(map, 'O')].map((crate) => `${crate.x},${crate.y}`),
+    );
     let guard_position: Coordinate = this.findCoordinates(map, '^')[0];
     let direction: Coordinate = { x: 0, y: -1 };
     while (this.isOnMap(guard_position, map)) {
       let next_position = { x: guard_position.x + direction.x, y: guard_position.y + direction.y };
-      while (crates.some((crate) => compareCoordinates(crate, next_position))) {
+      while (crates_set.has(`${next_position.x},${next_position.y}`)) {
         direction = { x: -direction.y, y: direction.x };
         next_position = { x: guard_position.x + direction.x, y: guard_position.y + direction.y };
       }
