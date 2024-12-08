@@ -1,12 +1,14 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 
-export default class TemplateSolver extends Solver<number[]> {
+type ParsedType = number[];
+
+export default class TemplateSolver extends Solver<ParsedType> {
   constructor(raw_input: string) {
     super(raw_input);
   }
 
-  parse(raw_input: string): number[] {
+  parse(raw_input: string): ParsedType {
     return raw_input.split('\n').filter(removeEmptyLinesPredicate).map(Number);
   }
 
