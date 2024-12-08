@@ -50,9 +50,9 @@ export default class ResonantCollinearitySolver extends Solver<ParsedType> {
         copy = rest;
       }
     });
-    this.printMap(new Set());
+    /*this.printMap(new Set());
     console.log('\n\n--------\n\n');
-    this.printMap(antinodes);
+    this.printMap(antinodes);*/
     return antinodes.size;
   }
 
@@ -77,7 +77,24 @@ export default class ResonantCollinearitySolver extends Solver<ParsedType> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const { antennas } = this.input;
+    const antinodes = new Set<string>();
+    antennas.forEach((coordinates) => {
+      let copy = [...coordinates];
+      while (copy.length > 1) {
+        const [first, ...rest] = copy;
+        rest.forEach((coordinate) => {
+          const coefficient = this.getCoefficientOfProportionality(first, coordinate);
+          const line = this.getAllCoordinatesOnLine(first, coefficient);
+          line.forEach((coordinate: Coordinate) => antinodes.add(`${coordinate.x},${coordinate.y}`));
+        });
+        copy = rest;
+      }
+    });
+    /*    this.printMap(new Set());
+    console.log('\n\n--------\n\n');
+    this.printMap(antinodes);*/
+    return antinodes.size;
   }
 
   private findValidAntinodes(first: Coordinate, second: Coordinate, coefficient: number, distance: number) {
@@ -106,5 +123,14 @@ export default class ResonantCollinearitySolver extends Solver<ParsedType> {
     const x = Number((first.x + distance / Math.sqrt(1 + coefficient ** 2)).toFixed(0));
     const y = Number((first.y + (distance * coefficient) / Math.sqrt(1 + coefficient ** 2)).toFixed(0));
     return { x, y };
+  }
+
+  private getAllCoordinatesOnLine(first: Coordinate, coefficient: number) {
+    const coordinates = [];
+    for (let x = 0; x < this.input.width; x++) {
+      const y = Number((first.y + coefficient * (x - first.x)).toFixed(2));
+      if (y % 1 === 0 && y >= 0 && y < this.input.height) coordinates.push({ x, y });
+    }
+    return coordinates;
   }
 }

@@ -136,10 +136,30 @@ describe('day 8', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 34`, () => {
-      solver = new ResonantCollinearitySolver(input);
-      const result = solver.solvePartTwo();
-      expect(result).toEqual(34);
+    describe('the example input', () => {
+      it(`should equal to 34`, () => {
+        solver = new ResonantCollinearitySolver(input);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(34);
+      });
+    });
+    describe('the T example input', () => {
+      it(`should equal to 34`, () => {
+        solver = new ResonantCollinearitySolver(
+          'T.........\n' +
+            '...T......\n' +
+            '.T........\n' +
+            '..........\n' +
+            '..........\n' +
+            '..........\n' +
+            '..........\n' +
+            '..........\n' +
+            '..........\n' +
+            '..........\n',
+        );
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(9);
+      });
     });
   });
 });
