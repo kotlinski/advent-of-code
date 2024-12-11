@@ -41,10 +41,19 @@ describe('day 9', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 2858`, () => {
-      solver = new DiskFragmenterSolver(input);
-      const result = solver.solvePartTwo();
-      expect(result).toEqual(2858);
+    describe('test input', () => {
+      it(`should equal to 2858`, () => {
+        solver = new DiskFragmenterSolver(input);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(2858);
+      });
+    });
+    describe('where data risks moving to the right', () => {
+      it(`should equal to 2922`, () => {
+        solver = new DiskFragmenterSolver('2333133121414133422\n');
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(2922);
+      });
     });
   });
 });

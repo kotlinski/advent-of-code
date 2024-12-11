@@ -56,6 +56,43 @@ export default class DiskFragmenterSolver extends Solver<(number | undefined)[][
   }
 
   solvePartTwo(): number {
-    return 4711;
+    for (let data_pointer = this.input.length - 2; data_pointer >= 0; data_pointer -= 2) {
+      const empty_index = this.findEmptySpace(this.input[data_pointer].length);
+      if (empty_index !== undefined && empty_index < data_pointer) {
+        const swap = this.input[data_pointer];
+        this.input[data_pointer] = this.getNumbersTimes(undefined, swap.length);
+        const offset = this.input[empty_index].findIndex((element) => element === undefined);
+        for (let i = 0; i < swap.length; i++) {
+          this.input[empty_index][offset + i] = swap[i];
+        }
+      }
+    }
+    // this.print();
+    return this.input.flat().reduce((sum: number, value, index) => {
+      return value === undefined ? sum : index * value + sum;
+    }, 0);
+  }
+
+  private print() {
+    console.log(
+      `this.input.flat().join(''): ${JSON.stringify(
+        this.input
+          .flat()
+          .map((char) => (char === undefined ? '.' : char))
+          .join(''),
+        null,
+        2,
+      )}`,
+    );
+  }
+
+  private findEmptySpace(size: number): number | undefined {
+    for (let i = 1; i < this.input.length; i += 2) {
+      const free_space = this.input[i].filter((value) => value === undefined).length;
+      if (free_space >= size) {
+        return i;
+      }
+    }
+    return undefined;
   }
 }
