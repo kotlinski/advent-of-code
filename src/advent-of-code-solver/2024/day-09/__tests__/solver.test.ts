@@ -9,32 +9,28 @@ describe('day 9', () => {
   describe('parser', () => {
     it('should parse the input', () => {
       solver = new DiskFragmenterSolver(input);
-      expect(solver.input).toEqual({
-        'data': [
-          { 'id': 0, 'size': 2 },
-          { 'id': 1, 'size': 3 },
-          { 'id': 2, 'size': 1 },
-          { 'id': 3, 'size': 3 },
-          { 'id': 4, 'size': 2 },
-          { 'id': 5, 'size': 4 },
-          { 'id': 6, 'size': 4 },
-          { 'id': 7, 'size': 3 },
-          { 'id': 8, 'size': 4 },
-          { 'id': 9, 'size': 2 },
-        ],
-        'empty': [
-          { 'size': 3 },
-          { 'size': 3 },
-          { 'size': 3 },
-          { 'size': 1 },
-          { 'size': 1 },
-          { 'size': 1 },
-          { 'size': 1 },
-          { 'size': 1 },
-          { 'size': 0 },
-          { 'size': 0 },
-        ],
-      });
+      expect(solver.input).toEqual([
+        [0, 0],
+        [undefined, undefined, undefined],
+        [1, 1, 1],
+        [undefined, undefined, undefined],
+        [2],
+        [undefined, undefined, undefined],
+        [3, 3, 3],
+        [undefined],
+        [4, 4],
+        [undefined],
+        [5, 5, 5, 5],
+        [undefined],
+        [6, 6, 6, 6],
+        [undefined],
+        [7, 7, 7],
+        [undefined],
+        [8, 8, 8, 8],
+        [],
+        [9, 9],
+        [],
+      ]);
     });
   });
   describe('part one', () => {
@@ -45,10 +41,10 @@ describe('day 9', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
+    it(`should equal to 2858`, () => {
       solver = new DiskFragmenterSolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(2858);
     });
   });
 });

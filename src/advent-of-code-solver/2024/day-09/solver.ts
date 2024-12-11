@@ -1,96 +1,58 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 
-type Block = { size: number; id: number };
-type Storage = {
-  empty: { size: number }[];
-  data: Block[];
-};
-
-export default class DiskFragmenterSolver extends Solver<Storage> {
-  private output = '';
+export default class DiskFragmenterSolver extends Solver<(number | undefined)[][]> {
   constructor(raw_input: string) {
     super(raw_input);
   }
 
-  parse(raw_input: string): Storage {
+  parse(raw_input: string): (number | undefined)[][] {
     const numbers = raw_input.split('').filter(removeEmptyLinesPredicate).map(Number);
-    return numbers.reduce(
-      (blocks: Storage, size, index) => {
-        if (index % 2 === 1) {
-          blocks.empty.push({ size });
-        } else {
-          blocks.data.push({ size, id: index / 2 });
-        }
-        return blocks;
-      },
-      { empty: [], data: [] },
-    );
+    return numbers.reduce((blocks: (number | undefined)[][], size, index) => {
+      if (index % 2 === 1) {
+        blocks.push(this.getNumbersTimes(undefined, size));
+      } else {
+        blocks.push(this.getNumbersTimes(index / 2, size));
+      }
+      return blocks;
+    }, []);
   }
 
   solvePartOne(): number {
-    const { empty, data } = this.input;
-    const filled_void: Block[][] = empty.map(({ size }, index: number) => {
-      return this.pickFromData(data, size, index);
-    });
-    console.log(`filled_void: ${JSON.stringify(filled_void, null, 2)}`);
-    console.log(`data: ${JSON.stringify(data, null, 2)}`);
-    const max = Math.max(empty.length, data.length);
-    let result = 0;
-    let index = 0;
-    for (let i = 0; i < max; i++) {
-      if (data.length > 0) {
-        const { size, id } = data.shift()!;
-        result += this.addResult(index, size, id);
-        index += size;
-      }
-      if (filled_void.length > 0) {
-        const blocks = filled_void.shift()!;
-        for (const block of blocks) {
-          result += this.addResult(index, block.size, block.id);
-          index += block.size;
+    let empty_pointer = 1;
+    let data_pointer = this.input.length - 2;
+    let empty_ref = 0;
+    let data_ref = this.input[data_pointer].length - 1;
+    while (empty_pointer < data_pointer) {
+      while (!this.isFilled(this.input[empty_pointer])) {
+        if (this.isEmpty(this.input[data_pointer])) {
+          data_pointer -= 2;
+          data_ref = this.input[data_pointer].length - 1;
+        } else {
+          const swap = this.input[data_pointer][data_ref];
+          this.input[data_pointer][data_ref] = undefined;
+          this.input[empty_pointer][empty_ref] = swap;
+          data_ref -= 1;
+          empty_ref += 1;
         }
       }
+      empty_ref = 0;
+      empty_pointer += 2;
     }
-    console.log(`output: ${JSON.stringify(this.output, null, 2)}`);
-    return result;
+    return this.input.flat().reduce((sum: number, value, index) => {
+      return value === undefined ? sum : index * value + sum;
+    }, 0);
   }
 
-  private addResult(index: number, size: number, id: number) {
-    let result = 0;
-    for (let i = 0; i < size; i++) {
-      this.output += id;
-      result += (index + i) * id;
-    }
-    return result;
-    // 0099811188827773336446555665..............
-    // 0099811188827773336446555566..............
+  private isEmpty(bucket: (number | undefined)[]) {
+    return bucket.every((value) => value === undefined);
+  }
+  private isFilled(bucket: (number | undefined)[]) {
+    return bucket.every((value) => value !== undefined);
   }
 
-  private pickFromData(blocks: Block[], size: number, tip: number) {
-    const result: Block[] = [];
-    while (size > 0) {
-      if (blocks.length === 0) {
-        console.log('no more blocks');
-        throw new Error('no more blocks');
-      }
-      const block = blocks.pop()!;
-      if (block.id <= tip) {
-        blocks.push(block);
-        size = 0; // quit
-      } else if (block.size === size) {
-        result.push(block);
-        size = 0;
-      } else if (block.size > size) {
-        result.push({ size, id: block.id });
-        blocks.push({ size: block.size - size, id: block.id });
-        size = 0;
-      } else {
-        result.push(block);
-        size -= block.size;
-      }
-    }
-    return result;
+  private getNumbersTimes(number: undefined | number, size: number): (number | undefined)[] {
+    return Array.from({ length: size }, () => number);
   }
 
   solvePartTwo(): number {
