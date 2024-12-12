@@ -49,10 +49,10 @@ describe('day 10', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
+    it(`should equal to 81`, () => {
       solver = new HoofItSolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(81);
     });
   });
 });

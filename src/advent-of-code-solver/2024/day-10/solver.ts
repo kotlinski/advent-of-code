@@ -38,20 +38,26 @@ export default class HoofItSolver extends Solver<Matrix> {
   }
   solvePartOne(): number {
     const paths: Coordinate[][] = this.findStartCoordinates(this.input).map((coordinate) => [coordinate]);
-    /* this.printMap(paths);*/
+    this.findPaths(paths, false);
+    return paths.length;
+  }
 
+  private findPaths(paths: Coordinate[][], distinct_paths: boolean) {
     while (paths.some((path) => this.getTip(path) !== 9)) {
       const path = paths.shift()!;
       const new_paths = this.step(path);
-      new_paths.forEach((new_path) => {
-        if (!this.isUniquePath(paths, new_path)) {
-          paths.push(new_path);
-        }
-      });
+      if (distinct_paths) {
+        paths.push(...new_paths);
+      } else {
+        new_paths.forEach((new_path) => {
+          if (!this.isDistinctPath(paths, new_path)) {
+            paths.push(new_path);
+          }
+        });
+      }
       /*      this.printMap(paths);
       this.printTracks(paths);*/
     }
-    return paths.length;
   }
 
   private printTracks(paths: Coordinate[][]) {
@@ -77,7 +83,9 @@ export default class HoofItSolver extends Solver<Matrix> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const paths: Coordinate[][] = this.findStartCoordinates(this.input).map((coordinate) => [coordinate]);
+    this.findPaths(paths, true);
+    return paths.length;
   }
 
   private getNeighbourCoordinates(coordinate: Coordinate): Coordinate[] {
@@ -107,7 +115,7 @@ export default class HoofItSolver extends Solver<Matrix> {
     console.log(`${map.join('\n')}\n\n`);
   }
 
-  private isUniquePath(paths: Coordinate[][], new_path: Coordinate[]) {
+  private isDistinctPath(paths: Coordinate[][], new_path: Coordinate[]) {
     return paths.some((path) => {
       return isSameCoordinate(path[path.length - 1])(new_path[new_path.length - 1]) && isSameCoordinate(path[0])(new_path[0]);
     });
