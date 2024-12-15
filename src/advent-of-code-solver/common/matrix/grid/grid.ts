@@ -6,6 +6,10 @@ import { Coordinate } from '../interface.js';
 export function coordinateToString({ x, y }: Coordinate): string {
   return `${x};${y}`;
 }
+export function stringToCoordinate(coordinate: string): Coordinate {
+  const [x, y] = coordinate.split(';').map(Number);
+  return { x, y };
+}
 
 export function parseStringToMatrix<V>(raw_input: string, mapper_fn: (value: string) => V): V[][] {
   return raw_input
