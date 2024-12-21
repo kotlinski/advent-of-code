@@ -1,4 +1,4 @@
-# Progress
+# 2024
 
 https://adventofcode.com/2024
 
@@ -18,3 +18,4 @@ https://adventofcode.com/2024
 | [Day 12](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-12) |   🌟   |   🌟   |
 | [Day 13](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-13) |   🌟   |   🌟   |
 | [Day 14](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-14) |   🌟   |   🌟   |
+| [Day 15](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-15) |   🌟   |   🌟   |
