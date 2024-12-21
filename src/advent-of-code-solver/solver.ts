@@ -12,7 +12,7 @@ export default abstract class Solver<T> {
 
   protected abstract parse(raw_input: string): T;
 
-  public abstract solvePartOne(optional_param?: { input?: T; iterations?: number }): number | string;
+  public abstract solvePartOne(optional_param?: Record<string, string | number | T>): number | string;
 
   public abstract solvePartTwo(): number | string;
 }
