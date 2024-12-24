@@ -13,12 +13,10 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
   const root_readme_path = path.resolve(`./README.md`);
   const root_readme = readFileSync(root_readme_path).toString();
   const regex = /advent-of-code-solver\/2024\) \| (\d*) \|/g;
-  const replace_number = String(day * 2).padEnd(2, ' '); // The number to replace the matched digits with
+  const replace_number = String(day * 2).padEnd(2, ' ');
   const updated_root_readme = root_readme.replace(regex, (match, group) => {
     return match.replace(`${group}`, replace_number);
   });
-
-  // overwrite root README
   writeFileSync(root_readme_path, updated_root_readme);
 
   const year_path = path.resolve(`./src/advent-of-code-solver/${year}`);
