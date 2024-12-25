@@ -62,9 +62,16 @@ describe('day 15', () => {
         'left',
         'left',
       ]);
-      expect(solver.input.warehouse.toString()).toEqual(
-        '########\n' + '#..O.O.#\n' + '##..O..#\n' + '#...O..#\n' + '#.#.O..#\n' + '#...O..#\n' + '#......#\n' + '########',
-      );
+      expect(solver.input.warehouse).toEqual([
+        ['#', '#', '#', '#', '#', '#', '#', '#'],
+        ['#', '.', '.', 'O', '.', 'O', '.', '#'],
+        ['#', '#', '.', '.', 'O', '.', '.', '#'],
+        ['#', '.', '.', '.', 'O', '.', '.', '#'],
+        ['#', '.', '#', '.', 'O', '.', '.', '#'],
+        ['#', '.', '.', '.', 'O', '.', '.', '#'],
+        ['#', '.', '.', '.', '.', '.', '.', '#'],
+        ['#', '#', '#', '#', '#', '#', '#', '#'],
+      ]);
     });
   });
   describe('part one', () => {
@@ -84,10 +91,12 @@ describe('day 15', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
-      solver = new WarehouseWoesSolver(input_2);
-      const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+    describe('example 2', () => {
+      it(`should equal to 9021`, () => {
+        solver = new WarehouseWoesSolver(input_2);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(9021);
+      });
     });
   });
 });

@@ -1,6 +1,6 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
-import { coordinateToString, Grid } from '../../common/matrix/grid/grid.js';
+import { Grid } from '../../common/matrix/grid/grid.js';
 import { Coordinate } from '../../common/matrix/interface.js';
 import { Direction } from '../../common/matrix/grid/direction.js';
 import { Tile } from '../../common/matrix/grid/tile.js';
@@ -81,13 +81,26 @@ export default class WarehouseWoesSolver extends Solver<ParsedType> {
         case '[':
         case ']':
         case 'O': {
-          //if (movement === 'right' || movement === 'left') {
-          const boxes = [...this.getSequenceOfHorizontalBoxes(warehouse, next, movement)];
+          const boxes = [...new Set(this.getGroupOfBoxes(warehouse, warehouse.getTileAtCoordinate(robot_pos)!, movement))];
           const can_be_pushed = boxes.every((box) => {
             const next_tile = warehouse.getNextTileInDirection(box, movement);
             return next_tile?.value !== '#';
           });
           if (can_be_pushed) {
+            boxes.sort((a, b) => {
+              const { x: ax, y: ay } = a.getCoordinate();
+              const { x: bx, y: by } = b.getCoordinate();
+              switch (movement) {
+                case 'down':
+                  return ay - by || ax - bx;
+                case 'up':
+                  return by - ay || ax - bx;
+                case 'right':
+                  return ax - bx || ay - by;
+                case 'left':
+                  return bx - ax || ay - by;
+              }
+            });
             while (boxes.length > 0) {
               const box = boxes.pop()!;
               const next_tile = warehouse.getNextTileInDirection(box, movement)!;
@@ -96,7 +109,6 @@ export default class WarehouseWoesSolver extends Solver<ParsedType> {
             }
             robot_pos = next;
           }
-          //}
           break;
         }
         case '#':
@@ -106,18 +118,23 @@ export default class WarehouseWoesSolver extends Solver<ParsedType> {
     });
   }
 
-  private getSequenceOfHorizontalBoxes(
+  private getGroupOfBoxes(
     warehouse: Grid<WarehouseTile>,
-    init: Tile<WarehouseTile>,
-    direction: Direction /*'left' | 'right'*/,
-  ) {
-    const box_coordinates = new Set<Tile<WarehouseTile>>([init]);
-    let count = 1;
-    while (['O', '[', ']'].some((tile) => tile === warehouse.getTileInDirection(init, direction, count)!.value)) {
-      box_coordinates.add(warehouse.getTileInDirection(init, direction, count)!);
-      count++;
+    tile: Tile<WarehouseTile>,
+    direction: Direction,
+  ): Tile<WarehouseTile>[] {
+    const next_tile = warehouse.getNextTileInDirection(tile, direction)!;
+    if (['O', '[', ']'].every((box_char) => box_char !== next_tile!.value)) return [tile];
+
+    if (next_tile.value === 'O' || direction === 'left' || direction === 'right') {
+      return [tile, ...this.getGroupOfBoxes(warehouse, next_tile, direction)];
     }
-    return box_coordinates;
+    const other_next_tile = warehouse.getNextTileInDirection(next_tile, next_tile.value === '[' ? 'right' : 'left')!;
+    return [
+      tile,
+      ...this.getGroupOfBoxes(warehouse, next_tile, direction),
+      ...this.getGroupOfBoxes(warehouse, other_next_tile, direction),
+    ];
   }
 
   solvePartTwo(): number {
@@ -128,8 +145,16 @@ export default class WarehouseWoesSolver extends Solver<ParsedType> {
     } = this.input;
     const robot = { x: 2 * x, y };
     const warehouse_grid = new Grid<WarehouseTile>(this.widenWarehouse(warehouse));
-    this.printWarehouse(warehouse_grid, robot, movements[0]);
-    return 1223213;
+    this.moveRobot(movements, warehouse_grid, robot);
+    /*    this.printWarehouse(warehouse_grid, robot, movements[movements.length - 1]);*/
+    let score = 0;
+    warehouse_grid.traverseTiles((tile) => {
+      if (['O', '['].includes(tile.value)) {
+        const { x, y } = tile.getCoordinate();
+        score += y * 100 + x;
+      }
+    });
+    return score;
   }
 
   private printWarehouse(warehouse: Grid<WarehouseTile>, robot: Coordinate, movement: Direction) {
