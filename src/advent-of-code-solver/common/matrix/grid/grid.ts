@@ -1,4 +1,4 @@
-import { all_directions, Direction } from './direction.js';
+import { all_directions, Direction, directionToCoordinate } from './direction.js';
 import { Tile } from './tile.js';
 import { removeEmptyLinesPredicate } from '../../array-operations/filter.js';
 import { Coordinate } from '../interface.js';
@@ -32,7 +32,7 @@ export function createEmptyMatrix<V = undefined>(width: number, height: number, 
 type TileCreator<V, T> = (coordinate: Coordinate, value: V) => T;
 export class Grid<V extends string | number | object | undefined | boolean, T extends Tile<V> = Tile<V>> {
   private readonly grid_map: Map<string, T>;
-  private readonly matrix: T[][];
+  public readonly matrix: T[][];
   public readonly height: number;
   public readonly width: number;
 
@@ -68,6 +68,10 @@ export class Grid<V extends string | number | object | undefined | boolean, T ex
     const next_coordinate = tile_from_coordinate?.findCoordinateInDirection(direction);
     if (!next_coordinate) return undefined;
     return this.getTileAtCoordinate(next_coordinate);
+  }
+  getTileInDirection(tile: T | Coordinate, direction: Direction, steps: number): T | undefined {
+    const { x, y } = directionToCoordinate(direction);
+    return this.getTileAtCoordinate({ x: steps * x + tile.x, y: steps * y + tile.y });
   }
 
   private populateGrid(raw_matrix: V[][]) {

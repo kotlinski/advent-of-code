@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { parseSolverName, pascalName } from './html-parser.js';
 import { getHtmlTaskDescription } from '../api-client/advent-of-code-client.js';
+import * as https from 'node:https';
 const dirname = import.meta.dirname;
 
 export async function initiateNewSolver({ year, day }: { year: number; day: number }) {
@@ -9,11 +10,34 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
   const raw_solver_name = parseSolverName(html);
   const solver_name = pascalName(raw_solver_name);
 
-  const day_path = path.resolve(`./src/advent-of-code-solver/${year}/day-${String(day).padStart(2, '0')}`);
+  const root_readme_path = path.resolve(`./README.md`);
+  const root_readme = readFileSync(root_readme_path).toString();
+  const regex = /advent-of-code-solver\/2024\) \| (\d*) \|/g;
+  const replace_number = String(day * 2).padEnd(2, ' ');
+  const updated_root_readme = root_readme.replace(regex, (match, group) => {
+    return match.replace(`${group}`, replace_number);
+  });
+  writeFileSync(root_readme_path, updated_root_readme);
+
+  const year_path = path.resolve(`./src/advent-of-code-solver/${year}`);
+  const year_readme_path = `${year_path}/README.md`;
+  if (!existsSync(year_readme_path)) {
+    const readme_path = path.resolve(`${dirname}/year-template/README`);
+    const readme_template = readFileSync(readme_path).toString();
+    writeFileSync(year_readme_path, readme_template.replaceAll('YEAR', year.toString()));
+  }
+  let readme = readFileSync(year_readme_path).toString();
+  const padded_day = String(day).padStart(2, '0');
+  const day_table_row = `| [Day ${day}](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-${padded_day}) |   🌟   |   🌟   |\n`;
+  if (!readme.includes(day_table_row)) {
+    readme += day_table_row;
+  }
+  writeFileSync(year_readme_path, readme);
+
+  const day_path = path.resolve(`${year_path}/day-${padded_day}`);
   if (!existsSync(`${day_path}/__tests__`)) {
     mkdirSync(`${day_path}/__tests__`, { recursive: true });
   }
-
   if (!existsSync(`${day_path}/solver.ts`)) {
     const solver_path = path.resolve(`${dirname}/day-template/solver`);
     const solver_template = readFileSync(solver_path).toString();
