@@ -40,6 +40,40 @@ class Path {
       .filter((edge) => {
         return this.crossings.every((crossing) => crossing.id !== edge.end.id);
       })
+      .filter((edge) => {
+        if (edge.direction === 'horizontal') {
+          // check if any crossings are overlapping each other
+          const x1 = edge.start.x;
+          const x2 = edge.end.x;
+          const overlapping_crossings = this.crossings.filter(
+            (crossing) =>
+              ((crossing.x > x1 && crossing.x < x2) || (crossing.x < x1 && crossing.x > x2)) && crossing.y === edge.start.y,
+          ).length;
+          if (overlapping_crossings > 0) {
+            //  console.log('skipped reason: horizontal edge filter');
+            // console.log(`overlapping_crossings: ${JSON.stringify(overlapping_crossings, null, 2)}`);
+            return false;
+          }
+          return true;
+        }
+        return this.crossings.every((crossing) => crossing.id !== edge.end.id);
+      })
+      .filter((edge) => {
+        if (edge.direction === 'vertical') {
+          const y1 = edge.start.y;
+          const y2 = edge.end.y;
+          const overlapping_crossings = this.crossings.filter(
+            (crossing) =>
+              ((crossing.y > y1 && crossing.y < y2) || (crossing.y < y1 && crossing.y > y2)) && crossing.x === edge.start.x,
+          ).length;
+          if (overlapping_crossings > 0) {
+            // console.log('skipped reason: vertical edge filter');
+            return false;
+          }
+          return true;
+        }
+        return this.crossings.every((crossing) => crossing.id !== edge.end.id);
+      })
       .map((edge) => {
         return new Path([...this.crossings, edge.end], this.score + edge.steps + 1000, this.getOppositeDirection());
       });
@@ -185,12 +219,15 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
       while (score_paths === undefined) {
         score_paths = paths[index++];
       }
-
+      if (index % 25 === 0) {
+        console.log(`index: ${index}, score_paths: ${score_paths?.length}`);
+        this.printPath(score_paths[0]);
+      }
       best_path = score_paths.find((path) => path.reachedEnd(end));
       score_paths.forEach((path) => {
         path.getPaths().forEach((new_path) => {
           if (paths[new_path.score] === undefined) paths[new_path.score] = [];
-          this.printPath(new_path);
+          //  this.printPath(new_path);
           paths[new_path.score].push(new_path);
         });
       });
@@ -250,6 +287,7 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
     });
     console.log(`score: ${new_path.score}`);
     console.log(`crossings: ${new_path.crossings.length}`);
+    console.log(`crossings: ${new_path.crossings.map((crossing) => coordinateToString(crossing)).join(' -> ')}`);
     console.log(map.map((row) => row.join('')).join('\n'));
     console.log();
   }
