@@ -4,8 +4,6 @@ import { Coordinate } from '../../common/matrix/interface.js';
 import { coordinateToString, Grid } from '../../common/matrix/grid/grid.js';
 import { all_directions, Direction } from '../../common/matrix/grid/direction.js';
 import { Tile } from '../../common/matrix/grid/tile.js';
-import { start } from 'node:repl';
-import path from 'path';
 
 const edge_directions = ['vertical', 'horizontal'] as const;
 const horizontals: Direction[] = ['right', 'left'];
@@ -17,6 +15,7 @@ class Path {
     public readonly crossings: Crossing[],
     public readonly score: number,
     public readonly direction: (typeof edge_directions)[number],
+    public readonly edges: Edge[],
   ) {}
 
   getLatestCrossing(): Crossing {
@@ -36,10 +35,20 @@ class Path {
   }
 
   getPaths() {
-    return this.getNextEdges()
+    return this.getNextEdges() /*
       .filter((edge) => {
+        //  console.log('skipped reason: crossings filter');
         return this.crossings.every((crossing) => crossing.id !== edge.end.id);
       })
+      .filter((edge) => {
+        const { x: x1, y: y1 } = edge.start;
+        const { x: x2, y: y2 } = edge.end;
+        return !this.edges.some((existing_edge) => {
+          const { x: ex1, y: ey1 } = existing_edge.start;
+          const { x: ex2, y: ey2 } = existing_edge.end;
+          return x1 >= ex1 && x2 >= ex1 && x1 <= ex2 && x2 <= ex2 && y1 >= ey1 && y2 >= ey1 && y1 <= ey2 && y2 <= ey2;
+        });
+      })*/
       .filter((edge) => {
         if (edge.direction === 'horizontal') {
           // check if any crossings are overlapping each other
@@ -56,7 +65,7 @@ class Path {
           }
           return true;
         }
-        return this.crossings.every((crossing) => crossing.id !== edge.end.id);
+        return true;
       })
       .filter((edge) => {
         if (edge.direction === 'vertical') {
@@ -72,10 +81,13 @@ class Path {
           }
           return true;
         }
-        return this.crossings.every((crossing) => crossing.id !== edge.end.id);
+        return true;
       })
       .map((edge) => {
-        return new Path([...this.crossings, edge.end], this.score + edge.steps + 1000, this.getOppositeDirection());
+        return new Path([...this.crossings, edge.end], this.score + edge.steps + 1000, this.getOppositeDirection(), [
+          ...this.edges,
+          edge,
+        ]);
       });
   }
 
@@ -90,6 +102,7 @@ class Crossing implements Coordinate {
   public readonly y: number;
   public readonly id: string;
   public readonly edges: Map<EdgeDirection, Set<Edge>> = new Map();
+  public readonly best_score: Map<EdgeDirection, number> = new Map(edge_directions.map((direction) => [direction, Infinity]));
   constructor({ x, y }: Coordinate) {
     this.id = coordinateToString({ x, y });
     this.x = x;
@@ -201,37 +214,52 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
   }
 
   solvePartOne(): number {
-    const { start, start_direction, maze, end, crossings } = this.input;
+    const { start, end, crossings } = this.input;
     const paths: Path[][] = [];
     const crossing = crossings.get(coordinateToString(start))!;
     crossing.edges.get('horizontal')?.forEach((edge) => {
+      if (edge.start !== crossing) return;
       const score = edge.steps;
-      paths[score] = [new Path([edge.start, edge.end], score, 'horizontal')];
+      paths[score] = [new Path([edge.start, edge.end], score, 'horizontal', [])];
     });
     crossing.edges.get('vertical')?.forEach((edge) => {
+      if (edge.start !== crossing) return;
       const score = edge.steps + 1000;
-      paths[score] = [new Path([edge.start, edge.end], score, 'vertical')];
+      paths[score] = [new Path([edge.start, edge.end], score, 'vertical', [])];
     });
     let best_path: Path | undefined;
     let index = 0;
     do {
       let score_paths: Path[] | undefined;
-      while (score_paths === undefined) {
+      while (score_paths === undefined && index < Infinity) {
         score_paths = paths[index++];
       }
-      if (index % 25 === 0) {
-        console.log(`index: ${index}, score_paths: ${score_paths?.length}`);
-        this.printPath(score_paths[0]);
+      if (index > 97400) {
+        console.log(`index: ${index}, score_paths: ${score_paths?.length}, paths: ${paths?.length}`);
+        //this.printPath(score_paths[0]);
       }
+      if (!score_paths) throw new Error('score_paths is undefined');
       best_path = score_paths.find((path) => path.reachedEnd(end));
-      score_paths.forEach((path) => {
-        path.getPaths().forEach((new_path) => {
-          if (paths[new_path.score] === undefined) paths[new_path.score] = [];
-          //  this.printPath(new_path);
-          paths[new_path.score].push(new_path);
+      score_paths
+        .filter((path) => {
+          const best_score = path.getLatestCrossing().best_score.get(path.direction)!;
+          if (path.score >= best_score) {
+            // console.log(`skipped reason: score filter`);
+            return false;
+          } else {
+            path.getLatestCrossing().best_score.set(path.direction, path.score);
+            return true;
+          }
+        })
+        .forEach((path) => {
+          path.getPaths().forEach((new_path) => {
+            if (paths[new_path.score] === undefined) paths[new_path.score] = [];
+            //  this.printPath(new_path);
+            paths[new_path.score].push(new_path);
+          });
         });
-      });
     } while (best_path === undefined);
+    this.printPath(best_path);
     return best_path.score;
   }
 
