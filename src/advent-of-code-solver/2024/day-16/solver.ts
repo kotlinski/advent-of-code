@@ -37,7 +37,6 @@ class Path {
   getPaths() {
     return this.getNextEdges()
       .filter((edge) => {
-        //  console.log('skipped reason: crossings filter');
         return this.crossings.every((crossing) => crossing.id !== edge.end.id);
       })
       .map((edge) => {
@@ -170,7 +169,7 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
 
   solvePartOne(): number {
     const best_paths = this.findBestPaths();
-    this.printPath(best_paths[0]);
+    // this.printPath(best_paths[0]);
     return best_paths[0].score;
   }
 
@@ -195,17 +194,12 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
       while (score_paths === undefined && index < Infinity) {
         score_paths = paths[index++];
       }
-      /*      if (index > 97400) {
-        console.log(`index: ${index}, score_paths: ${score_paths?.length}, paths: ${paths?.length}`);
-        //this.printPath(score_paths[0]);
-      }*/
       if (!score_paths) throw new Error('score_paths is undefined');
       best_paths.push(...score_paths.filter((path) => path.reachedEnd(end)));
       score_paths
         .filter((path) => {
           const best_score = path.getLatestCrossing().best_score.get(path.direction)!;
           if (path.score > best_score) {
-            // console.log(`skipped reason: score filter`);
             return false;
           } else {
             path.getLatestCrossing().best_score.set(path.direction, path.score);
@@ -215,7 +209,6 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
         .forEach((path) => {
           path.getPaths().forEach((new_path) => {
             if (paths[new_path.score] === undefined) paths[new_path.score] = [];
-            //  this.printPath(new_path);
             paths[new_path.score].push(new_path);
           });
         });
