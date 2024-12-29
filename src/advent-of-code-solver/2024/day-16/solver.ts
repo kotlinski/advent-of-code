@@ -35,53 +35,10 @@ class Path {
   }
 
   getPaths() {
-    return this.getNextEdges() /*
+    return this.getNextEdges()
       .filter((edge) => {
         //  console.log('skipped reason: crossings filter');
         return this.crossings.every((crossing) => crossing.id !== edge.end.id);
-      })
-      .filter((edge) => {
-        const { x: x1, y: y1 } = edge.start;
-        const { x: x2, y: y2 } = edge.end;
-        return !this.edges.some((existing_edge) => {
-          const { x: ex1, y: ey1 } = existing_edge.start;
-          const { x: ex2, y: ey2 } = existing_edge.end;
-          return x1 >= ex1 && x2 >= ex1 && x1 <= ex2 && x2 <= ex2 && y1 >= ey1 && y2 >= ey1 && y1 <= ey2 && y2 <= ey2;
-        });
-      })*/
-      .filter((edge) => {
-        if (edge.direction === 'horizontal') {
-          // check if any crossings are overlapping each other
-          const x1 = edge.start.x;
-          const x2 = edge.end.x;
-          const overlapping_crossings = this.crossings.filter(
-            (crossing) =>
-              ((crossing.x > x1 && crossing.x < x2) || (crossing.x < x1 && crossing.x > x2)) && crossing.y === edge.start.y,
-          ).length;
-          if (overlapping_crossings > 0) {
-            //  console.log('skipped reason: horizontal edge filter');
-            // console.log(`overlapping_crossings: ${JSON.stringify(overlapping_crossings, null, 2)}`);
-            return false;
-          }
-          return true;
-        }
-        return true;
-      })
-      .filter((edge) => {
-        if (edge.direction === 'vertical') {
-          const y1 = edge.start.y;
-          const y2 = edge.end.y;
-          const overlapping_crossings = this.crossings.filter(
-            (crossing) =>
-              ((crossing.y > y1 && crossing.y < y2) || (crossing.y < y1 && crossing.y > y2)) && crossing.x === edge.start.x,
-          ).length;
-          if (overlapping_crossings > 0) {
-            // console.log('skipped reason: vertical edge filter');
-            return false;
-          }
-          return true;
-        }
-        return true;
       })
       .map((edge) => {
         return new Path([...this.crossings, edge.end], this.score + edge.steps + 1000, this.getOppositeDirection(), [
@@ -137,7 +94,6 @@ class Edge {
 interface ReindeerMaze {
   maze: Grid<'.' | '#'>;
   start: Coordinate;
-  start_direction: 'horizontal';
   end: Coordinate;
   crossings: Map<string, Crossing>;
 }
@@ -189,9 +145,8 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
     return {
       start,
       end,
-      maze,
-      start_direction: 'horizontal',
       crossings,
+      maze,
     };
   }
 
@@ -214,36 +169,42 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
   }
 
   solvePartOne(): number {
+    const best_paths = this.findBestPaths();
+    this.printPath(best_paths[0]);
+    return best_paths[0].score;
+  }
+
+  solvePartTwo(): number {
+    const best_paths = this.findBestPaths();
+    console.log(`best_paths.length: ${JSON.stringify(best_paths.length, null, 2)}`);
+    const coordinates = new Set<string>();
+    best_paths.forEach((path) => {
+      // this.printPath(path);
+      this.allCoordinatesInPath(path).forEach(({ coordinate }) => coordinates.add(coordinateToString(coordinate)));
+    });
+    return coordinates.size + 1;
+  }
+
+  private findBestPaths(): Path[] {
     const { start, end, crossings } = this.input;
-    const paths: Path[][] = [];
-    const crossing = crossings.get(coordinateToString(start))!;
-    crossing.edges.get('horizontal')?.forEach((edge) => {
-      if (edge.start !== crossing) return;
-      const score = edge.steps;
-      paths[score] = [new Path([edge.start, edge.end], score, 'horizontal', [])];
-    });
-    crossing.edges.get('vertical')?.forEach((edge) => {
-      if (edge.start !== crossing) return;
-      const score = edge.steps + 1000;
-      paths[score] = [new Path([edge.start, edge.end], score, 'vertical', [])];
-    });
-    let best_path: Path | undefined;
+    const best_paths: Path[] = [];
+    const paths = this.getInitialPaths(crossings, start);
     let index = 0;
     do {
       let score_paths: Path[] | undefined;
       while (score_paths === undefined && index < Infinity) {
         score_paths = paths[index++];
       }
-      if (index > 97400) {
+      /*      if (index > 97400) {
         console.log(`index: ${index}, score_paths: ${score_paths?.length}, paths: ${paths?.length}`);
         //this.printPath(score_paths[0]);
-      }
+      }*/
       if (!score_paths) throw new Error('score_paths is undefined');
-      best_path = score_paths.find((path) => path.reachedEnd(end));
+      best_paths.push(...score_paths.filter((path) => path.reachedEnd(end)));
       score_paths
         .filter((path) => {
           const best_score = path.getLatestCrossing().best_score.get(path.direction)!;
-          if (path.score >= best_score) {
+          if (path.score > best_score) {
             // console.log(`skipped reason: score filter`);
             return false;
           } else {
@@ -258,30 +219,28 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
             paths[new_path.score].push(new_path);
           });
         });
-    } while (best_path === undefined);
-    this.printPath(best_path);
-    return best_path.score;
+    } while (best_paths.length === 0);
+    return best_paths;
   }
 
-  solvePartTwo(): number {
-    return 4711;
+  private getInitialPaths(crossings: Map<string, Crossing>, start: Coordinate): Path[][] {
+    const paths: Path[][] = [];
+    const crossing = crossings.get(coordinateToString(start))!;
+    crossing.edges.get('horizontal')?.forEach((edge) => {
+      if (edge.start !== crossing) return;
+      const score = edge.steps;
+      paths[score] = [new Path([edge.start, edge.end], score, 'horizontal', [])];
+    });
+    crossing.edges.get('vertical')?.forEach((edge) => {
+      if (edge.start !== crossing) return;
+      const score = edge.steps + 1000;
+      paths[score] = [new Path([edge.start, edge.end], score, 'vertical', [])];
+    });
+    return paths;
   }
 
   private printPath(new_path: Path) {
-    const all_coordinates_between_crossings: { coordinate: Coordinate; direction: Direction }[] = [];
-    for (let i = 0; i < new_path.crossings.length - 1; i++) {
-      const start = new_path.crossings[i];
-      const end = new_path.crossings[i + 1];
-      const direction = start.x === end.x ? (start.y < end.y ? 'down' : 'up') : start.x < end.x ? 'right' : 'left';
-      const current: Coordinate = { ...start };
-      while (current.x !== end.x || current.y !== end.y) {
-        if (direction === 'right') current.x++;
-        else if (direction === 'left') current.x--;
-        else if (direction === 'down') current.y++;
-        else if (direction === 'up') current.y--;
-        all_coordinates_between_crossings.push({ coordinate: { ...current }, direction });
-      }
-    }
+    const all_coordinates_between_crossings = this.allCoordinatesInPath(new_path);
     const map: string[][] = Array.from({ length: this.input.maze.height }, () => new Array(this.input.maze.width).fill(''));
     this.input.maze.traverseTiles((tile) => {
       const find = all_coordinates_between_crossings.find(
@@ -318,5 +277,23 @@ export default class ReindeerMazeSolver extends Solver<ReindeerMaze> {
     console.log(`crossings: ${new_path.crossings.map((crossing) => coordinateToString(crossing)).join(' -> ')}`);
     console.log(map.map((row) => row.join('')).join('\n'));
     console.log();
+  }
+
+  private allCoordinatesInPath(new_path: Path) {
+    const all_coordinates_between_crossings: { coordinate: Coordinate; direction: Direction }[] = [];
+    for (let i = 0; i < new_path.crossings.length - 1; i++) {
+      const start = new_path.crossings[i];
+      const end = new_path.crossings[i + 1];
+      const direction = start.x === end.x ? (start.y < end.y ? 'down' : 'up') : start.x < end.x ? 'right' : 'left';
+      const current: Coordinate = { ...start };
+      while (current.x !== end.x || current.y !== end.y) {
+        if (direction === 'right') current.x++;
+        else if (direction === 'left') current.x--;
+        else if (direction === 'down') current.y++;
+        else if (direction === 'up') current.y--;
+        all_coordinates_between_crossings.push({ coordinate: { ...current }, direction });
+      }
+    }
+    return all_coordinates_between_crossings;
   }
 }

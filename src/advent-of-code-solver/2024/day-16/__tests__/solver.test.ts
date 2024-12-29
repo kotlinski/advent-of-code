@@ -81,10 +81,19 @@ describe('day 16', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
-      solver = new ReindeerMazeSolver(input_1);
-      const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+    describe('example 1', () => {
+      it(`should equal to 45`, () => {
+        solver = new ReindeerMazeSolver(input_1);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(45);
+      });
+    });
+    describe('example 2', () => {
+      it(`should equal to 64`, () => {
+        solver = new ReindeerMazeSolver(input_2);
+        const result = solver.solvePartTwo();
+        expect(result).toEqual(64);
+      });
     });
   });
 });
