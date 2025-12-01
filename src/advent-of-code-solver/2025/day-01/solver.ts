@@ -1,5 +1,6 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
+import { after } from 'node:test';
 
 type ParsedType = number[];
 
@@ -23,13 +24,23 @@ export default class SecretEntranceSolver extends Solver<ParsedType> {
     this.input.reduce((value, line) => {
       const new_value = (value + line) % 100;
       if (new_value === 0) count++;
-      console.log(`new_value: ${JSON.stringify(new_value, null, 2)}`);
       return new_value;
     }, 50);
     return count;
   }
 
   solvePartTwo(): number {
-    return 4711;
+    let counter = 0;
+    this.input.reduce((value, line) => {
+      const direction = line < 0 ? -1 : 1;
+      for (let i = 0; i < Math.abs(line); i++) {
+        value += direction;
+        if (value < 0) value = 99;
+        if (value > 99) value = 0;
+        if (value === 0) counter++;
+      }
+      return value;
+    }, 50);
+    return counter;
   }
 }

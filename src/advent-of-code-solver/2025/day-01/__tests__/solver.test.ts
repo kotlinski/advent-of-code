@@ -19,11 +19,11 @@ describe('day 1', () => {
       expect(result).toEqual(3);
     });
   });
-  describe.skip('part two', () => {
-    it(`should equal to 4711`, () => {
+  describe('part two', () => {
+    it(`should equal to 6`, () => {
       solver = new SecretEntranceSolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(6);
     });
   });
 });
