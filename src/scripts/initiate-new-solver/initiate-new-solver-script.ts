@@ -12,7 +12,7 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
 
   const root_readme_path = path.resolve(`./README.md`);
   const root_readme = readFileSync(root_readme_path).toString();
-  const regex = /advent-of-code-solver\/2024\) \| (\d*) \|/g;
+  const regex = new RegExp(`advent-of-code-solver/${year}\\) \\| (\\d*) \\|`, 'g');
   const replace_number = String(day * 2).padEnd(2, ' ');
   const updated_root_readme = root_readme.replace(regex, (match, group) => {
     return match.replace(`${group}`, replace_number);
@@ -28,7 +28,7 @@ export async function initiateNewSolver({ year, day }: { year: number; day: numb
   }
   let readme = readFileSync(year_readme_path).toString();
   const padded_day = String(day).padStart(2, '0');
-  const day_table_row = `| [Day ${day}](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2024/day-${padded_day}) |   🌟   |   🌟   |\n`;
+  const day_table_row = `| [Day ${day}](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/${year}/day-${padded_day}) |   🌟   |   🌟   |\n`;
   if (!readme.includes(day_table_row)) {
     readme += day_table_row;
   }
