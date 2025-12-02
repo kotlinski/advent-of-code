@@ -3,6 +3,9 @@ import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.
 
 type ParsedType = number[][];
 
+/**
+ * Part 1
+ */
 function isValidId(id: string): boolean {
   const chars = id.split('');
   if (chars.length % 2 !== 0) {
@@ -11,6 +14,26 @@ function isValidId(id: string): boolean {
   const first = chars.slice(0, chars.length / 2);
   const second = chars.slice(chars.length / 2);
   return first.toString() !== second.toString();
+}
+
+/**
+ * part 2
+ */
+function isInvalidId(id: string): boolean {
+  const chars = id.split('');
+  for (let i = 0; i <= chars.length / 2; i++) {
+    const first = chars.slice(0, i);
+    const second = chars.slice(i);
+    if (second.length % first.length === 0) {
+      const repetitions = second.length / first.length;
+      const parts = [];
+      for (let repetition = 0; repetition < repetitions; repetition++) {
+        parts.push(second.slice(repetition * first.length, (repetition + 1) * first.length));
+      }
+      if (parts.every((part) => part.toString() === first.toString())) return true;
+    }
+  }
+  return false;
 }
 
 export default class GiftShopSolver extends Solver<ParsedType> {
@@ -39,6 +62,15 @@ export default class GiftShopSolver extends Solver<ParsedType> {
   }
 
   solvePartTwo(): number {
-    return 4711;
+    let sum = 0;
+    for (const range of this.input) {
+      const [from, to] = range;
+      for (let i = from; i <= to; i++) {
+        if (isInvalidId(i.toString(10))) {
+          sum += i;
+        }
+      }
+    }
+    return sum;
   }
 }

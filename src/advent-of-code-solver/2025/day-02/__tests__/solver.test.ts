@@ -35,10 +35,10 @@ describe('day 2', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
+    it(`should equal to 4174379265`, () => {
       solver = new GiftShopSolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(4174379265);
     });
   });
 });
