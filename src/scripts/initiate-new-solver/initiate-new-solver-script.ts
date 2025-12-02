@@ -2,7 +2,6 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { parseSolverName, pascalName } from './html-parser.js';
 import { getHtmlTaskDescription } from '../api-client/advent-of-code-client.js';
-import * as https from 'node:https';
 const dirname = import.meta.dirname;
 
 export async function initiateNewSolver({ year, day }: { year: number; day: number }) {
