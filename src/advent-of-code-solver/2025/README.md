@@ -6,3 +6,4 @@ https://adventofcode.com/2025
 |-------------------------------------------------------------------------------------------------------| :----: | :----: |
 | [Day 1](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2025/day-01) |   🌟   |   🌟   |
 | [Day 2](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2025/day-02) |   🌟   |   🌟   |
+| [Day 3](https://github.com/kotlinski/advent-of-code/tree/main/src/advent-of-code-solver/2025/day-03) |   🌟   |   🌟   |
