@@ -17,28 +17,33 @@ export default class LobbySolver extends Solver<ParsedType> {
   }
 
   solvePartOne(): number {
-    const joltages = this.input.map((line) => {
-      let first = -1;
-      let largest_index = -1;
-      for (let i = 0; i < line.length - 1 && first !== 9; i++) {
-        if (line[i] > first) {
-          first = line[i];
-          largest_index = i;
-        }
+    return this.findBiggest(this.input, 2);
+  }
+  solvePartTwo(): number {
+    return this.findBiggest(this.input, 12);
+  }
+  private findLargeNumber(line: number[], digits: number, start_index: number): number[] {
+    if (digits <= 0) {
+      return [];
+    }
+    let largest = -1;
+    let largest_index = -1;
+    for (let i = start_index; i <= line.length - digits && largest !== 9; i++) {
+      if (line[i] > largest) {
+        largest = line[i];
+        largest_index = i;
       }
-      let second = -1;
-      for (let i = largest_index + 1; i <= line.length - 1 && second !== 9; i++) {
-        if (line[i] > second) {
-          second = line[i];
-          largest_index = i;
-        }
-      }
-      return first * 10 + second;
-    });
-    return joltages.reduce(summarize);
+    }
+    return [largest_index, ...this.findLargeNumber(line, digits - 1, largest_index + 1)];
   }
 
-  solvePartTwo(): number {
-    return 4711;
+  private findBiggest(input: number[][], digits: number) {
+    const joltages = input.map((line) => {
+      const indexes = this.findLargeNumber(line, digits, 0);
+      return indexes.reduce((acc, cur, index) => {
+        return acc + line[cur] * 10 ** (digits - 1 - index);
+      }, 0);
+    });
+    return joltages.reduce(summarize);
   }
 }

@@ -25,10 +25,10 @@ describe('day 3', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
+    it(`should equal to 3121910778619`, () => {
       solver = new LobbySolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(3121910778619);
     });
   });
 });
