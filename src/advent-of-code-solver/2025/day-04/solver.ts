@@ -1,6 +1,7 @@
 import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 import { coordinateToString, stringToCoordinate } from '../../common/matrix/grid/grid.js';
+import { Coordinate } from '../../common/matrix/interface.js';
 
 interface Square {
   x: number;
@@ -49,16 +50,32 @@ export default class PrintingDepartmentSolver extends Solver<ParsedType> {
   }
 
   solvePartOne(): number {
-    let count = 0;
-    for (const [_key, square] of this.input.entries()) {
+    return this.findAccessibleCoordinates(this.input).length;
+  }
+
+  private findAccessibleCoordinates(map: ParsedType): Coordinate[] {
+    const removable_coordinates: Coordinate[] = [];
+    for (const [key, square] of map.entries()) {
       if (square.symbol === '.') continue;
-      const accessible = square.neighbours.filter((neighbour) => neighbour.symbol === '@').length < 4;
-      if (accessible) count++;
+      const rolls = square.neighbours.filter((neighbour) => neighbour.symbol === '@');
+      if (rolls.length >= 4) continue;
+      removable_coordinates.push(stringToCoordinate(key));
     }
-    return count;
+    return removable_coordinates;
   }
 
   solvePartTwo(): number {
-    return 4711;
+    const map = new Map(this.input);
+    let count = 0;
+    let accessible_coordinates: Coordinate[];
+    do {
+      accessible_coordinates = this.findAccessibleCoordinates(map);
+      for (const coordinate of accessible_coordinates) {
+        const key = coordinateToString(coordinate);
+        map.get(key)!.symbol = '.';
+      }
+      count += accessible_coordinates.length;
+    } while (accessible_coordinates.length !== 0);
+    return count;
   }
 }
