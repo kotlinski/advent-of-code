@@ -2,7 +2,7 @@ import Solver from '../../../advent-of-code-solver/solver.js';
 import { removeEmptyLinesPredicate } from '../../common/array-operations/filter.js';
 import { summarize } from '../../common/array-operations/reduce.js';
 
-type ParsedType = { numbers: number[][]; operations: string[] };
+type ParsedType = { numbers: string[][]; operator: string }[];
 
 export default class TrashCompactorSolver extends Solver<ParsedType> {
   constructor(raw_input: string) {
@@ -10,27 +10,57 @@ export default class TrashCompactorSolver extends Solver<ParsedType> {
   }
 
   parse(raw_input: string): ParsedType {
-    const all_lines = raw_input.split('\n').filter(removeEmptyLinesPredicate);
-    const separated = all_lines.map((line) => line.trim().split(/\s+/));
-    const operations = separated.pop();
+    const lines = raw_input
+      .split('\n')
+      .filter(removeEmptyLinesPredicate)
+      .map((line) => line.split(''));
+    const operators = lines.at(-1)!;
 
-    return {
-      numbers: separated.map((line) => line.map(Number)),
-      operations: operations!,
-    };
+    const frame_indexes: number[] = operators.reduce((indexes: number[], char: string, index: number) => {
+      if (operators[index] !== ' ') {
+        indexes.push(index);
+      }
+      return indexes;
+    }, []);
+    const frames = lines.map((line) => {
+      return frame_indexes.map((start, i) => line.slice(start, frame_indexes[i + 1] ? frame_indexes[i + 1] - 1 : line.length));
+    });
+    return frames.pop()!.map((frame, i) => ({
+      operator: frame.join('').trim(),
+      numbers: frames.map((line) => line[i]),
+    }));
   }
 
   solvePartOne(): number {
-    const math_builder: { numbers: number[]; operation: string }[] = [];
+    const sums = this.compute(this.input);
+    return sums.reduce(summarize);
+  }
 
-    for (let i = 0; i < this.input.numbers[0].length; i++) {
-      const math_numbers: number[] = [];
-      this.input.numbers.forEach((line: number[]) => {
-        math_numbers.push(line[i]);
+  private compute(input: ParsedType) {
+    return input.map(({ numbers, operator }) => {
+      return this.calculateLine({
+        numbers: numbers.map((number) => Number(number.join('').trim())),
+        operation: operator,
       });
-      math_builder.push({ numbers: math_numbers, operation: this.input.operations[i] });
-    }
-    const sums: number[] = math_builder.map(this.calculateLine);
+    });
+  }
+
+  solvePartTwo(): number {
+    const right_to_left = this.input.map(({ numbers, operator }) => {
+      const flipped_numbers = [];
+      for (let i = 0; i < numbers[0].length; i++) {
+        const new_value: string[] = [];
+        numbers.map((number) => {
+          new_value.push(number[i]);
+        });
+        flipped_numbers.push(new_value);
+      }
+      return {
+        numbers: flipped_numbers,
+        operator,
+      };
+    });
+    const sums = this.compute(right_to_left);
     return sums.reduce(summarize);
   }
   private calculateLine(line: { numbers: number[]; operation: string }): number {
@@ -43,11 +73,7 @@ export default class TrashCompactorSolver extends Solver<ParsedType> {
       } else if (line.operation === '*') {
         return sum * number;
       }
-      throw new Error(`Unknown operation ${line.operation}`);
+      throw new Error(`unknown operation {line.operation}`);
     }, 0);
-  }
-
-  solvePartTwo(): number {
-    return 4711;
   }
 }
