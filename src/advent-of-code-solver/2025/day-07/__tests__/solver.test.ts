@@ -53,10 +53,10 @@ describe('day 7', () => {
     });
   });
   describe('part two', () => {
-    it(`should equal to 4711`, () => {
+    it(`should equal to 40`, () => {
       solver = new LaboratoriesSolver(input);
       const result = solver.solvePartTwo();
-      expect(result).toEqual(4711);
+      expect(result).toEqual(40);
     });
   });
 });
