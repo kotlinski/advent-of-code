@@ -25,15 +25,15 @@
   },
   "homepage": "https://github.com/kotlinski/advent-of-code#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@springworks/biome-config": "^3005.383.0",
-    "@types/node": "^22.9.1",
+    "@biomejs/biome": "^2.3.6",
+    "@springworks/biome-config": "^3005.464.1",
+    "@types/node": "^24.10.2",
     "esmock": "^2.6.9",
     "expect": "^29.7.0",
-    "filenamify-url": "2.1.2",
-    "node-html-parser": "^6.1.11",
+    "filenamify-url": "^4.0.0",
+    "node-html-parser": "^7.0.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.9.3"
   },
   "dependencies": {}
 }
