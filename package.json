@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/kotlinski/advent-of-code#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@springworks/biome-config": "^3005.383.0",
+    "@biomejs/biome": "^2.3.6",
+    "@springworks/biome-config": "^3005.464.1",
     "@types/node": "^24.10.2",
     "esmock": "^2.6.9",
     "expect": "^29.7.0",

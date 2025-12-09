@@ -15,12 +15,8 @@ function generateLines(points: Point3D[]): Line[] {
       ...pts.map((point_b) => ({
         a: point_a,
         b: point_b,
-        distance: Math.sqrt(
-          (point_a[0] - point_b[0]) ** 2 +
-          (point_a[1] - point_b[1]) ** 2 +
-          (point_a[2] - point_b[2]) ** 2
-        ),
-      }))
+        distance: Math.sqrt((point_a[0] - point_b[0]) ** 2 + (point_a[1] - point_b[1]) ** 2 + (point_a[2] - point_b[2]) ** 2),
+      })),
     );
   }
   return lines;
@@ -52,7 +48,6 @@ function addLineToClusters(clusters: Set<string>[], line: Line) {
   }
 }
 
-
 export default class PlaygroundSolver extends Solver<ParsedType> {
   constructor(raw_input: string) {
     super(raw_input);
@@ -67,16 +62,16 @@ export default class PlaygroundSolver extends Solver<ParsedType> {
 
   solvePartOne(input_params?: { input: number }): number {
     const points = this.input;
-    const lines = generateLines(points)
+    const lines = generateLines(points);
 
     const pick_top = input_params?.input ?? 1000;
     lines.sort(({ distance: a }, { distance: b }) => a - b);
-    const shortest_distances = lines.slice(0, pick_top)
+    const shortest_distances = lines.slice(0, pick_top);
 
     const clusters: Set<string>[] = [];
     while (shortest_distances.length > 0) {
       const line = shortest_distances.shift()!;
-      addLineToClusters(clusters, line)
+      addLineToClusters(clusters, line);
     }
     clusters.sort((a, b) => b.size - a.size);
     const [a, b, c] = clusters;
@@ -88,7 +83,7 @@ export default class PlaygroundSolver extends Solver<ParsedType> {
     const points = this.input;
     const total_points = points.length;
 
-    const lines = generateLines(points)
+    const lines = generateLines(points);
 
     lines.sort(({ distance: a }, { distance: b }) => a - b);
 
@@ -97,7 +92,7 @@ export default class PlaygroundSolver extends Solver<ParsedType> {
     while (this.calculateClusterSize(clusters) < total_points || clusters.length !== 1) {
       const line = lines.shift()!;
       last_line = line;
-      addLineToClusters(clusters, line)
+      addLineToClusters(clusters, line);
     }
     const { a, b } = last_line!;
 

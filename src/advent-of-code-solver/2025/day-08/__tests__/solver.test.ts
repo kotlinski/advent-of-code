@@ -56,7 +56,7 @@ describe('day 8', () => {
   describe('part one', () => {
     it(`should equal to 40`, () => {
       solver = new PlaygroundSolver(input);
-      const result = solver.solvePartOne({input: 10});
+      const result = solver.solvePartOne({ input: 10 });
       expect(result).toEqual(40);
     });
   });

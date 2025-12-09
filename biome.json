@@ -3,6 +3,6 @@
   "extends": ["@springworks/biome-config"],
   "files": {
     "ignoreUnknown": true,
-    "ignore": ["coverage/**"]
+    "includes": ["**", "!**/coverage/**"]
   }
 }
